@@ -394,5 +394,49 @@ export default {
     heroTitle: "Terms of",
     heroHighlight: "Service",
     subtitle: "The rules and guidelines for using our services."
+  },
+  chatbot: {
+    ui: {
+      title: "Mirror Mirror Assistant",
+      online: "Online now",
+      placeholder: "Type your message...",
+      poweredBy: "Mirror Mirror Photowall Qatar"
+    },
+    quickReplies: {
+      services: "Our Services",
+      pricing: "Pricing",
+      bookNow: "Book Now",
+      contact: "Contact Us",
+      mirrorBooth: "Mirror Booth",
+      videography: "Videography",
+      photography: "Photography",
+      addons: "Add-ons",
+      spaceReq: "Space Requirements",
+      location: "Location",
+      hours: "Working Hours",
+      bookingTimeline: "Booking Timeline"
+    },
+    responses: {
+      greeting: "Hello! 👋 Welcome to Mirror Mirror Photowall Qatar.\n\nI'm your virtual assistant and I'd love to help you plan something unforgettable! Whether it's a wedding, corporate event, or private celebration — I'm here to guide you.\n\nWhat would you like to know?",
+      servicesOverview: "We offer 6 premium services to elevate your events ✨\n\n📸 Mirror Photo Booth — Interactive touchscreen mirror\n🎥 Audio & Video Booth — Vintage message recordings\n📷 Polaroid Guest Book — Instant photo keepsake\n🎨 Branding Collaterals — Custom merch & giveaways\n🎬 Videography — Cinematic event coverage\n📷 Photography — Professional event photography\n\nWould you like details on any specific service?",
+      mirrorBooth: "✨ Mirror Photo Booth\n\nOur signature service! A full-length interactive touchscreen mirror with:\n\n• DSLR studio-grade photography\n• Instant prints in under 10 seconds\n• Digital sharing via QR, SMS, or Email\n• Custom animations & overlays\n• Fun props & premium templates\n• Friendly on-site hosts\n\n💰 Starting at 3,500 QAR for a 3-hour session\n\nIt's the ultimate crowd-pleaser for weddings, galas, and corporate events!",
+      audioVideoBooth: "🎤 Audio & Video Telephone Booth\n\nA vintage-style booth where guests record heartfelt audio and video messages — delivered as a personalized digital album.\n\n• Studio-quality microphone\n• Custom greeting setup\n• Raw audio/video exports\n• Bespoke digital album\n\n💰 Starting at 2,500 QAR for the full event\n\nPerfect for weddings and milestone celebrations!",
+      polaroid: "📸 Polaroid Guest List Photo Book\n\nGuests snap instant Polaroid photos and leave personal notes in a beautiful leather-bound guestbook.\n\n• Premium Polaroid cameras\n• High-quality film packs\n• Leather-bound guestbook\n• Metallic pens & adhesives\n• Dedicated attendant\n\n💰 Starting at 1,800 QAR for the full event\n\nA timeless keepsake filled with love and memories!",
+      branding: "🎨 Branding Collaterals\n\nCustom-branded merchandise and event souvenirs:\n\n• Tote bags, t-shirts & caps\n• Full-color custom printing\n• High-quality materials\n• Design consultation included\n• Bulk order discounts available\n\n💰 Custom Quote — tailored to your needs\n\nPerfect for corporate events, product launches, and brand activations!",
+      videography: "🎬 Videography\n\nCinematic event coverage from start to finish:\n\n• Multi-camera professional setup\n• Drone footage (optional)\n• Cinematic color grading\n• 1-minute highlight reel for socials\n• Full-length edited feature film\n\n💰 Starting at 6,000 QAR for full event coverage\n\nWe bring every celebration to life on film!",
+      photography: "📷 Photography\n\nProfessional event photography with a premium touch:\n\n• Senior lead photographer\n• Candid & posed portraits\n• High-end retouching\n• Secure online gallery\n• Next-day sneak peeks\n\n💰 Starting at 4,500 QAR for full event coverage\n\nBeautifully preserved memories you'll treasure forever!",
+      pricing: "💰 Our Pricing Overview:\n\n• Mirror Photo Booth — 3,500 QAR (3 hrs)\n• Audio & Video Booth — 2,500 QAR (full event)\n• Polaroid Guest Book — 1,800 QAR (full event)\n• Branding Collaterals — Custom Quote\n• Videography — 6,000 QAR (full event)\n• Photography — 4,500 QAR (full event)\n\nWe also offer premium add-ons starting from 500 QAR. All prices are customizable based on your event needs!\n\nReady to book? Contact us for a personalized quote.",
+      booking: "📅 Ready to book? Here's how:\n\n1️⃣ Visit our Contact page and fill out the inquiry form\n2️⃣ WhatsApp us directly at +974 7156 7348\n3️⃣ Email us at info@mirrormirrorphotowallqatar.com\n\nWe'll get back to you within 4 business hours with a personalized quote and availability confirmation.\n\nFor weekends & peak season (Oct–Mar), we recommend booking 3–6 months in advance!",
+      contactInfo: "📞 Here's how to reach us:\n\n📱 Phone: +974 7156 7348\n📧 Email: info@mirrormirrorphotowallqatar.com\n💬 WhatsApp: +974 7156 7348\n📸 Instagram: @mirrormirrorphotowallqatar\n\nOur team typically responds within 4 business hours. Feel free to reach out anytime!",
+      location: "📍 Our Location:\n\nBuilding 17, Ishbiliya Street\nAl Hilal District, Doha, Qatar\n\nWe serve events across all of Qatar — from luxury hotels in West Bay to desert venues and private estates. No location is too far for us!",
+      hours: "🕐 Business Hours:\n\nSunday – Thursday: 9:00 AM – 6:00 PM\nFriday – Saturday: By appointment only\n\nFor events, we're available 7 days a week including evenings and weekends. Just reach out and we'll accommodate your schedule!\n\n📱 WhatsApp: +974 7156 7348",
+      eventTypes: "🎉 We cover all types of events:\n\n💍 Weddings & Engagements\n🏢 Corporate Galas & Conferences\n🎂 Birthday Parties & Private Celebrations\n🚀 Product Launches & Brand Activations\n🎭 Cultural Events & Exhibitions\n🏆 Award Ceremonies & VIP Receptions\n\nEvery event gets a fully customized experience tailored to your theme and audience!",
+      spaceRequirements: "📐 Setup Requirements:\n\n• Minimum space: 3m × 3m (10ft × 10ft)\n• Power: Standard 220V outlet within 5m of setup\n• Setup time: Approximately 60–90 minutes\n• We handle all setup and teardown!\n\nWe'll do a pre-event site visit to ensure everything is perfect for your venue. Just let us know your location!",
+      customBranding: "🎨 Custom Branding Options:\n\nAll our packages include basic digital branding (logo overlay). Our premium options include:\n\n• Full UI/UX screen customization — 800 QAR\n• Custom animated overlays matching your theme\n• Branded print templates with your design\n• Custom AR filters for your event or brand\n• Branded photo frames and digital borders\n\nOur in-house design team will work with you to create a fully branded experience!",
+      bookingTimeline: "📅 Booking Timeline:\n\n• Peak Season (Oct – Mar): Book 3–6 months ahead\n• Off-Peak Season (Apr – Sep): Book 1–3 months ahead\n• Last-minute availability: Sometimes possible!\n\nTo secure your preferred date, we recommend reaching out as early as possible. A 50% deposit confirms your booking.\n\n📱 Contact us now: +974 7156 7348",
+      addons: "⭐ Premium Add-ons:\n\n🖨️ Extra Print Station — 500 QAR\n   Reduces wait times for 200+ guests\n\n🖥️ Full Screen UI/UX Wrap — 800 QAR\n   Custom branding on mirror interfaces\n\n💐 Professional Floral Arch — 1,200 QAR\n   Premium silk flowers for your backdrop\n\n📽️ Live Slide Projection — 600 QAR\n   Real-time photo display across venue screens\n\nAll add-ons can be combined with any service package!",
+      goodbye: "Thank you for chatting with us! 🙏\n\nWe'd love to be part of your next event. If you need anything else, don't hesitate to reach out:\n\n📱 WhatsApp: +974 7156 7348\n📧 Email: info@mirrormirrorphotowallqatar.com\n\nHave a wonderful day! ✨",
+      fallback: "I'm not sure I understood that correctly. 🤔\n\nI can help you with:\n• Our services & pricing\n• Booking & availability\n• Contact information\n• Event requirements\n\nTry asking about one of these, or reach our team directly:\n📱 WhatsApp: +974 7156 7348"
+    }
   }
 };

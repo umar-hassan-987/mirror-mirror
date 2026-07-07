@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot/Chatbot";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 
 export const metadata = {
@@ -20,8 +21,10 @@ export default function RootLayout({ children }) {
           <Navbar />
           <div className="flex-grow flex flex-col">{children}</div>
           <Footer />
+          <Chatbot />
         </LanguageProvider>
       </body>
     </html>
   );
 }
+
