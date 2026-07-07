@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Header() {
   const pathname = usePathname();
@@ -11,6 +12,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const { locale, setLocale, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,11 +35,11 @@ export default function Header() {
   }, []);
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Services", href: "/services" },
-    { label: "About", href: "/about" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Contact", href: "/contact" },
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.services"), href: "/services" },
+    { label: t("nav.about"), href: "/about" },
+    { label: t("nav.portfolio"), href: "/portfolio" },
+    { label: t("nav.blog"), href: "/blog" },
   ];
 
   return (
@@ -83,10 +85,36 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Action Button & Mobile Menu Trigger */}
+        {/* Action Button & Language Switcher & Mobile Menu Trigger */}
         <div className="flex items-center gap-4">
+          <div className={`hidden sm:flex items-center p-1 rounded-full border transition-colors relative ${isScrolled ? 'bg-surface-container-high border-outline-variant/30' : 'bg-black/20 backdrop-blur-sm border-white/10'}`} dir="ltr">
+            <div 
+              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] gradient-bg rounded-full shadow-md transition-transform duration-300 ease-in-out ${locale === 'en' ? 'translate-x-0 left-1' : 'translate-x-full left-1'}`}
+            ></div>
+            <button 
+              onClick={() => setLocale('en')}
+              className={`relative z-10 w-12 py-1.5 text-xs font-inter font-bold transition-colors ${
+                locale === 'en' 
+                  ? 'text-white' 
+                  : isScrolled ? 'text-on-surface-variant hover:text-primary' : 'text-white/50 hover:text-white/80'
+              }`}
+            >
+              EN
+            </button>
+            <button 
+              onClick={() => setLocale('ar')}
+              className={`relative z-10 w-12 py-1.5 text-xs font-inter font-bold transition-colors ${
+                locale === 'ar' 
+                  ? 'text-white' 
+                  : isScrolled ? 'text-on-surface-variant hover:text-primary' : 'text-white/50 hover:text-white/80'
+              }`}
+            >
+              عربي
+            </button>
+          </div>
+
           <Link href="/contact" className="hidden sm:inline-block gradient-bg text-white px-8 py-3 rounded-full font-inter font-semibold text-sm hover:opacity-90 transition-all active:scale-95">
-            Book Now
+            {t("nav.bookNow")}
           </Link>
 
           {/* Mobile Menu Toggle */}
@@ -130,10 +158,28 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="gradient-bg text-white px-10 py-4 rounded-full font-inter font-bold text-md mt-4 shadow-lg shadow-primary/20"
+              className="gradient-bg text-white px-8 md:px-10 py-4 rounded-full font-inter font-bold text-md mt-4 shadow-lg shadow-primary/20"
             >
-              Book Now
+              {t("nav.bookNow")}
             </Link>
+
+            <div className="flex items-center p-1.5 mt-8 bg-black/20 backdrop-blur-sm rounded-full border border-white/10 relative" dir="ltr">
+              <div 
+                className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] gradient-bg rounded-full shadow-md transition-transform duration-300 ease-in-out ${locale === 'en' ? 'translate-x-0 left-1.5' : 'translate-x-full left-1.5'}`}
+              ></div>
+              <button 
+                onClick={() => { setLocale('en'); setIsOpen(false); }}
+                className={`relative z-10 w-24 py-2 text-sm font-inter font-bold transition-colors ${locale === 'en' ? 'text-white' : 'text-white/50 hover:text-white/80'}`}
+              >
+                English
+              </button>
+              <button 
+                onClick={() => { setLocale('ar'); setIsOpen(false); }}
+                className={`relative z-10 w-24 py-2 text-sm font-inter font-bold transition-colors ${locale === 'ar' ? 'text-white' : 'text-white/50 hover:text-white/80'}`}
+              >
+                العربية
+              </button>
+            </div>
           </nav>
         </div>
       )}

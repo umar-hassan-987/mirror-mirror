@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { Phone, Mail, MessageSquare, Share2, MapPin, ChevronDown, Loader2, Check } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Contact() {
+  const { t, dir } = useLanguage();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -41,72 +43,73 @@ export default function Contact() {
 
   const faqs = [
     {
-      q: "How much space is required for the Mirror Mirror Photo Wall?",
-      a: "We recommend a minimum footprint of 3m x 3m to allow for the hardware, background, and guest flow. A standard 220V power outlet is also required within 5 meters of the setup."
+      q: t("contact.faq.q1.q"),
+      a: t("contact.faq.q1.a")
     },
     {
-      q: "Do you offer custom digital branding?",
-      a: "Absolutely. All our packages include basic digital branding (logo overlay). Our premium tiers offer full UI/UX customization of the screen interface and animated overlays to match your event theme perfectly."
+      q: t("contact.faq.q2.q"),
+      a: t("contact.faq.q2.a")
     },
     {
-      q: "How far in advance should I book?",
-      a: "For weekends and peak seasons (October–March in Qatar), we recommend booking at least 3-6 months in advance. However, we do occasionally have last-minute availability, so please inquire regardless."
+      q: t("contact.faq.q3.q"),
+      a: t("contact.faq.q3.a")
     },
     {
-      q: "Can guests receive photos instantly?",
-      a: "Yes, photos and videos are delivered via QR code scanning, SMS, or Email within seconds of capture. We also offer high-speed professional thermal printing on-site for physical keepsakes."
+      q: t("contact.faq.q4.q"),
+      a: t("contact.faq.q4.a")
     }
   ];
 
   const contactItems = [
-    { icon: <Phone className="w-5 h-5" />, label: "Phone", value: "+974 7156 7348", href: "tel:+97471567348" },
-    { icon: <Mail className="w-5 h-5" />, label: "Email", value: "info@mirrormirrorphotowallqatar.com", href: "mailto:info@mirrormirrorphotowallqatar.com" },
-    { icon: <MessageSquare className="w-5 h-5" />, label: "WhatsApp", value: "+974 7156 7348", href: "https://wa.me/97471567348" },
-    { icon: <Share2 className="w-5 h-5" />, label: "Instagram", value: "@mirrormirrorphotowallqatar", href: "https://instagram.com/mirrormirrorphotowallqatar" }
+    { icon: <Phone className="w-5 h-5" />, label: t("contact.getInTouch.phone"), value: "+974 7156 7348", href: "tel:+97471567348" },
+    { icon: <Mail className="w-5 h-5" />, label: t("contact.getInTouch.email"), value: "info@mirrormirrorphotowallqatar.com", href: "mailto:info@mirrormirrorphotowallqatar.com" },
+    { icon: <MessageSquare className="w-5 h-5" />, label: t("contact.getInTouch.whatsapp"), value: "+974 7156 7348", href: "https://wa.me/97471567348" },
+    { icon: <Share2 className="w-5 h-5" />, label: t("contact.getInTouch.instagram"), value: "@mirrormirrorphotowallqatar", href: "https://instagram.com/mirrormirrorphotowallqatar" }
   ];
 
   return (
     <div className="flex flex-col w-full bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
+      <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/img/mirror.jpg" 
-            alt="Luxury ballroom lighting background" 
+            src="/images/contact-hero-img.jpg" 
+            alt="Contact us background" 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px] z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-hero-overlay/10 to-hero-overlay z-20"></div>
+          {/* Strong gradient and solid overlay to ensure text readability against the bright window */}
+          <div className="absolute inset-0 bg-black/40 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-20 rtl:from-transparent rtl:via-black/40 rtl:to-black/80"></div>
         </div>
 
         <div className="relative z-30 max-w-container-max mx-auto w-full">
           <div className="max-w-3xl">
-            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-7xl mb-6 text-white leading-tight">
-              Let's Make Your <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text gradient-span">Event Unforgettable</span>
+            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md">
+              {t("contact.hero.titleLine1")} <span className="text-pink-100">{t("contact.hero.titleHighlight")}</span>
             </h1>
-            <p className="font-inter text-lg md:text-xl text-white/90 leading-relaxed mb-8">
-              Whether it's a high-profile corporate gala or a private celebration, Mirror Mirror brings cutting-edge luxury photography to Qatar. Reach out to secure your date.
+            <p className="font-inter text-lg md:text-xl text-white/95 leading-relaxed mb-10 drop-shadow-sm font-medium">
+              {t("contact.hero.subtitle")}
             </p>
             <button 
               onClick={() => {
                 document.getElementById('inquiry-form').scrollIntoView({ behavior: 'smooth' });
               }}
-              className="gradient-bg text-white font-inter font-bold text-base py-4 px-10 rounded-full hover:shadow-xl transition-all"
+              className="bg-white text-primary font-inter font-bold text-base py-4 px-8 md:px-10 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              Start Your Inquiry
+              {t("contact.hero.startInquiry")}
             </button>
           </div>
         </div>
       </section>
 
-      <main id="inquiry-form" className="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-24 w-full">
+      <main id="inquiry-form" className="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-16 md:py-24 w-full">
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left Column: Contact Details & Map */}
           <div className="lg:col-span-5 space-y-12">
             <div className="space-y-8">
-              <h2 className="font-plus-jakarta font-bold text-3xl text-on-surface">Get in Touch</h2>
+              <h2 className="font-plus-jakarta font-bold text-3xl text-on-surface">{t("contact.getInTouch.title")}</h2>
               <div className="space-y-6">
                 {contactItems.map((item, i) => (
                   <a href={item.href} target="_blank" rel="noopener noreferrer" key={i} className="flex items-center gap-4 group cursor-pointer">
@@ -128,14 +131,14 @@ export default function Contact() {
                 <div 
                   className="w-full h-full bg-cover bg-center" 
                   style={{
-                    backgroundImage: "url('/img/telephoneBooth.jpg')"
+                    backgroundImage: "url('/images/audio-video-booth.jpg')"
                   }}
                 ></div>
               </div>
               <div className="absolute bottom-6 left-6 right-6 p-6 glass-card rounded-2xl flex justify-between items-center translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white">
                 <div>
-                  <p className="font-inter font-bold text-sm text-on-surface">Al Hilal District</p>
-                  <p className="text-xs text-on-surface-variant mt-1">Doha, Qatar</p>
+                  <p className="font-inter font-bold text-sm text-on-surface">{t("contact.getInTouch.addressTitle")}</p>
+                  <p className="text-xs text-on-surface-variant mt-1">{t("contact.getInTouch.addressSubtitle")}</p>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
                   <MapPin className="w-5 h-5" />
@@ -146,51 +149,51 @@ export default function Contact() {
 
           {/* Right Column: Booking Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-8 md:p-12 rounded-[40px] shadow-sm relative overflow-hidden border border-outline-variant/30">
+            <div className="glass-card p-8 md:p-6 md:p-12 rounded-[40px] shadow-sm relative overflow-hidden border border-outline-variant/30">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
               <div className="relative z-10">
-                <h2 className="font-plus-jakarta font-bold text-3xl mb-8 text-on-surface">Inquiry Form</h2>
+                <h2 className="font-plus-jakarta font-bold text-3xl mb-8 text-on-surface">{t("contact.form.title")}</h2>
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Full Name</label>
+                      <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.nameLabel")}</label>
                       <input
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         required
                         className="w-full h-14 px-6 rounded-2xl bg-white border border-outline-variant/50 focus:ring-0 transition-all text-on-surface"
-                        placeholder="John Doe"
+                        placeholder={t("contact.form.namePlaceholder")}
                         type="text"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Email Address</label>
+                      <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.emailLabel")}</label>
                       <input
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         required
                         className="w-full h-14 px-6 rounded-2xl bg-white border border-outline-variant/50 focus:ring-0 transition-all text-on-surface"
-                        placeholder="john@company.com"
+                        placeholder={t("contact.form.emailPlaceholder")}
                         type="email"
                       />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Event Type</label>
+                      <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.eventTypeLabel")}</label>
                       <select
                         value={formState.eventType}
                         onChange={(e) => setFormState({ ...formState, eventType: e.target.value })}
-                        className="w-full h-14 px-6 rounded-2xl bg-white border border-outline-variant/50 focus:ring-0 transition-all appearance-none cursor-pointer text-on-surface"
+                        className={`w-full h-14 px-6 rounded-2xl bg-white border border-outline-variant/50 focus:ring-0 transition-all appearance-none cursor-pointer text-on-surface ${dir === 'rtl' ? 'bg-[url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e")] bg-no-repeat bg-[position:left_1.5rem_center] bg-[length:1em_1em]' : ''}`}
                       >
-                        <option>Corporate Gala</option>
-                        <option>Private Wedding</option>
-                        <option>Launch Event</option>
-                        <option>Other Celebration</option>
+                        <option>{t("contact.form.eventTypes.corporate")}</option>
+                        <option>{t("contact.form.eventTypes.wedding")}</option>
+                        <option>{t("contact.form.eventTypes.launch")}</option>
+                        <option>{t("contact.form.eventTypes.other")}</option>
                       </select>
                     </div>
                     <div className="space-y-2">
-                      <label className="font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Event Date</label>
+                      <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.dateLabel")}</label>
                       <input
                         value={formState.date}
                         onChange={(e) => setFormState({ ...formState, date: e.target.value })}
@@ -201,18 +204,18 @@ export default function Contact() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Location / Venue</label>
+                    <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.locationLabel")}</label>
                     <input
                       value={formState.location}
                       onChange={(e) => setFormState({ ...formState, location: e.target.value })}
                       required
                       className="w-full h-14 px-6 rounded-2xl bg-white border border-outline-variant/50 focus:ring-0 transition-all text-on-surface"
-                      placeholder="Ritz-Carlton, Doha"
+                      placeholder={t("contact.form.locationPlaceholder")}
                       type="text"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Guest Count (Estimated)</label>
+                    <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.guestCountLabel")}</label>
                     <div className="grid grid-cols-4 gap-4">
                       {guestOptions.map((opt) => (
                         <button
@@ -224,6 +227,7 @@ export default function Contact() {
                               : "border-outline-variant/50 text-on-surface-variant hover:bg-primary-fixed/20"
                           }`}
                           type="button"
+                          dir="ltr"
                         >
                           {opt}
                         </button>
@@ -231,13 +235,13 @@ export default function Contact() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase ml-1">Tell Us About Your Vision</label>
+                    <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.visionLabel")}</label>
                     <textarea
                       value={formState.vision}
                       onChange={(e) => setFormState({ ...formState, vision: e.target.value })}
                       required
                       className="w-full p-6 rounded-2xl bg-white border border-outline-variant/50 focus:ring-0 transition-all text-on-surface"
-                      placeholder="Share any specific details or themes for your photo wall experience..."
+                      placeholder={t("contact.form.visionPlaceholder")}
                       rows="4"
                     ></textarea>
                   </div>
@@ -257,13 +261,13 @@ export default function Contact() {
                       <Check className="w-5 h-5" />
                     )}
                     {submitStatus === "sending"
-                      ? "Sending..."
+                      ? t("contact.form.sending")
                       : submitStatus === "success"
-                      ? "Request Sent!"
-                      : "SUBMIT INQUIRY"}
+                      ? t("contact.form.sentSuccessfully")
+                      : t("contact.form.submitBtn")}
                   </button>
                   <p className="text-center text-xs text-on-surface-variant opacity-70">
-                    Typical response time: within 4 business hours.
+                    {t("contact.form.responseTime")}
                   </p>
                 </form>
               </div>
@@ -274,7 +278,7 @@ export default function Contact() {
         {/* FAQ Section */}
         <section className="mt-24">
           <div className="text-center mb-16">
-            <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">Frequently Asked Questions</h2>
+            <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">{t("contact.faq.title")}</h2>
             <div className="w-24 h-1.5 gradient-bg mx-auto rounded-full"></div>
           </div>
           <div className="max-w-4xl mx-auto space-y-4">

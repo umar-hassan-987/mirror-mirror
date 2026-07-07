@@ -6,8 +6,10 @@ import HeroHeadline from "./HeroHeadline";
 import HeroSubtitle from "./HeroSubtitle";
 import HeroButtons from "./HeroButtons";
 import MouseParallax from "./MouseParallax";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black w-full">
       {/* Background loop video under the overlays */}
@@ -17,15 +19,15 @@ export default function Hero() {
       <div className="relative z-30 max-w-container-max mx-auto px-margin-mobile md:px-gutter w-full py-20 flex flex-col items-center text-center">
         <MouseParallax multiplier={5}>
           <div className="flex flex-col items-center justify-center">
-            <HeroLabel>WELCOME TO MIRROR MIRROR</HeroLabel>
+            <HeroLabel>{t("hero.label")}</HeroLabel>
 
             <HeroHeadline>
-              We Capture Your<br />
-              Best <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text gradient-span">Memories</span> Here
+              {t("hero.headlineLine1")}<br />
+              {t("hero.headlineLine2")} <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text gradient-span">{t("hero.headlineHighlight")}</span> {t("hero.headlineLine3")}
             </HeroHeadline>
 
             <HeroSubtitle>
-              Premium photo wall rentals and event activations in Qatar. Elevating weddings, corporate galas, and luxury celebrations.
+              {t("hero.subtitle")}
             </HeroSubtitle>
 
             <HeroButtons />

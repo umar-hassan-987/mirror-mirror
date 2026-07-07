@@ -2,69 +2,66 @@
 
 import Link from "next/link";
 import { Cpu, Zap, Fingerprint, Sparkles, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function About() {
+  const { t, dir } = useLanguage();
   const bentoItems = [
     {
       type: "large",
       icon: <Cpu className="w-8 h-8 text-primary" />,
-      title: "AI-Driven Post Processing",
-      desc: "Every image is instantly optimized using our custom neural network, ensuring studio-quality results in milliseconds, regardless of venue lighting.",
-      image: "/img/mirror.jpg",
+      title: t("about.technology.bento1.title"),
+      desc: t("about.technology.bento1.desc"),
+      image: "/images/mirror-default.jpg",
       alt: "Futuristic digital interface showing AI image enhancement processes in magenta and violet"
     },
     {
       type: "small",
       icon: <Zap className="w-8 h-8 text-secondary" />,
-      title: "Instant Cloud Sync",
-      desc: "Guests receive their high-resolution content via secure QR code within 3 seconds of capture, ready for global sharing."
+      title: t("about.technology.bento2.title"),
+      desc: t("about.technology.bento2.desc")
     },
     {
       type: "small",
       icon: <Fingerprint className="w-8 h-8 text-tertiary" />,
-      title: "Haptic Interactivity",
-      desc: "4K touch-sensitive surfaces allow for live digital signatures and custom emoji placements directly on the mirror surface."
+      title: t("about.technology.bento3.title"),
+      desc: t("about.technology.bento3.desc")
     },
     {
       type: "large-row",
       icon: <Sparkles className="w-8 h-8 text-primary" />,
-      title: "Custom AR Filters",
-      desc: "Bespoke augmented reality overlays designed specifically for your brand or event theme, created by our in-house motion designers.",
-      image: "/img/branding.png",
+      title: t("about.technology.bento4.title"),
+      desc: t("about.technology.bento4.desc"),
+      image: "/images/branding-service.jpg",
       alt: "People interacting with giant mirror using golden AR filters in luxury Qatari venue"
     }
   ];
 
-  const timeline = [
-    { year: "2018", title: "The Inception", desc: "Founded in Doha with our first flagship 'Reflect One' mirror unit.", color: "primary" },
-    { year: "2020", title: "Digital Pivot", desc: "Launched contactless 'Aura' capture to serve the luxury market during changing times.", color: "secondary" },
-    { year: "2022", title: "World Stage", desc: "Official technology partner for three major international sporting venues in Qatar.", color: "tertiary" },
-    { year: "2024", title: "Mirror Mirror Pro", desc: "Introducing AI-synthesized backgrounds and large-scale architectural integration.", color: "primary-container" }
-  ];
-
+  const timeline = t("about.timeline.events") || [];
+  
   const team = [
     {
-      name: "Ahmed Al-Thani",
-      role: "Founder & CEO",
-      image: "/img/photographer.jpg",
+      name: t("about.team.members.0.name"),
+      role: t("about.team.members.0.role"),
+      image: "/images/ahmed.jpg",
       alt: "Ahmed Al-Thani CEO Portrait"
     },
     {
-      name: "Sarah Jenkins",
-      role: "Creative Director",
-      image: "/img/polaroid-book.png",
+      name: t("about.team.members.1.name"),
+      role: t("about.team.members.1.role"),
+      image: "/images/sarah.jpg",
       alt: "Sarah Jenkins Creative Director Portrait"
     },
     {
-      name: "Dr. Leo Chen",
-      role: "Lead Software Engineer",
-      image: "/img/mirror-booth.png",
+      name: t("about.team.members.2.name"),
+      role: t("about.team.members.2.role"),
+      image: "/images/leo.jpg",
       alt: "Dr. Leo Chen Lead Engineer Portrait"
     },
     {
-      name: "Nadia Mahmoud",
-      role: "Head of Operations",
-      image: "/img/audio-booth.png",
+      name: t("about.team.members.3.name"),
+      role: t("about.team.members.3.role"),
+      image: "/images/nadia.jpg",
       alt: "Nadia Mahmoud Operations Portrait"
     }
   ];
@@ -72,37 +69,38 @@ export default function About() {
   return (
     <div className="flex flex-col w-full bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
+      <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/img/photobook.jpg" 
+            src="/images/about-hero.jpg" 
             alt="Luxury social event background" 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px] z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-hero-overlay/10 to-hero-overlay z-20"></div>
+          {/* Strong gradient and solid overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-black/40 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-20 rtl:from-transparent rtl:via-black/40 rtl:to-black/80"></div>
         </div>
 
         <div className="relative z-30 max-w-container-max mx-auto w-full">
           <div className="max-w-3xl">
-            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-7xl mb-6 text-white leading-tight">
-              Redefining <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text gradient-span">Reflection</span> in Doha.
+            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md">
+              {t("about.hero.titleLine1")} <span className="text-pink-100">{t("about.hero.titleHighlight")}</span> {t("about.hero.titleLine2")}
             </h1>
-            <p className="font-inter text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
-              Mirror Mirror Photowall Qatar is the state's premier event technology partner, blending interactive digital art with luxury hospitality to create unforgettable visual narratives.
+            <p className="font-inter text-lg md:text-xl text-white/95 mb-10 leading-relaxed drop-shadow-sm font-medium">
+              {t("about.hero.subtitle")}
             </p>
             <div className="flex flex-wrap gap-4">
-              <div className="px-5 py-2.5 bg-white/10 border border-white/20 text-white rounded-none font-inter font-bold text-xs uppercase tracking-wider">Est. 2018</div>
-              <div className="px-5 py-2.5 bg-white/10 border border-white/20 text-white rounded-none font-inter font-bold text-xs uppercase tracking-wider">500+ Events</div>
-              <div className="px-5 py-2.5 bg-white/10 border border-white/20 text-white rounded-none font-inter font-bold text-xs uppercase tracking-wider">Innovation Award '23</div>
+              {(t("about.hero.badges") || []).map((badge, index) => (
+                <div key={index} className="px-5 py-2.5 bg-white/10 border border-white/20 text-white rounded-none font-inter font-bold text-xs uppercase tracking-wider">{badge}</div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Narrative Section */}
-      <section className="py-24 w-full">
+      <section className="py-16 md:py-24 w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7">
@@ -110,18 +108,18 @@ export default function About() {
                 <img
                   className="w-full h-[450px] object-cover"
                   alt="Luxury event space in Doha with floor-to-ceiling interactive screens reflecting elegant guests"
-                  src="/img/photographer.jpg"
+                  src="/images/services-hero.jpg"
                 />
               </div>
             </div>
             <div className="lg:col-span-5">
-              <span className="font-inter font-bold text-primary uppercase tracking-widest text-xs mb-4 block">Our Mission</span>
-              <h2 className="font-plus-jakarta font-bold text-3xl md:text-4xl mb-6 text-on-surface leading-tight">Capturing the Pulse of Qatar's Finest Moments.</h2>
+              <span className="font-inter font-bold text-primary uppercase tracking-widest text-xs mb-4 block">{t("about.mission.label")}</span>
+              <h2 className="font-plus-jakarta font-bold text-3xl md:text-4xl mb-6 text-on-surface leading-tight">{t("about.mission.title")}</h2>
               <p className="font-inter text-base text-on-surface-variant mb-6 leading-relaxed">
-                Born from a passion for both technology and human connection, Mirror Mirror set out to transform the traditional photo booth into a high-tech masterpiece. We don't just take photos; we create digital canvases where guests become the art.
+                {t("about.mission.desc1")}
               </p>
               <p className="font-inter text-base text-on-surface-variant leading-relaxed">
-                Our mission is to elevate Qatar's social landscape by providing immersive technology that sparks conversation, enhances brand identity, and preserves memories in stunning high-definition.
+                {t("about.mission.desc2")}
               </p>
             </div>
           </div>
@@ -129,11 +127,11 @@ export default function About() {
       </section>
 
       {/* Bento Grid (Technology) */}
-      <section className="py-24 bg-surface-container-low w-full">
+      <section className="py-16 md:py-24 bg-surface-container-low w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
           <div className="text-center mb-16">
-            <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">The Magic Behind the Glass</h2>
-            <p className="font-inter text-base text-on-surface-variant max-w-2xl mx-auto">Our proprietary technology stack delivers seamless interactivity and gallery-grade visual output.</p>
+            <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">{t("about.technology.title")}</h2>
+            <p className="font-inter text-base text-on-surface-variant max-w-2xl mx-auto">{t("about.technology.subtitle")}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Bento Item 1 */}
@@ -185,9 +183,9 @@ export default function About() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-24 overflow-hidden w-full">
+      <section className="py-16 md:py-24 overflow-hidden w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-          <h2 className="font-plus-jakarta font-bold text-4xl mb-16 text-center text-on-surface">Our Journey in Qatar</h2>
+          <h2 className="font-plus-jakarta font-bold text-4xl mb-16 text-center text-on-surface">{t("about.timeline.title")}</h2>
           <div className="relative max-w-4xl mx-auto">
             {/* Center line */}
             <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-outline-variant/30 -translate-x-1/2"></div>
@@ -195,8 +193,8 @@ export default function About() {
               const isEven = i % 2 === 0;
               return (
                 <div key={i} className={`relative mb-20 flex flex-col md:flex-row items-center group ${isEven ? "" : "md:flex-row-reverse"}`}>
-                  <div className={`w-full md:w-1/2 ${isEven ? "pr-0 md:pr-16 text-left md:text-right" : "pl-0 md:pl-16 text-left"}`}>
-                    <span className="font-plus-jakarta font-extrabold text-4xl md:text-5xl gradient-text block mb-2">{item.year}</span>
+                  <div className={`w-full md:w-1/2 ${isEven ? (dir === 'rtl' ? "pl-0 md:pl-16 text-right md:text-left" : "pr-0 md:pr-16 text-left md:text-right") : (dir === 'rtl' ? "pr-0 md:pr-16 text-right" : "pl-0 md:pl-16 text-left")}`}>
+                    <span className="font-plus-jakarta font-extrabold text-4xl md:text-4xl md:text-5xl gradient-text block mb-2">{item.year}</span>
                     <h4 className="font-plus-jakarta font-bold text-2xl mb-2 text-on-surface">{item.title}</h4>
                     <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">{item.desc}</p>
                   </div>
@@ -210,18 +208,18 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-surface-bright border-t border-outline-variant/20 w-full">
+      <section className="py-16 md:py-24 bg-surface-bright border-t border-outline-variant/20 w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-xl">
-              <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">Meet the Visionaries</h2>
-              <p className="font-inter text-md text-on-surface-variant">A multidisciplinary team of engineers, designers, and event specialists dedicated to excellence.</p>
+              <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">{t("about.team.title")}</h2>
+              <p className="font-inter text-md text-on-surface-variant">{t("about.team.subtitle")}</p>
             </div>
             <Link
               href="/contact"
               className="px-8 py-3.5 border-2 border-primary text-primary rounded-none font-inter font-bold text-sm hover:bg-primary hover:text-white transition-all duration-300 w-fit flex items-center gap-2"
             >
-              Join Our Team <ArrowRight className="w-4 h-4" />
+              {t("about.team.joinTeam")} <ArrowRight className={`w-4 h-4 ${dir === 'rtl' ? 'rotate-180' : ''}`} />
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">

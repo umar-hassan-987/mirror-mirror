@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function ScrollIndicator() {
+  const { t } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,7 +25,7 @@ export default function ScrollIndicator() {
         className="flex flex-col items-center"
       >
         <span className="text-white/60 text-[10px] tracking-[0.2em] uppercase font-inter font-bold mb-1">
-          Scroll Down
+          {t("hero.scrollDown")}
         </span>
         <ChevronDown className="w-5 h-5 text-white/70" />
       </motion.div>

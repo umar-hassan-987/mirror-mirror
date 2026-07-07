@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap');
 
 @import "tailwindcss";
 
@@ -55,6 +55,7 @@
   /* Custom fonts */
   --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
   --font-inter: "Inter", sans-serif;
+  --font-cairo: "Cairo", sans-serif;
 
   /* Spacing */
   --spacing-margin-mobile: 20px;
@@ -139,4 +140,28 @@ input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: #a90096 !important;
   box-shadow: 0 0 0 2px rgba(169, 0, 150, 0.1) !important;
+}
+
+/* RTL and Arabic Font Adjustments */
+body.font-arabic,
+body.font-arabic .font-plus-jakarta,
+body.font-arabic .font-inter {
+  font-family: var(--font-cairo) !important;
+}
+
+body.font-arabic [dir="rtl"] .tracking-wider,
+body.font-arabic [dir="rtl"] .tracking-widest,
+body.font-arabic [dir="rtl"] .tracking-\[0\.2em\],
+body.font-arabic [dir="rtl"] .tracking-\[0\.25em\] {
+  letter-spacing: normal !important; /* Arabic doesn't use letter-spacing */
+}
+
+/* Custom RTL fixes for borders and gradients */
+[dir="rtl"] .gradient-border {
+  background: linear-gradient(#faf8ff, #faf8ff) padding-box, 
+              linear-gradient(-135deg, #a90096 0%, #731be5 100%) border-box;
+}
+
+[dir="rtl"] .gradient-bg {
+  background: linear-gradient(-135deg, #a90096 0%, #731be5 100%);
 }

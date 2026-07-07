@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function HeroButtons() {
+  const { t, dir } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -14,17 +16,17 @@ export default function HeroButtons() {
     >
       <Link
         href="/portfolio"
-        className="bg-white text-black hover:scale-105 active:scale-95 transition-all duration-300 px-10 py-5 font-inter font-bold text-lg flex items-center justify-center gap-2 group shadow-xl"
+        className="bg-white text-black hover:scale-105 active:scale-95 transition-all duration-300 px-8 md:px-10 py-5 font-inter font-bold text-lg flex items-center justify-center gap-2 group shadow-xl"
       >
-        View Gallery
-        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        {t("hero.viewGallery")}
+        <ArrowRight className={`w-5 h-5 group-hover:${dir === 'rtl' ? '-translate-x-1 rotate-180' : 'translate-x-1'} transition-transform`} />
       </Link>
       <Link
         href="/portfolio"
-        className="border border-white/40 hover:border-white text-white hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-300 px-10 py-5 font-inter font-bold text-lg flex items-center justify-center gap-2 group"
+        className="border border-white/40 hover:border-white text-white hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-300 px-8 md:px-10 py-5 font-inter font-bold text-lg flex items-center justify-center gap-2 group"
       >
-        Play Showreel
-        <Play className="w-5 h-5 fill-current text-current transition-transform group-hover:scale-110" />
+        {t("hero.playShowreel")}
+        <Play className={`w-5 h-5 fill-current text-current transition-transform group-hover:scale-110 ${dir === 'rtl' ? 'rotate-180' : ''}`} />
       </Link>
     </motion.div>
   );
