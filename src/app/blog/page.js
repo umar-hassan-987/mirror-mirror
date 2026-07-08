@@ -19,7 +19,7 @@ export default function Blog() {
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/blog-hero.jpg" 
+            src="/images/blog-hero.webp" 
             alt="Mirror Mirror blog header background" 
             className="w-full h-full object-cover" 
           />
@@ -51,7 +51,7 @@ export default function Blog() {
         >
           {/* Featured Image */}
           <div className="w-full lg:w-1/2 h-72 lg:h-[400px] relative overflow-hidden">
-            <img 
+            <img loading="lazy" decoding="async" 
               src={featured.coverImage}
               alt={featuredData.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -110,7 +110,7 @@ export default function Blog() {
                 >
                   {/* Cover Image */}
                   <div className="h-56 w-full relative overflow-hidden">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                       src={post.coverImage}
                       alt={data.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

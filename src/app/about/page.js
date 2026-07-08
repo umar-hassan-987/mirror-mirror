@@ -12,7 +12,7 @@ export default function About() {
       icon: <Cpu className="w-8 h-8 text-primary" />,
       title: t("about.technology.bento1.title"),
       desc: t("about.technology.bento1.desc"),
-      image: "/images/mirror-default.jpg",
+      image: "/images/mirror-default.webp",
       alt: "Futuristic digital interface showing AI image enhancement processes in magenta and violet"
     },
     {
@@ -32,7 +32,7 @@ export default function About() {
       icon: <Sparkles className="w-8 h-8 text-primary" />,
       title: t("about.technology.bento4.title"),
       desc: t("about.technology.bento4.desc"),
-      image: "/images/branding-service.jpg",
+      image: "/images/Polaroid.webp",
       alt: "People interacting with giant mirror using golden AR filters in luxury Qatari venue"
     }
   ];
@@ -43,7 +43,7 @@ export default function About() {
     {
       name: t("about.team.members.0.name"),
       role: t("about.team.members.0.role"),
-      image: "/images/ahmed.jpg",
+      image: "/images/ahmed.webp",
       alt: "Ahmed Al-Thani CEO Portrait"
     },
     {
@@ -55,7 +55,7 @@ export default function About() {
     {
       name: t("about.team.members.2.name"),
       role: t("about.team.members.2.role"),
-      image: "/images/leo.jpg",
+      image: "/images/leo.webp",
       alt: "Dr. Leo Chen Lead Engineer Portrait"
     },
     {
@@ -73,7 +73,7 @@ export default function About() {
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/about-hero.jpg" 
+            src="/images/about-hero.webp" 
             alt="Luxury social event background" 
             className="w-full h-full object-cover" 
           />
@@ -108,7 +108,7 @@ export default function About() {
                 <img
                   className="w-full h-[450px] object-cover"
                   alt="Luxury event space in Doha with floor-to-ceiling interactive screens reflecting elegant guests"
-                  src="/images/services-hero.jpg"
+                  src="/images/services-hero.webp"
                 />
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function About() {
                 <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">{bentoItems[0].desc}</p>
               </div>
               <div className="mt-8 h-48 rounded-none overflow-hidden relative border border-outline-variant/10">
-                <img className="w-full h-full object-cover" alt={bentoItems[0].alt} src={bentoItems[0].image} />
+                <img loading="lazy" decoding="async" className="w-full h-full object-cover" alt={bentoItems[0].alt} src={bentoItems[0].image} />
               </div>
             </div>
             {/* Bento Item 2 */}
@@ -175,7 +175,7 @@ export default function About() {
                 <p className="text-on-surface-variant text-sm leading-relaxed">{bentoItems[3].desc}</p>
               </div>
               <div className="w-full md:w-48 h-48 rounded-none overflow-hidden shrink-0 border border-outline-variant/10">
-                <img className="w-full h-full object-cover" alt={bentoItems[3].alt} src={bentoItems[3].image} />
+                <img loading="lazy" decoding="async" className="w-full h-full object-cover" alt={bentoItems[3].alt} src={bentoItems[3].image} />
               </div>
             </div>
           </div>

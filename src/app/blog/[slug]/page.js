@@ -17,7 +17,7 @@ export default function BlogPost() {
   }
 
   const data = locale === 'en' ? post.en : post.ar;
-  const heroImage = post.coverImage || "/images/mirror-default.jpg";
+  const heroImage = post.coverImage || "/images/mirror-default.webp";
 
   // Get other posts for "related" section
   const otherPosts = blogs.filter(b => b.slug !== post.slug).slice(0, 2);
@@ -113,7 +113,7 @@ export default function BlogPost() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {otherPosts.map((related) => {
                 const relData = locale === 'en' ? related.en : related.ar;
-                const relImg = related.coverImage || "/images/mirror-default.jpg";
+                const relImg = related.coverImage || "/images/mirror-default.webp";
                 return (
                   <Link 
                     href={`/blog/${related.slug}`} 
@@ -121,7 +121,7 @@ export default function BlogPost() {
                     className="group flex flex-col sm:flex-row bg-surface border border-outline-variant/30 rounded-none overflow-hidden hover:border-primary/40 transition-all duration-300 hover:shadow-lg shadow-sm"
                   >
                     <div className="w-full sm:w-48 h-40 sm:h-auto relative overflow-hidden shrink-0">
-                      <img 
+                      <img loading="lazy" decoding="async" 
                         src={relImg}
                         alt={relData.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

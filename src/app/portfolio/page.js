@@ -54,7 +54,7 @@ export default function Portfolio() {
       category: "corporate",
       tags: [t("portfolio.gallery.tags.corporate")],
       desc: t("portfolio.gallery.projects.mallLaunch.desc"),
-      image: "/images/branding-service.jpg",
+      image: "/images/Polaroid.webp",
       gridSpan: "md:col-span-4",
       aspect: "aspect-square"
     },
@@ -64,7 +64,7 @@ export default function Portfolio() {
       category: "gala",
       tags: [t("portfolio.gallery.tags.gala")],
       desc: t("portfolio.gallery.projects.charityBall.desc"),
-      image: "/images/audio-video-booth.jpg",
+      image: "/images/audio-video-booth.webp",
       gridSpan: "md:col-span-4",
       aspect: "aspect-square"
     }
@@ -113,9 +113,10 @@ export default function Portfolio() {
             {isPlaying ? (
               <div className="absolute inset-0 z-30 bg-black flex items-center justify-center">
                 <video 
-                  src="/vid/whoweare.mp4" 
+                  src="/vid/whoweare.webm" 
                   controls 
                   autoPlay 
+                  preload="none"
                   className="w-full h-full object-cover"
                   onEnded={() => setIsPlaying(false)}
                 />
@@ -135,7 +136,7 @@ export default function Portfolio() {
                 <div 
                   className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
                   style={{
-                    backgroundImage: "url('/images/services-hero.jpg')"
+                    backgroundImage: "url('/images/services-hero.webp')"
                   }}
                 ></div>
                 {/* Play Button Overlay */}

@@ -2,12 +2,12 @@ import HeroVideoCarousel from "./HeroVideoCarousel";
 
 export default function HeroBackground() {
   const videos = [
-    "/vid/vedios/short1.mp4",
-    "/vid/vedios/short2.mp4",
-    "/vid/vedios/short3.mp4",
-    "/vid/vedios/short4.mp4",
-    "/vid/vedios/short5.mp4",
-    "/vid/vedios/short6.mp4"
+    "/vid/vedios/short1.webm",
+    "/vid/vedios/short2.webm",
+    "/vid/vedios/short3.webm",
+    "/vid/vedios/short4.webm",
+    "/vid/vedios/short5.webm",
+    "/vid/vedios/short6.webm"
   ];
 
   return (

@@ -30,7 +30,7 @@ export default function Home() {
       description: t("home.experiences.tabs.branding.description"),
       points: t("home.experiences.tabs.branding.points") || [],
       mediaType: "video",
-      mediaSrc: "/vid/vedios/short2.mp4"
+      mediaSrc: "/vid/vedios/short2.webm"
     },
     {
       id: "photo-video",
@@ -39,7 +39,7 @@ export default function Home() {
       description: t("home.experiences.tabs.photoVideo.description"),
       points: t("home.experiences.tabs.photoVideo.points") || [],
       mediaType: "video",
-      mediaSrc: "/vid/vedios/short4.mp4"
+      mediaSrc: "/vid/vedios/short4.webm"
     },
     {
       id: "mirror-booth",
@@ -48,7 +48,7 @@ export default function Home() {
       description: t("home.experiences.tabs.mirrorBooth.description"),
       points: t("home.experiences.tabs.mirrorBooth.points") || [],
       mediaType: "video",
-      mediaSrc: "/vid/vedios/short1.mp4"
+      mediaSrc: "/vid/vedios/short1.webm"
     }
   ];
 
@@ -76,37 +76,37 @@ export default function Home() {
       name: t("home.servicesSection.mirrorBooth.name"),
       icon: <Camera className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.mirrorBooth.desc"),
-      image: "/images/mirror-booth.png"
+      image: "/images/mirror-booth.webp"
     },
     {
       name: t("home.servicesSection.audioVideoBooth.name"),
       icon: <Phone className="w-5 h-5 text-secondary" />,
       desc: t("home.servicesSection.audioVideoBooth.desc"),
-      image: "/images/audio-booth.png"
+      image: "/images/audio-booth.webp"
     },
     {
       name: t("home.servicesSection.polaroidGuestBook.name"),
       icon: <Heart className="w-5 h-5 text-tertiary" />,
       desc: t("home.servicesSection.polaroidGuestBook.desc"),
-      image: "/images/branding-service.jpg"
+      image: "/images/Polaroid.webp"
     },
     {
       name: t("home.servicesSection.brandingCollaterals.name"),
       icon: <Gift className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.brandingCollaterals.desc"),
-      image: "/images/polaroid-service.jpg"
+      image: "/images/brand.webp"
     },
     {
       name: t("home.servicesSection.videography.name"),
       icon: <Video className="w-5 h-5 text-secondary" />,
       desc: t("home.servicesSection.videography.desc"),
-      image: "/images/videography.png"
+      image: "/images/videography.webp"
     },
     {
       name: t("home.servicesSection.photography.name"),
       icon: <Camera className="w-5 h-5 text-tertiary" />,
       desc: t("home.servicesSection.photography.desc"),
-      image: "/images/photography.jpg"
+      image: "/images/photography.webp"
     }
   ];
 
@@ -177,7 +177,7 @@ export default function Home() {
         {/* Background Video with Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <video
-            src="/vid/whoweare.mp4"
+            src="/vid/whoweare.webm"
             autoPlay
             loop
             muted
@@ -358,12 +358,12 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {[
-            { title: t("home.portfolio.projects.royalGala"), type: t("home.portfolio.projects.wedding"), image: "/images/portfolio-hero.jpg" },
+            { title: t("home.portfolio.projects.royalGala"), type: t("home.portfolio.projects.wedding"), image: "/images/portfolio-hero.webp" },
             { title: t("home.portfolio.projects.techSummit"), type: t("home.portfolio.projects.corporate"), image: "/images/tech-summit.jpg" },
-            { title: t("home.portfolio.projects.vipReception"), type: t("home.portfolio.projects.launch"), image: "/images/services-hero.jpg" },
+            { title: t("home.portfolio.projects.vipReception"), type: t("home.portfolio.projects.launch"), image: "/images/services-hero.webp" },
             { title: t("home.portfolio.projects.neonBirthday"), type: t("home.portfolio.projects.privateParty"), image: "/images/neon-birthday.jpg" },
-            { title: t("home.portfolio.projects.behindTheScenes"), type: t("home.portfolio.projects.studioSetup"), image: "/images/behind-scenes.jpg" },
-            { title: t("home.portfolio.projects.customPhotoWall"), type: t("home.portfolio.projects.activation"), image: "/images/mirror-booth-service.jpg" },
+            { title: t("home.portfolio.projects.behindTheScenes"), type: t("home.portfolio.projects.studioSetup"), image: "/images/behind-scenes.webp" },
+            { title: t("home.portfolio.projects.customPhotoWall"), type: t("home.portfolio.projects.activation"), image: "/images/mirror-booth-service.webp" },
           ].map((proj, idx) => (
             <div
               key={idx}

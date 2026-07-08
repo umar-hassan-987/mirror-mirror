@@ -74,7 +74,7 @@ export default function Contact() {
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/contact-hero-img.jpg" 
+            src="/images/contact-hero-img.webp" 
             alt="Contact us background" 
             className="w-full h-full object-cover" 
           />
@@ -131,7 +131,7 @@ export default function Contact() {
                 <div 
                   className="w-full h-full bg-cover bg-center" 
                   style={{
-                    backgroundImage: "url('/images/audio-video-booth.jpg')"
+                    backgroundImage: "url('/images/audio-video-booth.webp')"
                   }}
                 ></div>
               </div>

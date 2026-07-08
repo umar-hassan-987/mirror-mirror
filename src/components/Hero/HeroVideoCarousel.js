@@ -76,7 +76,7 @@ export default function HeroVideoCarousel({
             muted
             playsInline
             loop
-            preload="auto"
+            preload="metadata"
             className="w-full h-full object-cover scale-[1.01]"
             src={videos[currentIndex]}
           />
@@ -91,7 +91,7 @@ export default function HeroVideoCarousel({
           <video
             key={`preload-${index}`}
             src={src}
-            preload="auto"
+            preload="metadata"
             muted
             className="hidden"
           />

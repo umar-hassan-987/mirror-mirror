@@ -12,7 +12,7 @@ export default function Services() {
       name: t("services.list.mirrorBooth.name"),
       icon: <Camera className="w-8 h-8 text-primary" />,
       desc: t("services.list.mirrorBooth.desc"),
-      image: "/images/mirror-default.jpg",
+      image: "/images/mirror-default.webp",
       price: t("services.list.mirrorBooth.price"),
       duration: t("services.list.mirrorBooth.duration"),
       specs: t("services.list.mirrorBooth.specs") || []
@@ -22,7 +22,7 @@ export default function Services() {
       name: t("services.list.audioVideoBooth.name"),
       icon: <Video className="w-8 h-8 text-secondary" />,
       desc: t("services.list.audioVideoBooth.desc"),
-      image: "/images/audio-video-booth.jpg",
+      image: "/images/audio-video-booth.webp",
       price: t("services.list.audioVideoBooth.price"),
       duration: t("services.list.audioVideoBooth.duration"),
       specs: t("services.list.audioVideoBooth.specs") || []
@@ -32,7 +32,7 @@ export default function Services() {
       name: t("services.list.polaroidGuestbook.name"),
       icon: <Heart className="w-8 h-8 text-tertiary" />,
       desc: t("services.list.polaroidGuestbook.desc"),
-      image: "/images/branding-service.jpg",
+      image: "/images/Polaroid.webp",
       price: t("services.list.polaroidGuestbook.price"),
       duration: t("services.list.polaroidGuestbook.duration"),
       specs: t("services.list.polaroidGuestbook.specs") || []
@@ -42,7 +42,7 @@ export default function Services() {
       name: t("services.list.brandingCollaterals.name"),
       icon: <Gift className="w-8 h-8 text-primary" />,
       desc: t("services.list.brandingCollaterals.desc"),
-      image: "/images/polaroid-service.jpg",
+      image: "/images/brand.webp",
       price: t("services.list.brandingCollaterals.price"),
       duration: t("services.list.brandingCollaterals.duration"),
       specs: t("services.list.brandingCollaterals.specs") || []
@@ -52,7 +52,7 @@ export default function Services() {
       name: t("services.list.videography.name"),
       icon: <Video className="w-8 h-8 text-secondary" />,
       desc: t("services.list.videography.desc"),
-      image: "/images/videography-service.jpg",
+      image: "/images/videography-service.webp",
       price: t("services.list.videography.price"),
       duration: t("services.list.videography.duration"),
       specs: t("services.list.videography.specs") || []
@@ -62,7 +62,7 @@ export default function Services() {
       name: t("services.list.photography.name"),
       icon: <Camera className="w-8 h-8 text-tertiary" />,
       desc: t("services.list.photography.desc"),
-      image: "/images/photography.jpg",
+      image: "/images/photography.webp",
       price: t("services.list.photography.price"),
       duration: t("services.list.photography.duration"),
       specs: t("services.list.photography.specs") || []
@@ -83,7 +83,7 @@ export default function Services() {
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/services-hero.jpg" 
+            src="/images/services-hero.webp" 
             alt="Mirror mirror photo booth backdrop" 
             className="w-full h-full object-cover" 
           />
@@ -122,7 +122,7 @@ export default function Services() {
                 {/* Image Showcase */}
                 <div className="w-full lg:w-1/2">
                   <div className="rounded-none overflow-hidden shadow-xl border border-outline-variant/20 relative group">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                       className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" 
                       alt={item.name} 
                       src={item.image} 
