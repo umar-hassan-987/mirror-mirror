@@ -24,7 +24,7 @@ export default function Portfolio() {
       category: "gala",
       tags: [t("portfolio.gallery.tags.gala"), t("portfolio.gallery.tags.luxury")],
       desc: t("portfolio.gallery.projects.royalGala.desc"),
-      image: "/images/studio1.jpg",
+      image: "/images/studio1.webp",
       gridSpan: "md:col-span-8",
       aspect: "aspect-[16/10]"
     },
@@ -34,7 +34,7 @@ export default function Portfolio() {
       category: "corporate",
       tags: [t("portfolio.gallery.tags.corporate")],
       desc: t("portfolio.gallery.projects.techSummit.desc"),
-      image: "/images/studio2.jpg",
+      image: "/images/studio2.webp",
       gridSpan: "md:col-span-4",
       aspect: "h-full min-h-[400px]"
     },
@@ -44,7 +44,7 @@ export default function Portfolio() {
       category: "wedding",
       tags: [t("portfolio.gallery.tags.weddings")],
       desc: t("portfolio.gallery.projects.desertWedding.desc"),
-      image: "/images/studio3.jpg",
+      image: "/images/studio3.webp",
       gridSpan: "md:col-span-4",
       aspect: "aspect-square"
     },

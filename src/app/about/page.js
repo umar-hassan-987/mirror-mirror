@@ -49,7 +49,7 @@ export default function About() {
     {
       name: t("about.team.members.1.name"),
       role: t("about.team.members.1.role"),
-      image: "/images/sarah.jpg",
+      image: "/images/sarah.webp",
       alt: "Sarah Jenkins Creative Director Portrait"
     },
     {
@@ -61,7 +61,7 @@ export default function About() {
     {
       name: t("about.team.members.3.name"),
       role: t("about.team.members.3.role"),
-      image: "/images/nadia.jpg",
+      image: "/images/nadia.webp",
       alt: "Nadia Mahmoud Operations Portrait"
     }
   ];
