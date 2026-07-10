@@ -107,8 +107,8 @@ export default function TermsOfService() {
             <h2 className="font-plus-jakarta font-bold text-2xl text-on-surface mb-4">{locale === 'en' ? 'Contact Us' : 'اتصل بنا'}</h2>
             <p className="font-inter text-base text-on-surface-variant leading-relaxed">
               {contactText}{" "}
-              <a href="mailto:info@mirrormirrorphotowallqatar.com" className="text-primary hover:underline font-semibold">
-                info@mirrormirrorphotowallqatar.com
+              <a href="mailto:info@mirrormirrorphotowallqatar.net" className="text-primary hover:underline font-semibold">
+                info@mirrormirrorphotowallqatar.net
               </a>
             </p>
           </div>

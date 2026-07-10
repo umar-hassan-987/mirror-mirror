@@ -63,9 +63,40 @@ export default function Contact() {
 
   const contactItems = [
     { icon: <Phone className="w-5 h-5" />, label: t("contact.getInTouch.phone"), value: "+974 7156 7348", href: "tel:+97471567348" },
-    { icon: <Mail className="w-5 h-5" />, label: t("contact.getInTouch.email"), value: "info@mirrormirrorphotowallqatar.com", href: "mailto:info@mirrormirrorphotowallqatar.com" },
+    { icon: <Mail className="w-5 h-5" />, label: t("contact.getInTouch.email"), value: "info@mirrormirrorphotowallqatar.net", href: "mailto:info@mirrormirrorphotowallqatar.net" },
     { icon: <MessageSquare className="w-5 h-5" />, label: t("contact.getInTouch.whatsapp"), value: "+974 7156 7348", href: "https://wa.me/97471567348" },
-    { icon: <Share2 className="w-5 h-5" />, label: t("contact.getInTouch.instagram"), value: "@mirrormirrorphotowallqatar", href: "https://instagram.com/mirrormirrorphotowallqatar" }
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+        </svg>
+      ), 
+      label: t("contact.getInTouch.instagram"), 
+      value: "@mirrormirrorphotowall.qatar", 
+      href: "https://www.instagram.com/mirrormirrorphotowall.qatar/" 
+    },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      ), 
+      label: t("contact.getInTouch.facebook"), 
+      value: "Mirror Mirror Photo Wall Qatar", 
+      href: "https://www.facebook.com/profile.php?id=61581485352697" 
+    },
+    { 
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+        </svg>
+      ), 
+      label: t("contact.getInTouch.tiktok"), 
+      value: "@mirror_mirror_photobooth", 
+      href: "https://www.tiktok.com/@mirror_mirror_photobooth?_r=1&_t=ZN-97tYy2rH8Ug" 
+    }
   ];
 
   return (
