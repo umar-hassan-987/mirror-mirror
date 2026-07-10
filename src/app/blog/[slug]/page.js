@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import Link from "next/link";
+import Image from "next/image";
 import { blogs } from "@/data/blogs";
 import { ArrowLeft, ArrowRight, Calendar, User, Clock } from "lucide-react";
 import { notFound, useParams } from "next/navigation";
@@ -58,9 +59,12 @@ export default function BlogPost() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden w-full pt-32">
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src={heroImage}
             alt={data.title}
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50 z-10"></div>
@@ -121,9 +125,11 @@ export default function BlogPost() {
                     className="group flex flex-col sm:flex-row bg-surface border border-outline-variant/30 rounded-none overflow-hidden hover:border-primary/40 transition-all duration-300 hover:shadow-lg shadow-sm"
                   >
                     <div className="w-full sm:w-48 h-40 sm:h-auto relative overflow-hidden shrink-0">
-                      <img loading="lazy" decoding="async" 
+                      <Image
                         src={relImg}
                         alt={relData.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 192px"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>

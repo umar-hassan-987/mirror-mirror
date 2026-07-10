@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Phone, Mail, MessageSquare, Share2, MapPin, ChevronDown, Loader2, Check } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -73,9 +74,12 @@ export default function Contact() {
       <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src="/images/contact-hero-img.webp" 
             alt="Contact us background" 
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover" 
           />
           {/* Strong gradient and solid overlay to ensure text readability against the bright window */}
@@ -128,12 +132,15 @@ export default function Contact() {
             {/* Map Placeholder */}
             <div className="rounded-[32px] overflow-hidden shadow-sm h-[380px] bg-surface-container-low border border-outline-variant/30 relative group">
               <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
-                <div 
-                  className="w-full h-full bg-cover bg-center" 
-                  style={{
-                    backgroundImage: "url('/images/audio-video-booth.webp')"
-                  }}
-                ></div>
+                <div className="w-full h-full relative overflow-hidden">
+                  <Image 
+                    src="/images/audio-video-booth.webp"
+                    alt="Map placeholder"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
               <div className="absolute bottom-6 left-6 right-6 p-6 glass-card rounded-2xl flex justify-between items-center translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white">
                 <div>

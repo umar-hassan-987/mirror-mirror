@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -15,7 +16,7 @@ export default function Footer() {
           {/* Brand & Intro */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 group mb-8">
-              <img src="/logo.png" alt="Mirror Mirror Logo" className="h-10 w-auto object-contain shrink-0" />
+              <Image src="/logo.png" alt="Mirror Mirror Logo" width={40} height={40} loading="lazy" className="h-10 w-auto object-contain shrink-0" />
               <div className="flex flex-col items-start leading-none">
                 <span className="font-plus-jakarta font-extrabold text-lg tracking-wider text-white">
                   MIRROR.MIRROR

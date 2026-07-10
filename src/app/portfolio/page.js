@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Play, ArrowRight, Loader2, X, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -87,9 +88,12 @@ export default function Portfolio() {
       <section className="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center overflow-hidden px-margin-mobile md:px-gutter py-12 md:py-16 w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/portHero.jpg" 
+          <Image 
+            src="/images/portHero.webp" 
             alt="Vibrant event background"
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px] z-10"></div>
@@ -133,12 +137,15 @@ export default function Portfolio() {
               </div>
             ) : (
               <>
-                <div 
-                  className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                  style={{
-                    backgroundImage: "url('/images/services-hero.webp')"
-                  }}
-                ></div>
+                <div className="w-full h-full relative overflow-hidden transition-transform duration-700 group-hover:scale-105">
+                  <Image 
+                    src="/images/services-hero.webp"
+                    alt="Services showreel thumbnail"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 896px"
+                    className="object-cover"
+                  />
+                </div>
                 {/* Play Button Overlay */}
                 <div 
                   onClick={() => setIsPlaying(true)}
@@ -195,10 +202,12 @@ export default function Portfolio() {
               key={p.id}
               className={`${p.gridSpan} ${p.aspect} group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-surface-container-low border border-outline-variant/20`}
             >
-              <img
+              <Image
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 alt={p.title}
                 src={p.image}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 33vw"
               />
             </div>
           ))}
@@ -242,9 +251,11 @@ export default function Portfolio() {
             >
               {/* Review Image Viewport */}
               <div className="w-full sm:w-[180px] shrink-0 aspect-[4/5] sm:aspect-auto overflow-hidden relative">
-                <img 
+                <Image 
                   src={t.image} 
                   alt={`Event review by ${t.author}`} 
+                  fill
+                  sizes="(max-width: 640px) 100vw, 180px"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/20 via-transparent to-transparent"></div>

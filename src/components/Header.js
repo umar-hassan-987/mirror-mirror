@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
@@ -57,7 +58,7 @@ export default function Header() {
             isScrolled ? "text-on-surface" : "text-white"
           }`}
         >
-          <img src="/logo.png" alt="Mirror Mirror Logo" className="h-8 md:h-10 w-auto object-contain" />
+          <Image src="/logo.png" alt="Mirror Mirror Logo" width={40} height={40} priority className="h-8 md:h-10 w-auto object-contain" />
           <span className="font-plus-jakarta text-xl md:text-2xl font-bold tracking-tight">Mirror Mirror</span>
         </Link>
 

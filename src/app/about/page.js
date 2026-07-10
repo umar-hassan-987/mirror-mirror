@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Cpu, Zap, Fingerprint, Sparkles, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -72,9 +73,12 @@ export default function About() {
       <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src="/images/about-hero.webp" 
             alt="Luxury social event background" 
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover" 
           />
           {/* Strong gradient and solid overlay to ensure text readability */}
@@ -105,10 +109,13 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7">
               <div className="rounded-none overflow-hidden shadow-2xl border border-outline-variant/10">
-                <img
+                <Image
                   className="w-full h-[450px] object-cover"
                   alt="Luxury event space in Doha with floor-to-ceiling interactive screens reflecting elegant guests"
                   src="/images/services-hero.webp"
+                  width={1200}
+                  height={450}
+                  sizes="(max-width: 1024px) 100vw, 58vw"
                 />
               </div>
             </div>
@@ -144,7 +151,7 @@ export default function About() {
                 <p className="text-on-surface-variant text-sm md:text-base leading-relaxed">{bentoItems[0].desc}</p>
               </div>
               <div className="mt-8 h-48 rounded-none overflow-hidden relative border border-outline-variant/10">
-                <img loading="lazy" decoding="async" className="w-full h-full object-cover" alt={bentoItems[0].alt} src={bentoItems[0].image} />
+                <Image className="w-full h-full object-cover" alt={bentoItems[0].alt} src={bentoItems[0].image} fill sizes="(max-width: 768px) 100vw, 66vw" />
               </div>
             </div>
             {/* Bento Item 2 */}
@@ -175,7 +182,7 @@ export default function About() {
                 <p className="text-on-surface-variant text-sm leading-relaxed">{bentoItems[3].desc}</p>
               </div>
               <div className="w-full md:w-48 h-48 rounded-none overflow-hidden shrink-0 border border-outline-variant/10">
-                <img loading="lazy" decoding="async" className="w-full h-full object-cover" alt={bentoItems[3].alt} src={bentoItems[3].image} />
+                <Image className="w-full h-full object-cover" alt={bentoItems[3].alt} src={bentoItems[3].image} fill sizes="(max-width: 768px) 100vw, 192px" />
               </div>
             </div>
           </div>
@@ -226,10 +233,12 @@ export default function About() {
             {team.map((member, i) => (
               <div key={i} className="group">
                 <div className="aspect-[3/4] rounded-none overflow-hidden mb-4 relative shadow-sm border border-outline-variant/10">
-                  <img
+                  <Image
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                     alt={member.alt}
                     src={member.image}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
                   />
                 </div>
                 <h4 className="font-inter font-bold text-md text-on-surface mb-1">{member.name}</h4>

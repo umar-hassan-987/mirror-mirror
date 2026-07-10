@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageProvider";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -57,7 +58,7 @@ export default function TermsOfService() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden w-full">
         <div className="absolute inset-0 z-0">
-          <img src="/images/terms-bg.jpg" alt="Terms of Service" className="w-full h-full object-cover" />
+          <Image src="/images/terms-bg.webp" alt="Terms of Service" fill priority sizes="100vw" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/50 z-10"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-hero-overlay via-hero-overlay/40 to-transparent z-20"></div>
         </div>

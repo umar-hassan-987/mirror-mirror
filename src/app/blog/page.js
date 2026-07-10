@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import Link from "next/link";
+import Image from "next/image";
 import { blogs } from "@/data/blogs";
 import { Calendar, ArrowRight, ArrowLeft, User } from "lucide-react";
 
@@ -18,9 +19,12 @@ export default function Blog() {
       <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src="/images/blog-hero.webp" 
             alt="Mirror Mirror blog header background" 
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover" 
           />
           {/* Strong gradient and solid overlay to ensure text readability */}
@@ -51,9 +55,11 @@ export default function Blog() {
         >
           {/* Featured Image */}
           <div className="w-full lg:w-1/2 h-72 lg:h-[400px] relative overflow-hidden">
-            <img loading="lazy" decoding="async" 
+            <Image
               src={featured.coverImage}
               alt={featuredData.title}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 px-3 py-1.5 gradient-bg text-white text-xs font-inter font-bold rounded-none uppercase tracking-wider">
@@ -110,9 +116,11 @@ export default function Blog() {
                 >
                   {/* Cover Image */}
                   <div className="h-56 w-full relative overflow-hidden">
-                    <img loading="lazy" decoding="async" 
+                    <Image
                       src={post.coverImage}
                       alt={data.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

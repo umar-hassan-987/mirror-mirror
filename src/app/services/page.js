@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, Camera, Video, Mic, Heart, PenTool, CheckCircle, Gift, ArrowRight, Printer } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -132,9 +133,12 @@ export default function Services() {
       <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src="/images/services-hero.webp" 
             alt="Mirror mirror photo booth backdrop" 
+            fill
+            priority
+            sizes="100vw"
             className="w-full h-full object-cover" 
           />
           {/* Strong gradient and solid overlay to ensure text readability */}
@@ -172,10 +176,13 @@ export default function Services() {
                 {/* Image Showcase */}
                 <div className="w-full lg:w-1/2">
                   <div className="rounded-none overflow-hidden shadow-xl border border-outline-variant/20 relative group">
-                    <img loading="lazy" decoding="async" 
+                    <Image
                       className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" 
                       alt={item.name} 
-                      src={item.image} 
+                      src={item.image}
+                      width={800}
+                      height={600}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div className={`absolute top-6 ${dir === 'rtl' ? 'right-6' : 'left-6'} p-4 glass-card rounded-none border border-white`}>
                       <p className="font-plus-jakarta font-extrabold text-lg text-primary">{item.price}</p>

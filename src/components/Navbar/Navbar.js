@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Globe } from "lucide-react";
@@ -65,7 +66,7 @@ export default function Navbar() {
     }`}>
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-full">
         <Link href="/" className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="Mirror Mirror Logo" className="h-8 md:h-10 w-auto object-contain shrink-0" />
+          <Image src="/logo.png" alt="Mirror Mirror Logo" width={40} height={40} priority className="h-8 md:h-10 w-auto object-contain shrink-0" />
           <div className="flex flex-col items-start leading-none">
             <span className={`font-plus-jakarta font-extrabold text-base md:text-lg tracking-wider transition-colors duration-300 ${
               (isScrolled || isOpen) ? "text-on-surface" : "text-white"

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import {
   ArrowRight, Play, Camera, Video, Mic, PenTool, Gift, Star,
@@ -211,9 +212,11 @@ export default function Home() {
 
             return (
               <div key={idx} className={`group relative overflow-hidden bg-black ${spanClass} cursor-pointer`}>
-                <img
+                <Image
                   src={item.image}
                   alt={item.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
                 />
 
@@ -258,6 +261,7 @@ export default function Home() {
             loop
             muted
             playsInline
+            preload="none"
             className="w-full h-full object-cover opacity-60"
           />
         </div>
@@ -377,12 +381,15 @@ export default function Home() {
                       loop
                       muted
                       playsInline
+                      preload="none"
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <img
+                    <Image
                       src={tabs[activeTab].mediaSrc}
                       alt={tabs[activeTab].title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="w-full h-full object-cover"
                     />
                   )}
@@ -438,10 +445,12 @@ export default function Home() {
               key={idx}
               className="relative group overflow-hidden bg-black aspect-square"
             >
-              <img
+              <Image
                 className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                 alt={proj.title}
                 src={proj.image}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
           ))}
