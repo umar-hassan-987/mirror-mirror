@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Cpu, Zap, Fingerprint, Sparkles, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function About() {
@@ -87,19 +88,44 @@ export default function About() {
         </div>
 
         <div className="relative z-30 max-w-container-max mx-auto w-full">
-          <div className="max-w-3xl">
-            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="max-w-3xl"
+          >
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md"
+            >
               {t("about.hero.titleLine1")} <span className="text-pink-100">{t("about.hero.titleHighlight")}</span> {t("about.hero.titleLine2")}
-            </h1>
-            <p className="font-inter text-lg md:text-xl text-white/95 mb-10 leading-relaxed drop-shadow-sm font-medium">
+            </motion.h1>
+            <motion.p 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-inter text-lg md:text-xl text-white/95 mb-10 leading-relaxed drop-shadow-sm font-medium"
+            >
               {t("about.hero.subtitle")}
-            </p>
-            <div className="flex flex-wrap gap-4">
+            </motion.p>
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="flex flex-wrap gap-4"
+            >
               {(t("about.hero.badges") || []).map((badge, index) => (
                 <div key={index} className="px-5 py-2.5 bg-white/10 border border-white/20 text-white rounded-none font-inter font-bold text-xs uppercase tracking-wider">{badge}</div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -107,7 +133,13 @@ export default function About() {
       <section className="py-16 md:py-24 w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-7">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-7"
+            >
               <div className="rounded-none overflow-hidden shadow-2xl border border-outline-variant/10">
                 <Image
                   className="w-full h-[450px] object-cover"
@@ -118,8 +150,14 @@ export default function About() {
                   sizes="(max-width: 1024px) 100vw, 58vw"
                 />
               </div>
-            </div>
-            <div className="lg:col-span-5">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              className="lg:col-span-5"
+            >
               <span className="font-inter font-bold text-primary uppercase tracking-widest text-xs mb-4 block">{t("about.mission.label")}</span>
               <h2 className="font-plus-jakarta font-bold text-3xl md:text-4xl mb-6 text-on-surface leading-tight">{t("about.mission.title")}</h2>
               <p className="font-inter text-base text-on-surface-variant mb-6 leading-relaxed">
@@ -128,7 +166,7 @@ export default function About() {
               <p className="font-inter text-base text-on-surface-variant leading-relaxed">
                 {t("about.mission.desc2")}
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -136,13 +174,33 @@ export default function About() {
       {/* Bento Grid (Technology) */}
       <section className="py-16 md:py-24 bg-surface-container-low w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-16"
+          >
             <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">{t("about.technology.title")}</h2>
             <p className="font-inter text-base text-on-surface-variant max-w-2xl mx-auto">{t("about.technology.subtitle")}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          </motion.div>
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
             {/* Bento Item 1 */}
-            <div className="md:col-span-2 bg-surface p-8 rounded-none border border-outline-variant/30 flex flex-col justify-between hover:border-primary/50 transition-colors group shadow-sm">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="md:col-span-2 bg-surface p-8 rounded-none border border-outline-variant/30 flex flex-col justify-between hover:border-primary/50 transition-colors group shadow-sm"
+            >
               <div>
                 <div className="mb-4 w-12 h-12 bg-surface-container-high flex items-center justify-center rounded-none">
                   {bentoItems[0].icon}
@@ -153,17 +211,29 @@ export default function About() {
               <div className="mt-8 h-48 rounded-none overflow-hidden relative border border-outline-variant/10">
                 <Image className="w-full h-full object-cover" alt={bentoItems[0].alt} src={bentoItems[0].image} fill sizes="(max-width: 768px) 100vw, 66vw" />
               </div>
-            </div>
+            </motion.div>
             {/* Bento Item 2 */}
-            <div className="bg-surface p-8 rounded-none border border-outline-variant/30 hover:border-primary/50 transition-colors flex flex-col text-center items-center justify-center shadow-sm">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="bg-surface p-8 rounded-none border border-outline-variant/30 hover:border-primary/50 transition-colors flex flex-col text-center items-center justify-center shadow-sm"
+            >
               <div className="mb-6 w-16 h-16 bg-surface-container-high flex items-center justify-center rounded-none">
                 {bentoItems[1].icon}
               </div>
               <h3 className="font-plus-jakarta font-bold text-2xl mb-4 text-on-surface">{bentoItems[1].title}</h3>
               <p className="text-on-surface-variant text-sm leading-relaxed">{bentoItems[1].desc}</p>
-            </div>
+            </motion.div>
             {/* Bento Item 3 */}
-            <div className="bg-surface p-8 rounded-none border border-outline-variant/30 hover:border-primary/50 transition-colors shadow-sm flex flex-col justify-between">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="bg-surface p-8 rounded-none border border-outline-variant/30 hover:border-primary/50 transition-colors shadow-sm flex flex-col justify-between"
+            >
               <div className="mb-4 w-12 h-12 bg-surface-container-high flex items-center justify-center rounded-none">
                 {bentoItems[2].icon}
               </div>
@@ -171,9 +241,15 @@ export default function About() {
                 <h3 className="font-plus-jakarta font-bold text-xl mb-2 text-on-surface">{bentoItems[2].title}</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">{bentoItems[2].desc}</p>
               </div>
-            </div>
+            </motion.div>
             {/* Bento Item 4 */}
-            <div className="md:col-span-2 bg-surface p-8 rounded-none border border-outline-variant/30 flex flex-col md:flex-row gap-8 items-center hover:border-primary/50 transition-colors shadow-sm">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="md:col-span-2 bg-surface p-8 rounded-none border border-outline-variant/30 flex flex-col md:flex-row gap-8 items-center hover:border-primary/50 transition-colors shadow-sm"
+            >
               <div className="flex-1">
                 <div className="mb-4 w-12 h-12 bg-surface-container-high flex items-center justify-center rounded-none">
                   {bentoItems[3].icon}
@@ -184,22 +260,37 @@ export default function About() {
               <div className="w-full md:w-48 h-48 rounded-none overflow-hidden shrink-0 relative border border-outline-variant/10">
                 <Image className="w-full h-full object-cover" alt={bentoItems[3].alt} src={bentoItems[3].image} fill sizes="(max-width: 768px) 100vw, 192px" />
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Timeline Section */}
       <section className="py-16 md:py-24 overflow-hidden w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-          <h2 className="font-plus-jakarta font-bold text-4xl mb-16 text-center text-on-surface">{t("about.timeline.title")}</h2>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="font-plus-jakarta font-bold text-4xl mb-16 text-center text-on-surface"
+          >
+            {t("about.timeline.title")}
+          </motion.h2>
           <div className="relative max-w-4xl mx-auto">
             {/* Center line */}
             <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-outline-variant/30 -translate-x-1/2"></div>
             {timeline.map((item, i) => {
               const isEven = i % 2 === 0;
               return (
-                <div key={i} className={`relative mb-20 flex flex-col md:flex-row items-center group ${isEven ? "" : "md:flex-row-reverse"}`}>
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className={`relative mb-20 flex flex-col md:flex-row items-center group ${isEven ? "" : "md:flex-row-reverse"}`}
+                >
                   <div className={`w-full md:w-1/2 ${isEven ? (dir === 'rtl' ? "pl-0 md:pl-16 text-right md:text-left" : "pr-0 md:pr-16 text-left md:text-right") : (dir === 'rtl' ? "pr-0 md:pr-16 text-right" : "pl-0 md:pl-16 text-left")}`}>
                     <span className="font-plus-jakarta font-extrabold text-4xl md:text-4xl md:text-5xl gradient-text block mb-2">{item.year}</span>
                     <h4 className="font-plus-jakarta font-bold text-2xl mb-2 text-on-surface">{item.title}</h4>
@@ -207,7 +298,7 @@ export default function About() {
                   </div>
                   <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 z-10 group-hover:scale-125 transition-transform duration-300"></div>
                   <div className="w-full md:w-1/2 hidden md:block"></div>
-                </div>
+                </motion.div>
               );
             })}
           </div>

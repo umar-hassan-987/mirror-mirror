@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Star } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Portfolio() {
@@ -90,32 +91,68 @@ export default function Portfolio() {
         <div className="relative z-30 max-w-container-max mx-auto w-full px-margin-mobile md:px-gutter py-24 md:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left — Text Content */}
-            <div className="flex flex-col">
-              <span className="font-inter font-bold text-xs uppercase tracking-[0.25em] text-primary mb-6 flex items-center gap-3">
+            <motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.1 } }
+              }}
+              className="flex flex-col"
+            >
+              <motion.span 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                className="font-inter font-bold text-xs uppercase tracking-[0.25em] text-primary mb-6 flex items-center gap-3"
+              >
                 <span className="w-10 h-[2px] gradient-bg inline-block"></span>
                 {t("portfolio.hero.label")}
-              </span>
-              <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-7xl mb-6 text-white leading-[1.1]">
+              </motion.span>
+              <motion.h1 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                className="font-plus-jakarta font-extrabold text-5xl md:text-7xl mb-6 text-white leading-[1.1]"
+              >
                 {t("portfolio.hero.titleLine1")} <br />
                 <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text gradient-span">{t("portfolio.hero.titleHighlight")}</span>
-              </h1>
-              <p className="font-inter text-base md:text-lg text-white/80 max-w-lg leading-relaxed mb-10">
+              </motion.h1>
+              <motion.p 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                className="font-inter text-base md:text-lg text-white/80 max-w-lg leading-relaxed mb-10"
+              >
                 {t("portfolio.hero.subtitle")}
-              </p>
+              </motion.p>
 
               {/* Floating Stats Row */}
-              <div className="flex flex-wrap gap-4">
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                className="flex flex-wrap gap-4"
+              >
                 {stats.map((s, i) => (
                   <div key={i} className="px-5 py-4 bg-white/[0.07] backdrop-blur-md border border-white/[0.12] flex flex-col items-center min-w-[100px] hover:bg-white/[0.12] transition-colors duration-300 group">
                     <span className={`font-plus-jakarta font-extrabold text-2xl md:text-3xl ${s.color} group-hover:scale-105 transition-transform duration-300`}>{s.value}</span>
                     <span className="font-inter text-[10px] uppercase tracking-wider text-white/60 mt-1 text-center">{s.label}</span>
                   </div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Right — Staggered Image Mosaic */}
-            <div className="hidden lg:block relative h-[560px]">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+              className="hidden lg:block relative h-[560px]"
+            >
               {/* Main large image */}
               <div className="absolute top-0 right-0 w-[75%] h-[65%] overflow-hidden shadow-2xl group border border-white/10">
                 <Image
@@ -155,14 +192,20 @@ export default function Portfolio() {
               {/* Decorative gradient accent line */}
               <div className="absolute -left-4 top-[20%] w-1 h-[40%] gradient-bg opacity-60"></div>
               <div className="absolute -bottom-4 right-[30%] h-1 w-[30%] gradient-bg opacity-40"></div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Filterable Gallery Section */}
       <section className="py-16 md:py-24 px-margin-mobile md:px-gutter max-w-container-max mx-auto w-full">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-16"
+        >
           <div className="max-w-xl">
             <h2 className="font-plus-jakarta font-bold text-4xl text-on-surface mb-4">
               {t("portfolio.gallery.titleLine1")} <span className="gradient-text">{t("portfolio.gallery.titleHighlight")}</span>
@@ -187,46 +230,73 @@ export default function Portfolio() {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Bento Grid Gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 transition-all duration-500">
-          {filteredProjects.map((p) => (
-            <div
-              key={p.id}
-              className={`${p.gridSpan} ${p.aspect} group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-surface-container-low border border-outline-variant/20`}
-            >
-              <Image
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-12 gap-8 transition-all duration-500">
+          <AnimatePresence>
+            {filteredProjects.map((p) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                key={p.id}
+                className={`${p.gridSpan} ${p.aspect} group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-surface-container-low border border-outline-variant/20`}
+              >
+                <Image
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 alt={p.title}
                 src={p.image}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 33vw"
-              />
-            </div>
-          ))}
-        </div>
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 33vw"
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       {/* Dynamic Experience Stats */}
       <section className="py-16 md:py-24 bg-surface-container-low border-y border-outline-variant/20 w-full">
-        <div className="px-margin-mobile md:px-gutter max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } }
+          }}
+          className="px-margin-mobile md:px-gutter max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center"
+        >
           {stats.map((s, i) => (
-            <div key={i}>
+            <motion.div 
+              key={i}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
+            >
               <div className={`font-plus-jakarta font-extrabold text-5xl md:text-6xl mb-2 ${s.color}`}>
                 {s.value}
               </div>
               <div className="font-inter font-bold text-xs uppercase tracking-widest text-on-surface-variant mt-2">
                 {s.label}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Client Reviews Section */}
       <section className="py-16 md:py-24 px-margin-mobile md:px-gutter max-w-container-max mx-auto w-full border-t border-outline-variant/20">
-        <div className="max-w-xl mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-xl mb-16"
+        >
           <h2 className="font-plus-jakarta font-bold text-4xl text-on-surface mb-4">
             {dir === 'rtl' ? 'ماذا يقول ' : 'What Our Clients '} <span className="gradient-text">{dir === 'rtl' ? 'عملاؤنا' : 'Say'}</span>
           </h2>
@@ -235,11 +305,23 @@ export default function Portfolio() {
               ? 'الآراء والتقييمات من بعض عملائنا الكرام الذين شاركناهم نجاح فعالياتهم.' 
               : 'Read real feedback from event hosts, wedding couples, and corporate partners across Qatar.'}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           {testimonials.map((t, idx) => (
-            <div 
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
               key={idx}
               className="flex flex-col sm:flex-row bg-surface-container-low border border-outline-variant/20 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
             >
@@ -275,14 +357,20 @@ export default function Portfolio() {
                   <p className="font-inter text-xs text-on-surface-variant font-medium mt-1">{t.role}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Call to Action */}
       <section className="py-16 md:py-24 px-margin-mobile md:px-gutter max-w-container-max mx-auto text-center w-full">
-        <div className="p-12 md:p-24 rounded-[40px] relative overflow-hidden shadow-2xl border border-white/10 z-0">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="p-12 md:p-24 rounded-[40px] relative overflow-hidden shadow-2xl border border-white/10 z-0"
+        >
           <div className="absolute inset-0 z-0">
             <Image 
               src="/images/portfolio-hero.webp" 
@@ -314,7 +402,7 @@ export default function Portfolio() {
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

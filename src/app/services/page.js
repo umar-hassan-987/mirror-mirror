@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, Camera, Video, Mic, Heart, PenTool, CheckCircle, Gift, ArrowRight, Printer } from "lucide-react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Services() {
@@ -147,17 +148,42 @@ export default function Services() {
         </div>
 
         <div className="relative z-30 max-w-container-max mx-auto w-full">
-          <div className="max-w-3xl">
-            <span className="font-inter font-bold text-xs uppercase tracking-widest text-pink-300 mb-4 block drop-shadow-md">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="max-w-3xl"
+          >
+            <motion.span 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-inter font-bold text-xs uppercase tracking-widest text-pink-300 mb-4 block drop-shadow-md"
+            >
               {t("services.hero.label")}
-            </span>
-            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md">
+            </motion.span>
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md"
+            >
               {t("services.hero.titleLine1")} <span className="text-pink-100">{t("services.hero.titleHighlight")}</span>
-            </h1>
-            <p className="font-inter text-lg md:text-xl text-white/95 leading-relaxed drop-shadow-sm font-medium">
+            </motion.h1>
+            <motion.p 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-inter text-lg md:text-xl text-white/95 leading-relaxed drop-shadow-sm font-medium"
+            >
               {t("services.hero.subtitle")}
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
@@ -167,14 +193,26 @@ export default function Services() {
           {services.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <div 
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  visible: { transition: { staggerChildren: 0.1 } }
+                }}
                 key={item.id} 
                 className={`flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between ${
                   isEven ? "" : "lg:flex-row-reverse"
                 }`}
               >
                 {/* Image Showcase */}
-                <div className="w-full lg:w-1/2">
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, x: isEven ? -30 : 30 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+                  }}
+                  className="w-full lg:w-1/2"
+                >
                   <div className="rounded-none overflow-hidden shadow-xl border border-outline-variant/20 relative group">
                     <Image
                       className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -189,10 +227,16 @@ export default function Services() {
                       <p className="text-xs text-on-surface-variant font-semibold mt-0.5">{item.duration}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Details Section */}
-                <div className="w-full lg:w-1/2 space-y-6">
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, x: isEven ? 30 : -30 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+                  }}
+                  className="w-full lg:w-1/2 space-y-6"
+                >
                   <div className="w-12 h-12 rounded-none bg-surface-container-high border border-outline-variant/10 flex items-center justify-center">
                     {item.icon}
                   </div>
@@ -204,14 +248,26 @@ export default function Services() {
                   </p>
                   
                   {/* Specs / Features Checklist */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-outline-variant/30">
+                  <motion.div 
+                    variants={{
+                      visible: { transition: { staggerChildren: 0.05 } }
+                    }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-outline-variant/30"
+                  >
                     {item.specs.map((spec, sIdx) => (
-                      <div key={sIdx} className="flex items-center gap-3">
+                      <motion.div 
+                        variants={{
+                          hidden: { opacity: 0, y: 10 },
+                          visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+                        }}
+                        key={sIdx} 
+                        className="flex items-center gap-3"
+                      >
                         <CheckCircle className="w-5 h-5 text-[#008287] shrink-0" />
                         <span className="font-inter text-sm md:text-base text-on-surface">{spec}</span>
-                      </div>
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
 
                   <div className="pt-6">
                     <Link 
@@ -221,8 +277,8 @@ export default function Services() {
                       {t("services.list.bookEventSetup")} <ArrowRight className={`w-4 h-4 ${dir === 'rtl' ? 'rotate-180' : ''}`} />
                     </Link>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             );
           })}
         </div>
@@ -231,15 +287,33 @@ export default function Services() {
       {/* Add-ons & Customization Section */}
       <section className="py-16 md:py-24 bg-surface-container-low border-t border-outline-variant/20 w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-16"
+          >
             <span className="font-inter font-bold text-xs uppercase tracking-widest text-primary mb-4 block">{t("services.addons.label")}</span>
             <h2 className="font-plus-jakarta font-bold text-4xl text-on-surface">{t("services.addons.title")}</h2>
             <p className="font-inter text-sm md:text-base text-on-surface-variant mt-2 max-w-xl mx-auto">{t("services.addons.subtitle")}</p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+          >
             {addOns.map((add, idx) => (
-              <div 
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                }}
                 key={idx} 
                 className="bg-surface p-8 rounded-none border border-outline-variant/30 hover:border-primary/40 transition-colors flex justify-between gap-6 shadow-sm group"
               >
@@ -250,9 +324,9 @@ export default function Services() {
                 <div className="text-right shrink-0">
                   <span className="font-plus-jakarta font-extrabold text-md md:text-lg text-primary">{add.price}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

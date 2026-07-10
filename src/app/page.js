@@ -193,7 +193,13 @@ export default function Home() {
 
       {/* Services Section */}
       <section id="homepage-next-section" className="pt-32 pb-20 px-margin-mobile max-w-container-max mx-auto w-full">
-        <div className="flex flex-col items-start mb-16 max-w-3xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-start mb-16 max-w-3xl"
+        >
           <h2 className="font-plus-jakarta font-bold text-4xl md:text-5xl lg:text-6xl text-on-surface leading-tight tracking-tight mb-6">
             {t("home.servicesSection.titleLine1")} <br className="hidden md:block" />
             <span className={`gradient-text italic font-extrabold ${dir === 'rtl' ? 'pl-2' : 'pr-2'}`}>{t("home.servicesSection.titleHighlight")}</span>
@@ -201,9 +207,17 @@ export default function Home() {
           <p className="text-on-surface-variant font-inter text-base md:text-lg max-w-2xl leading-relaxed">
             {t("home.servicesSection.subtitle")}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 grid-flow-row-dense">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.1 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 grid-flow-row-dense"
+        >
           {services.map((item, idx) => {
             let spanClass = "col-span-1 row-span-1 aspect-square";
             if (idx === 0) spanClass = "col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-2 aspect-[4/5] lg:aspect-auto"; // Tall
@@ -211,7 +225,14 @@ export default function Home() {
             else if (idx === 7) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 aspect-video lg:aspect-[2/1]"; // Wide
 
             return (
-              <div key={idx} className={`group relative overflow-hidden bg-black ${spanClass} cursor-pointer`}>
+              <motion.div 
+                key={idx} 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                className={`group relative overflow-hidden bg-black ${spanClass} cursor-pointer`}
+              >
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -245,10 +266,10 @@ export default function Home() {
                 >
                   <ArrowUpRight className={`w-5 h-5 ${dir === 'rtl' ? '-rotate-90' : ''}`} />
                 </Link>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </section>
 
       {/* Narrative Section 1: Who We Are (Brand Manifesto) */}
@@ -270,7 +291,13 @@ export default function Home() {
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-        <div className="max-w-4xl mx-auto px-margin-mobile md:px-gutter relative z-10 text-center flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-4xl mx-auto px-margin-mobile md:px-gutter relative z-10 text-center flex flex-col items-center"
+        >
           <span className="px-5 py-2 rounded-none border border-white/20 text-white font-inter font-bold uppercase tracking-widest text-[10px] bg-black/50 backdrop-blur-md inline-block mb-8">
             {t("home.whoWeAre.label")}
           </span>
@@ -280,7 +307,7 @@ export default function Home() {
           <p className="font-inter text-lg md:text-2xl text-white leading-relaxed max-w-3xl mx-auto drop-shadow-md font-medium">
             {t("home.whoWeAre.desc1")} <strong className="text-white font-extrabold">{t("home.whoWeAre.descBrand")}</strong>{t("home.whoWeAre.desc2")}
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* Narrative Section 2: Interactive Services Overview */}
@@ -411,21 +438,42 @@ export default function Home() {
           </div>
 
           {/* Stats Bar */}
-          <div className="mt-20 pt-8 border-t border-gray-200 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="mt-20 pt-8 border-t border-gray-200 grid grid-cols-2 md:grid-cols-4 gap-8"
+          >
             {stats.map((stat, i) => (
-              <div key={i} className="space-y-1">
+              <motion.div 
+                key={i} 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                className="space-y-1"
+              >
                 <p className="font-plus-jakarta font-extrabold text-3xl text-black">{stat.val}</p>
                 <p className="font-inter text-xs text-gray-500 uppercase tracking-wider">{stat.lbl}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
         </div>
       </section>
 
       {/* Explore Our Work (Projects) Section */}
       <section className="py-32 px-margin-mobile max-w-container-max mx-auto w-full bg-white relative">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8"
+        >
           <div>
             <span className="px-4 py-1.5 border border-black/10 text-black font-inter font-bold uppercase tracking-widest text-xs bg-gray-50 inline-block mb-4">
               {t("home.portfolio.label")}
@@ -437,7 +485,7 @@ export default function Home() {
               {t("home.portfolio.subtitle")}
             </p>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
           {homeProjects.slice(0, 6).map((proj, idx) => (
@@ -550,7 +598,12 @@ export default function Home() {
       {/* Contact Section */}
       <section className="py-16 md:py-24 px-margin-mobile relative overflow-hidden w-full bg-white border-t border-gray-200" id="contact">
         <div className="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
             <span className="px-4 py-1.5 border border-black/10 text-black font-inter font-bold uppercase tracking-widest text-xs bg-gray-50 inline-block mb-6">
               {t("home.contact.label")}
             </span>
@@ -561,8 +614,14 @@ export default function Home() {
             <p className="font-inter text-lg text-gray-600 mb-12 leading-relaxed max-w-md">
               {t("home.contact.subtitle")}
             </p>
-          </div>
-          <div className="bg-gray-50 p-8 md:p-6 md:p-12 rounded-none border border-gray-200 relative shadow-sm">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="bg-gray-50 p-8 md:p-6 md:p-12 rounded-none border border-gray-200 relative shadow-sm"
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.nameLabel")}</label>
@@ -632,7 +691,7 @@ export default function Home() {
                 )}
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

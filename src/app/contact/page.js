@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Phone, Mail, MessageSquare, Share2, MapPin, ChevronDown, Loader2, Check } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Contact() {
@@ -121,22 +122,45 @@ export default function Contact() {
         </div>
 
         <div className="relative z-30 max-w-container-max mx-auto w-full">
-          <div className="max-w-3xl">
-            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="max-w-3xl"
+          >
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white leading-tight drop-shadow-md"
+            >
               {t("contact.hero.titleLine1")} <span className="text-pink-100">{t("contact.hero.titleHighlight")}</span>
-            </h1>
-            <p className="font-inter text-lg md:text-xl text-white/95 leading-relaxed mb-10 drop-shadow-sm font-medium">
+            </motion.h1>
+            <motion.p 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
+              className="font-inter text-lg md:text-xl text-white/95 leading-relaxed mb-10 drop-shadow-sm font-medium"
+            >
               {t("contact.hero.subtitle")}
-            </p>
-            <button 
+            </motion.p>
+            <motion.button 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+              }}
               onClick={() => {
                 document.getElementById('inquiry-form').scrollIntoView({ behavior: 'smooth' });
               }}
               className="bg-white text-primary font-inter font-bold text-base py-4 px-8 md:px-10 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               {t("contact.hero.startInquiry")}
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
@@ -144,14 +168,28 @@ export default function Contact() {
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Left Column: Contact Details & Map */}
-          <div className="lg:col-span-5 space-y-12">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="lg:col-span-5 space-y-12"
+          >
             <div className="space-y-8">
               <h2 className="font-plus-jakarta font-bold text-3xl text-on-surface">{t("contact.getInTouch.title")}</h2>
               
               {/* Direct Contact (Phone & Email) */}
               <div className="space-y-6">
                 {directContactItems.map((item, i) => (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer" key={i} className="flex items-center gap-4 group cursor-pointer">
+                  <motion.a 
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                    }}
+                    href={item.href} target="_blank" rel="noopener noreferrer" key={i} className="flex items-center gap-4 group cursor-pointer"
+                  >
                     <div className="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary transition-transform group-hover:scale-110">
                       {item.icon}
                     </div>
@@ -159,12 +197,18 @@ export default function Contact() {
                       <p className="font-inter font-bold text-xs text-on-surface-variant uppercase tracking-widest">{item.label}</p>
                       <p className="font-inter text-base md:text-lg font-bold text-on-surface mt-1 group-hover:text-primary transition-colors">{item.value}</p>
                     </div>
-                  </a>
+                  </motion.a>
                 ))}
               </div>
 
               {/* Social Channels Row */}
-              <div className="pt-6 border-t border-outline-variant/30">
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                }}
+                className="pt-6 border-t border-outline-variant/30"
+              >
                 <p className="font-inter font-bold text-xs text-on-surface-variant uppercase tracking-widest mb-4">
                   {t("contact.getInTouch.socialMedia")}
                 </p>
@@ -182,11 +226,17 @@ export default function Contact() {
                     </a>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Map Placeholder */}
-            <div className="rounded-[32px] overflow-hidden shadow-sm h-[380px] bg-surface-container-low border border-outline-variant/30 relative group">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+              }}
+              className="rounded-[32px] overflow-hidden shadow-sm h-[380px] bg-surface-container-low border border-outline-variant/30 relative group"
+            >
               <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
                 <div className="w-full h-full relative overflow-hidden">
                   <iframe 
@@ -210,11 +260,17 @@ export default function Contact() {
                   <MapPin className="w-5 h-5" />
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column: Booking Inquiry Form */}
-          <div className="lg:col-span-7">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="lg:col-span-7"
+          >
             <div className="glass-card p-8 md:p-6 md:p-12 rounded-[40px] shadow-sm relative overflow-hidden border border-outline-variant/30">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
               <div className="relative z-10">
@@ -338,15 +394,21 @@ export default function Contact() {
                 </form>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* FAQ Section */}
         <section className="mt-24">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center mb-16"
+          >
             <h2 className="font-plus-jakarta font-bold text-4xl mb-4 text-on-surface">{t("contact.faq.title")}</h2>
             <div className="w-24 h-1.5 gradient-bg mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
           <div className="max-w-4xl mx-auto space-y-4">
             {faqs.map((faq, i) => {
               const isOpen = openFaq === i;
@@ -366,11 +428,21 @@ export default function Contact() {
                       }`}
                     />
                   </button>
-                  {isOpen && (
-                    <div className="px-6 pb-6 text-on-surface-variant font-inter text-sm md:text-base leading-relaxed animate-fade-in">
-                      {faq.a}
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 text-on-surface-variant font-inter text-sm md:text-base leading-relaxed">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
