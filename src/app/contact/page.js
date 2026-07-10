@@ -21,12 +21,19 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState("idle"); // idle, sending, success
   const [openFaq, setOpenFaq] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitStatus("sending");
-    setTimeout(() => {
-      setSubmitStatus("success");
-      setTimeout(() => {
+    try {
+      const response = await fetch("/send-email.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+      if (response.ok) {
+        setSubmitStatus("success");
         setFormState({
           name: "",
           email: "",
@@ -36,9 +43,15 @@ export default function Contact() {
           guestCount: "100-250",
           vision: ""
         });
+      } else {
         setSubmitStatus("idle");
-      }, 3000);
-    }, 1500);
+        alert("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("idle");
+      alert("An error occurred. Please try again.");
+    }
   };
 
   const guestOptions = ["50-100", "100-250", "250-500", "500+"];
@@ -274,8 +287,32 @@ export default function Contact() {
             <div className="glass-card p-8 md:p-6 md:p-12 rounded-[40px] shadow-sm relative overflow-hidden border border-outline-variant/30">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
               <div className="relative z-10">
-                <h2 className="font-plus-jakarta font-bold text-3xl mb-8 text-on-surface">{t("contact.form.title")}</h2>
-                <form onSubmit={handleSubmit} className="space-y-8">
+                {submitStatus === "success" ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center text-center space-y-6 py-12"
+                  >
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                      <Check className="w-10 h-10 text-green-600" />
+                    </div>
+                    <h3 className="font-plus-jakarta font-bold text-3xl text-on-surface">
+                      {t("contact.form.sentSuccessfully")}
+                    </h3>
+                    <p className="font-inter text-on-surface-variant max-w-sm">
+                      Thank you for reaching out. We have received your inquiry and will get back to you shortly.
+                    </p>
+                    <button
+                      onClick={() => setSubmitStatus("idle")}
+                      className="mt-8 h-14 px-8 rounded-2xl bg-[#008287] text-white hover:scale-[1.02] active:scale-95 transition-all font-inter font-bold shadow-lg shadow-primary/20 flex items-center justify-center"
+                    >
+                      Send Another Inquiry
+                    </button>
+                  </motion.div>
+                ) : (
+                  <>
+                    <h2 className="font-plus-jakarta font-bold text-3xl mb-8 text-on-surface">{t("contact.form.title")}</h2>
+                    <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className={`font-inter font-bold text-[10px] tracking-widest text-on-surface-variant uppercase block ${dir === 'rtl' ? 'text-right' : 'ml-1 text-left'}`}>{t("contact.form.nameLabel")}</label>
@@ -379,19 +416,16 @@ export default function Contact() {
                     {submitStatus === "sending" && (
                       <Loader2 className="w-5 h-5 animate-spin" />
                     )}
-                    {submitStatus === "success" && (
-                      <Check className="w-5 h-5" />
-                    )}
                     {submitStatus === "sending"
                       ? t("contact.form.sending")
-                      : submitStatus === "success"
-                      ? t("contact.form.sentSuccessfully")
                       : t("contact.form.submitBtn")}
                   </button>
                   <p className="text-center text-xs text-on-surface-variant opacity-70">
                     {t("contact.form.responseTime")}
                   </p>
                 </form>
+                </>
+                )}
               </div>
             </div>
           </motion.div>

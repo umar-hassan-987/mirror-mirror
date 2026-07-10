@@ -106,16 +106,29 @@ export default function Home() {
     { val: "250+", lbl: t("home.experiences.stats.eventsCovered") }
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitStatus("sending");
-    setTimeout(() => {
-      setSubmitStatus("success");
-      setTimeout(() => {
+    try {
+      const response = await fetch("/send-email.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+      if (response.ok) {
+        setSubmitStatus("success");
         setFormState({ name: "", email: "", phone: "", message: "" });
+      } else {
         setSubmitStatus("idle");
-      }, 3000);
-    }, 1500);
+        alert("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("idle");
+      alert("An error occurred. Please try again.");
+    }
   };
 
   const services = [
@@ -622,6 +635,29 @@ export default function Home() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             className="bg-gray-50 p-8 md:p-6 md:p-12 rounded-none border border-gray-200 relative shadow-sm"
           >
+            {submitStatus === "success" ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex flex-col items-center justify-center text-center space-y-6 py-12"
+              >
+                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                  <Check className="w-10 h-10 text-green-600" />
+                </div>
+                <h3 className="font-plus-jakarta font-bold text-3xl text-black">
+                  {t("home.contact.form.sentSuccessfully")}
+                </h3>
+                <p className="font-inter text-gray-600 max-w-sm">
+                  Thank you for reaching out. We have received your inquiry and will get back to you shortly.
+                </p>
+                <button
+                  onClick={() => setSubmitStatus("idle")}
+                  className="mt-8 px-8 py-4 bg-black text-white hover:bg-gray-900 font-inter font-bold uppercase tracking-widest transition-colors flex items-center gap-2"
+                >
+                  Send Another Inquiry
+                </button>
+              </motion.div>
+            ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.nameLabel")}</label>
@@ -679,18 +715,14 @@ export default function Home() {
                 {submitStatus === "sending" && (
                   <Loader2 className="w-5 h-5 animate-spin" />
                 )}
-                {submitStatus === "success" ? (
-                  <>
-                    <Check className="w-5 h-5" />
-                    {t("home.contact.form.sentSuccessfully")}
-                  </>
-                ) : submitStatus === "sending" ? (
+                {submitStatus === "sending" ? (
                   t("home.contact.form.sending")
                 ) : (
                   t("home.contact.form.submitBtn")
                 )}
               </button>
             </form>
+            )}
           </motion.div>
         </div>
       </section>
