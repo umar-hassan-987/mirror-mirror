@@ -169,32 +169,32 @@ export default {
     },
     testimonial: {
       quote: "\"The mirror booth was the absolute highlight of our wedding! Our guests couldn't get enough of it, and the print quality was amazing. Highly recommend!\"",
-      author: "Aisha & Omar",
-      role: "Wedding Couple • Doha, Qatar"
+      author: "Royal Events Planner",
+      role: "Luxury Event Agency • Doha, Qatar"
     },
     testimonials: [
       {
         quote: "\"The mirror booth was the absolute highlight of our wedding! Our guests couldn't get enough of it, and the print quality was amazing. Highly recommend!\"",
-        author: "Aisha & Omar",
-        role: "Wedding Couple • Doha, Qatar",
+        author: "Royal Events Planner",
+        role: "Luxury Event Agency • Doha, Qatar",
         image: "/images/reviews/review-1.webp"
       },
       {
         quote: "\"Working with Mirror Mirror for our corporate product launch was seamless. The custom branding on the photo wall and interactive screens exceeded our expectations.\"",
-        author: "Sarah Jenkins",
-        role: "Creative Director • West Bay, Doha",
+        author: "Vanguard Creative Group",
+        role: "Corporate Marketing Partner • West Bay, Doha",
         image: "/images/reviews/review-2.webp"
       },
       {
         quote: "\"The retro booth was a massive hit at our private celebration! It looked beautiful in our setup, and the digital shares were instant and high-quality.\"",
-        author: "Layla Al-Thani",
-        role: "Private Gala Host • The Pearl, Qatar",
+        author: "Pearl Qatar Hospitality",
+        role: "VIP Event Management • The Pearl, Qatar",
         image: "/images/reviews/review-3.webp"
       },
       {
         quote: "\"We booked the 360 booth for our daughter's graduation party. The videos were absolutely stunning, with great lighting and custom music. The team was highly professional!\"",
-        author: "Fatima & Hamad",
-        role: "Graduation Party • Lusail, Qatar",
+        author: "Doha University Alumni",
+        role: "Event Activations Partner • Lusail, Qatar",
         image: "/images/reviews/review-4.webp"
       }
     ],

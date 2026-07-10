@@ -265,7 +265,7 @@ export default function Chatbot() {
             {/* Messages */}
             <div className="chatbot-messages">
               {messages.map((msg, idx) => (
-                <div key={msg.id}>
+                <div key={msg.id} className="chatbot-message-wrapper">
                   <MessageBubble message={msg} dir={dir} />
                   {/* Show quick replies only on the last bot message */}
                   {msg.sender === "bot" && idx === messages.length - 1 && !isTyping && (

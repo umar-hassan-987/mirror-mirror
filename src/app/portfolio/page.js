@@ -3,14 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Play, ArrowRight, Loader2, X, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Portfolio() {
   const { t, dir } = useLanguage();
   const [activeFilter, setActiveFilter] = useState("all");
-  const [isPlaying, setIsPlaying] = useState(false);
+
 
   const filters = [
     { label: t("portfolio.gallery.filters.all"), id: "all" },
@@ -19,20 +18,7 @@ export default function Portfolio() {
     { label: t("portfolio.gallery.filters.gala"), id: "gala" },
   ];
 
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const testimonials = t("home.testimonials") || [];
-
-  const nextTestimonial = () => {
-    if (testimonials.length > 0) {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }
-  };
-
-  const prevTestimonial = () => {
-    if (testimonials.length > 0) {
-      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    }
-  };
 
   const projects = Array.from({ length: 20 }, (_, idx) => {
     const id = idx + 1;
@@ -84,8 +70,8 @@ export default function Portfolio() {
 
   return (
     <div className="flex flex-col w-full bg-background">
-      {/* Showreel Section (Hero) */}
-      <section className="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center overflow-hidden px-margin-mobile md:px-gutter py-12 md:py-16 w-full">
+      {/* Hero Section — Immersive Mosaic */}
+      <section className="relative min-h-screen flex items-center overflow-hidden w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -96,72 +82,80 @@ export default function Portfolio() {
             sizes="100vw"
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-black/35 backdrop-blur-[1px] z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-hero-overlay/10 to-hero-overlay z-20"></div>
+          <div className="absolute inset-0 bg-black/50 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-20 rtl:from-transparent rtl:via-black/40 rtl:to-black/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-hero-overlay via-transparent to-transparent z-20"></div>
         </div>
 
-        <div className="relative z-30 max-w-container-max mx-auto w-full flex flex-col items-center">
-          <div className="flex flex-col items-center text-center mb-10 max-w-3xl mt-16">
-            <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-5xl md:text-7xl mb-6 text-white">
-              {t("portfolio.hero.titleLine1")} <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text gradient-span">{t("portfolio.hero.titleHighlight")}</span>
-            </h1>
-            <p className="font-inter text-md md:text-lg text-white/90 max-w-2xl leading-relaxed">
-              {t("portfolio.hero.subtitle")}
-            </p>
-          </div>
+        <div className="relative z-30 max-w-container-max mx-auto w-full px-margin-mobile md:px-gutter py-24 md:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left — Text Content */}
+            <div className="flex flex-col">
+              <span className="font-inter font-bold text-xs uppercase tracking-[0.25em] text-primary mb-6 flex items-center gap-3">
+                <span className="w-10 h-[2px] gradient-bg inline-block"></span>
+                {t("portfolio.hero.label")}
+              </span>
+              <h1 className="font-plus-jakarta font-extrabold text-5xl md:text-7xl mb-6 text-white leading-[1.1]">
+                {t("portfolio.hero.titleLine1")} <br />
+                <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text gradient-span">{t("portfolio.hero.titleHighlight")}</span>
+              </h1>
+              <p className="font-inter text-base md:text-lg text-white/80 max-w-lg leading-relaxed mb-10">
+                {t("portfolio.hero.subtitle")}
+              </p>
 
-          {/* Video Player Container */}
-          <div className="relative w-full max-w-4xl aspect-video rounded-3xl overflow-hidden bg-surface-container-highest shadow-2xl group cursor-pointer border border-outline-variant/30">
-            <div className="absolute inset-0 z-10 bg-black/25 group-hover:bg-black/15 transition-colors duration-500"></div>
-            
-            {isPlaying ? (
-              <div className="absolute inset-0 z-30 bg-black flex items-center justify-center">
-                <video 
-                  src="/vid/whoweare.webm" 
-                  controls 
-                  autoPlay 
-                  preload="none"
-                  className="w-full h-full object-cover"
-                  onEnded={() => setIsPlaying(false)}
-                />
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsPlaying(false);
-                  }}
-                  className="absolute top-6 right-6 z-40 bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full backdrop-blur-md transition-colors"
-                  aria-label="Close video"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-            ) : (
-              <>
-                <div className="w-full h-full relative overflow-hidden transition-transform duration-700 group-hover:scale-105">
-                  <Image 
-                    src="/images/services-hero.webp"
-                    alt="Services showreel thumbnail"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 896px"
-                    className="object-cover"
-                  />
-                </div>
-                {/* Play Button Overlay */}
-                <div 
-                  onClick={() => setIsPlaying(true)}
-                  className="absolute inset-0 z-20 flex items-center justify-center"
-                >
-                  <div className="w-20 h-20 md:w-28 md:h-28 rounded-full gradient-bg flex items-center justify-center text-white shadow-2xl hover:scale-110 transition-transform duration-300">
-                    <Play className="w-8 h-8 md:w-12 md:h-12 fill-white text-white" />
+              {/* Floating Stats Row */}
+              <div className="flex flex-wrap gap-4">
+                {stats.map((s, i) => (
+                  <div key={i} className="px-5 py-4 bg-white/[0.07] backdrop-blur-md border border-white/[0.12] flex flex-col items-center min-w-[100px] hover:bg-white/[0.12] transition-colors duration-300 group">
+                    <span className={`font-plus-jakarta font-extrabold text-2xl md:text-3xl ${s.color} group-hover:scale-105 transition-transform duration-300`}>{s.value}</span>
+                    <span className="font-inter text-[10px] uppercase tracking-wider text-white/60 mt-1 text-center">{s.label}</span>
                   </div>
-                </div>
-                {/* Glassmorphic Info Overlay */}
-                <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 z-20 md:max-w-xs glass-card p-6 rounded-2xl border border-white/20">
-                  <p className="font-inter font-bold text-xs text-secondary mb-1">NOW PLAYING</p>
-                  <h3 className="font-plus-jakarta font-bold text-xl text-on-surface">The Future of Interaction</h3>
-                </div>
-              </>
-            )}
+                ))}
+              </div>
+            </div>
+
+            {/* Right — Staggered Image Mosaic */}
+            <div className="hidden lg:block relative h-[560px]">
+              {/* Main large image */}
+              <div className="absolute top-0 right-0 w-[75%] h-[65%] overflow-hidden shadow-2xl group border border-white/10">
+                <Image
+                  src="/images/portfolio/portfolio-1.webp"
+                  alt="Elegant Royal Wedding"
+                  fill
+                  sizes="(max-width: 1024px) 0vw, 40vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+              </div>
+
+              {/* Bottom-left overlapping image */}
+              <div className="absolute bottom-0 left-0 w-[55%] h-[50%] overflow-hidden shadow-2xl group border border-white/10 z-10">
+                <Image
+                  src="/images/portfolio/portfolio-6.webp"
+                  alt="Annual Charity Ball"
+                  fill
+                  sizes="(max-width: 1024px) 0vw, 30vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+              </div>
+
+              {/* Small accent image */}
+              <div className="absolute bottom-[15%] right-[5%] w-[35%] h-[30%] overflow-hidden shadow-2xl group border border-white/10 z-20">
+                <Image
+                  src="/images/portfolio/portfolio-3.webp"
+                  alt="National Day Gala"
+                  fill
+                  sizes="(max-width: 1024px) 0vw, 20vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              </div>
+
+              {/* Decorative gradient accent line */}
+              <div className="absolute -left-4 top-[20%] w-1 h-[40%] gradient-bg opacity-60"></div>
+              <div className="absolute -bottom-4 right-[30%] h-1 w-[30%] gradient-bg opacity-40"></div>
+            </div>
           </div>
         </div>
       </section>
