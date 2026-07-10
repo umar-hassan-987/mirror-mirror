@@ -18,34 +18,64 @@ export default function Services() {
       specs: t("services.list.mirrorBooth.specs") || []
     },
     {
-      id: "audio-video-booth",
-      name: t("services.list.audioVideoBooth.name"),
-      icon: <Video className="w-8 h-8 text-secondary" />,
-      desc: t("services.list.audioVideoBooth.desc"),
+      id: "retro-booth",
+      name: t("services.list.retroBooth.name"),
+      icon: <Camera className="w-8 h-8 text-secondary" />,
+      desc: t("services.list.retroBooth.desc"),
+      image: "/images/retro-booth.webp",
+      price: t("services.list.retroBooth.price"),
+      duration: t("services.list.retroBooth.duration"),
+      specs: t("services.list.retroBooth.specs") || []
+    },
+    {
+      id: "booth-360",
+      name: t("services.list.booth360.name"),
+      icon: <Video className="w-8 h-8 text-tertiary" />,
+      desc: t("services.list.booth360.desc"),
+      image: "/images/booth-360.webp",
+      price: t("services.list.booth360.price"),
+      duration: t("services.list.booth360.duration"),
+      specs: t("services.list.booth360.specs") || []
+    },
+    {
+      id: "telephone-booth",
+      name: t("services.list.telephoneBooth.name"),
+      icon: <Mic className="w-8 h-8 text-primary" />,
+      desc: t("services.list.telephoneBooth.desc"),
       image: "/images/audio-video-booth.webp",
-      price: t("services.list.audioVideoBooth.price"),
-      duration: t("services.list.audioVideoBooth.duration"),
-      specs: t("services.list.audioVideoBooth.specs") || []
+      price: t("services.list.telephoneBooth.price"),
+      duration: t("services.list.telephoneBooth.duration"),
+      specs: t("services.list.telephoneBooth.specs") || []
     },
     {
-      id: "polaroid-guestbook",
-      name: t("services.list.polaroidGuestbook.name"),
-      icon: <Heart className="w-8 h-8 text-tertiary" />,
-      desc: t("services.list.polaroidGuestbook.desc"),
-      image: "/images/Polaroid.webp",
-      price: t("services.list.polaroidGuestbook.price"),
-      duration: t("services.list.polaroidGuestbook.duration"),
-      specs: t("services.list.polaroidGuestbook.specs") || []
+      id: "private-booth",
+      name: t("services.list.privateBooth.name"),
+      icon: <Camera className="w-8 h-8 text-secondary" />,
+      desc: t("services.list.privateBooth.desc"),
+      image: "/images/private-booth.webp",
+      price: t("services.list.privateBooth.price"),
+      duration: t("services.list.privateBooth.duration"),
+      specs: t("services.list.privateBooth.specs") || []
     },
     {
-      id: "branding-collaterals",
-      name: t("services.list.brandingCollaterals.name"),
-      icon: <Gift className="w-8 h-8 text-primary" />,
-      desc: t("services.list.brandingCollaterals.desc"),
-      image: "/images/brand.webp",
-      price: t("services.list.brandingCollaterals.price"),
-      duration: t("services.list.brandingCollaterals.duration"),
-      specs: t("services.list.brandingCollaterals.specs") || []
+      id: "high-angle-booth",
+      name: t("services.list.highAngleBooth.name"),
+      icon: <Camera className="w-8 h-8 text-tertiary" />,
+      desc: t("services.list.highAngleBooth.desc"),
+      image: "/images/high-angle-booth.webp",
+      price: t("services.list.highAngleBooth.price"),
+      duration: t("services.list.highAngleBooth.duration"),
+      specs: t("services.list.highAngleBooth.specs") || []
+    },
+    {
+      id: "photography",
+      name: t("services.list.photography.name"),
+      icon: <Camera className="w-8 h-8 text-primary" />,
+      desc: t("services.list.photography.desc"),
+      image: "/images/photography.webp",
+      price: t("services.list.photography.price"),
+      duration: t("services.list.photography.duration"),
+      specs: t("services.list.photography.specs") || []
     },
     {
       id: "videography",
@@ -58,22 +88,42 @@ export default function Services() {
       specs: t("services.list.videography.specs") || []
     },
     {
-      id: "photography",
-      name: t("services.list.photography.name"),
+      id: "studio-rental",
+      name: t("services.list.studioRental.name"),
       icon: <Camera className="w-8 h-8 text-tertiary" />,
-      desc: t("services.list.photography.desc"),
-      image: "/images/photography.webp",
-      price: t("services.list.photography.price"),
-      duration: t("services.list.photography.duration"),
-      specs: t("services.list.photography.specs") || []
+      desc: t("services.list.studioRental.desc"),
+      image: "/images/studio1.webp",
+      price: t("services.list.studioRental.price"),
+      duration: t("services.list.studioRental.duration"),
+      specs: t("services.list.studioRental.specs") || []
+    },
+    {
+      id: "branding-photowall",
+      name: t("services.list.brandingPhotoWall.name"),
+      icon: <PenTool className="w-8 h-8 text-primary" />,
+      desc: t("services.list.brandingPhotoWall.desc"),
+      image: "/images/branding-photowall.webp",
+      price: t("services.list.brandingPhotoWall.price"),
+      duration: t("services.list.brandingPhotoWall.duration"),
+      specs: t("services.list.brandingPhotoWall.specs") || []
+    },
+    {
+      id: "branding-collaterals",
+      name: t("services.list.brandingCollaterals.name"),
+      icon: <Gift className="w-8 h-8 text-secondary" />,
+      desc: t("services.list.brandingCollaterals.desc"),
+      image: "/images/brand.webp",
+      price: t("services.list.brandingCollaterals.price"),
+      duration: t("services.list.brandingCollaterals.duration"),
+      specs: t("services.list.brandingCollaterals.specs") || []
     }
   ];
 
   const addOns = [
-    { name: t("services.addons.extraPrint.name"), price: t("services.addons.extraPrint.price"), desc: t("services.addons.extraPrint.desc") },
-    { name: t("services.addons.fullScreen.name"), price: t("services.addons.fullScreen.price"), desc: t("services.addons.fullScreen.desc") },
-    { name: t("services.addons.floralArch.name"), price: t("services.addons.floralArch.price"), desc: t("services.addons.floralArch.desc") },
-    { name: t("services.addons.liveSlide.name"), price: t("services.addons.liveSlide.price"), desc: t("services.addons.liveSlide.desc") }
+    { name: t("services.addons.extraHour.name"), price: t("services.addons.extraHour.price"), desc: t("services.addons.extraHour.desc") },
+    { name: t("services.addons.transportation.name"), price: t("services.addons.transportation.price"), desc: t("services.addons.transportation.desc") },
+    { name: t("services.addons.fridgeMagnet.name"), price: t("services.addons.fridgeMagnet.price"), desc: t("services.addons.fridgeMagnet.desc") },
+    { name: t("services.addons.extraEnvelopes.name"), price: t("services.addons.extraEnvelopes.price"), desc: t("services.addons.extraEnvelopes.desc") }
   ];
 
   return (

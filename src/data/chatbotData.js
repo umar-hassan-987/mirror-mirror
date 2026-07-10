@@ -40,9 +40,9 @@ const intents = [
     response: "chatbot.responses.servicesOverview",
     suggests: [
       "chatbot.quickReplies.mirrorBooth",
-      "chatbot.quickReplies.videography",
-      "chatbot.quickReplies.pricing",
-      "chatbot.quickReplies.bookNow"
+      "chatbot.quickReplies.retroBooth",
+      "chatbot.quickReplies.booth360",
+      "chatbot.quickReplies.telephoneBooth"
     ]
   },
   {
@@ -62,14 +62,13 @@ const intents = [
     ]
   },
   {
-    id: "audio_video_booth",
+    id: "retro_booth",
     keywords: [
-      "audio booth", "video booth", "telephone booth", "audio", "telephone",
-      "voice message", "video message", "guest message", "recording booth",
-      "message booth", "audio video"
+      "retro booth", "retro photo", "retro", "vintage booth", "vintage photo",
+      "classic print", "photo strip", "photo strips"
     ],
     priority: 3,
-    response: "chatbot.responses.audioVideoBooth",
+    response: "chatbot.responses.retroBooth",
     suggests: [
       "chatbot.quickReplies.pricing",
       "chatbot.quickReplies.bookNow",
@@ -77,13 +76,13 @@ const intents = [
     ]
   },
   {
-    id: "polaroid",
+    id: "booth_360",
     keywords: [
-      "polaroid", "guest book", "guestbook", "guest list", "photo book",
-      "instant photo", "instant camera", "polaroid book", "guest album"
+      "360 booth", "360 video", "360", "video booth 360", "revolving camera",
+      "slow motion video", "slow mo", "slowmo"
     ],
     priority: 3,
-    response: "chatbot.responses.polaroid",
+    response: "chatbot.responses.booth360",
     suggests: [
       "chatbot.quickReplies.pricing",
       "chatbot.quickReplies.bookNow",
@@ -91,18 +90,61 @@ const intents = [
     ]
   },
   {
-    id: "branding",
+    id: "telephone_booth",
     keywords: [
-      "branding", "brand", "collaterals", "tote bag", "tote bags", "t-shirt",
-      "tshirt", "cap", "caps", "merch", "merchandise", "giveaway", "giveaways",
-      "souvenirs", "branded", "custom print", "printing"
+      "telephone booth", "telephone", "audio guestbook", "audio guest book",
+      "audio video booth", "voice message", "video message", "guest message",
+      "recording booth", "message booth", "audio video"
     ],
     priority: 3,
-    response: "chatbot.responses.branding",
+    response: "chatbot.responses.telephoneBooth",
     suggests: [
       "chatbot.quickReplies.pricing",
       "chatbot.quickReplies.bookNow",
       "chatbot.quickReplies.services"
+    ]
+  },
+  {
+    id: "private_booth",
+    keywords: [
+      "private booth", "private photo", "brand activation", "brand activation package",
+      "vip booth", "custom booth setup", "product launch booth"
+    ],
+    priority: 3,
+    response: "chatbot.responses.privateBooth",
+    suggests: [
+      "chatbot.quickReplies.pricing",
+      "chatbot.quickReplies.bookNow",
+      "chatbot.quickReplies.services"
+    ]
+  },
+  {
+    id: "high_angle_booth",
+    keywords: [
+      "high angle", "high angle booth", "top view", "elevated camera",
+      "overhead photo", "overhead booth", "creative angle"
+    ],
+    priority: 3,
+    response: "chatbot.responses.highAngleBooth",
+    suggests: [
+      "chatbot.quickReplies.pricing",
+      "chatbot.quickReplies.bookNow",
+      "chatbot.quickReplies.services"
+    ]
+  },
+  {
+    id: "photography",
+    keywords: [
+      "photography", "photographer", "photo coverage", "photos", "pictures",
+      "candid", "portrait", "portraits", "event photography", "photo shoot",
+      "photoshoot", "photograph"
+    ],
+    priority: 3,
+    response: "chatbot.responses.photography",
+    suggests: [
+      "chatbot.quickReplies.videography",
+      "chatbot.quickReplies.pricing",
+      "chatbot.quickReplies.bookNow"
     ]
   },
   {
@@ -121,18 +163,46 @@ const intents = [
     ]
   },
   {
-    id: "photography",
+    id: "studio_rental",
     keywords: [
-      "photography", "photographer", "photo coverage", "photos", "pictures",
-      "candid", "portrait", "portraits", "event photography", "photo shoot",
-      "photoshoot", "photograph"
+      "studio rental", "rent studio", "creative space", "photography studio",
+      "videography studio", "content creation studio", "studio space"
     ],
     priority: 3,
-    response: "chatbot.responses.photography",
+    response: "chatbot.responses.studioRental",
     suggests: [
-      "chatbot.quickReplies.videography",
       "chatbot.quickReplies.pricing",
-      "chatbot.quickReplies.bookNow"
+      "chatbot.quickReplies.bookNow",
+      "chatbot.quickReplies.services"
+    ]
+  },
+  {
+    id: "branding_photo_wall",
+    keywords: [
+      "photo wall", "photowall", "branding wall", "backdrop", "media wall",
+      "press wall", "3x3 backdrop", "custom backdrop", "vinyl backdrop"
+    ],
+    priority: 3,
+    response: "chatbot.responses.brandingPhotoWall",
+    suggests: [
+      "chatbot.quickReplies.pricing",
+      "chatbot.quickReplies.bookNow",
+      "chatbot.quickReplies.services"
+    ]
+  },
+  {
+    id: "branding_collateral",
+    keywords: [
+      "branding collateral", "collaterals", "tote bag", "tote bags", "t-shirt",
+      "tshirt", "cap", "caps", "merch", "merchandise", "giveaway", "giveaways",
+      "souvenirs", "branded", "custom print", "printing", "branding collaterals"
+    ],
+    priority: 3,
+    response: "chatbot.responses.brandingCollateral",
+    suggests: [
+      "chatbot.quickReplies.pricing",
+      "chatbot.quickReplies.bookNow",
+      "chatbot.quickReplies.services"
     ]
   },
   {

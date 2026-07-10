@@ -42,27 +42,47 @@ export default {
       subtitle: "Elevate your event with our premium interactive photo and video experiences designed for modern celebrations in Doha.",
       mirrorBooth: {
         name: "MIRROR PHOTO BOOTH",
-        desc: "An interactive full-length touchscreen mirror with DSLR photography, instant prints, and digital sharing. Complete with props, backdrops, and on-site assistance for a fun experience."
+        desc: "An interactive full-length touchscreen mirror with DSLR photography, instant prints, and digital sharing. Perfect for weddings, parties, and corporate events."
       },
-      audioVideoBooth: {
-        name: "AUDIO & VIDEO TELEPHONE BOOTH",
-        desc: "Vintage-style booths where guests record heartfelt audio and video messages. Delivered as a personalized album to relive forever."
+      retroBooth: {
+        name: "RETRO PHOTO BOOTH",
+        desc: "Bring timeless charm with a vintage-inspired design, capturing high-quality photos with instant prints."
       },
-      polaroidGuestBook: {
-        name: "POLAROID GUEST LIST PHOTO BOOK",
-        desc: "Guests snap instant Polaroid photos and leave personal notes. A unique keepsake filled with love and memories."
+      booth360: {
+        name: "360 VIDEO BOOTH",
+        desc: "Take your event to the next level with slow-motion 360° videos with fun effects, music, and instant sharing."
       },
-      brandingCollaterals: {
-        name: "BRANDING COLLATERALS",
-        desc: "Custom tote bags, t-shirts, caps, and giveaways. Stylish branded souvenirs that reflect your theme or identity."
+      telephoneBooth: {
+        name: "TELEPHONE BOOTH",
+        desc: "Guests leave heartfelt voice recordings or video messages using our stylish vintage telephone setup."
       },
-      videography: {
-        name: "VIDEOGRAPHY",
-        desc: "Cinematic highlight reels and full-length event coverage. Creative editing brings every celebration to life on film."
+      privateBooth: {
+        name: "PRIVATE PHOTO BOOTH",
+        desc: "A premium private booth space for brand activations, product launches, and VIP events. Fully customizable."
+      },
+      highAngleBooth: {
+        name: "HIGH ANGLE PHOTO BOOTH",
+        desc: "An elevated camera setup capturing creative top-view photos with a premium look."
       },
       photography: {
         name: "PHOTOGRAPHY",
-        desc: "Professional event photography with candid, posed, and highlight shots. Online galleries and albums keep memories preserved beautifully."
+        desc: "Professional event photography that preserves your event's candids, emotions, details, and memories."
+      },
+      videography: {
+        name: "VIDEOGRAPHY",
+        desc: "Cinematic highlight reels and full event coverage. Relive your highlights in stunning digital video."
+      },
+      studioRental: {
+        name: "STUDIO RENTAL",
+        desc: "A professional creative studio space equipped for photo shoots, video production, and content creation."
+      },
+      brandingPhotoWall: {
+        name: "BRANDING PHOTO WALL",
+        desc: "Customized 3x3 meters branding backdrop for corporate events, product launches, and media coverage."
+      },
+      brandingCollaterals: {
+        name: "BRANDING COLLATERAL",
+        desc: "Custom tote bags, branded notebooks, personalized mugs, keychains, and other promotional items."
       }
     },
     whoWeAre: {
@@ -152,6 +172,32 @@ export default {
       author: "Aisha & Omar",
       role: "Wedding Couple • Doha, Qatar"
     },
+    testimonials: [
+      {
+        quote: "\"The mirror booth was the absolute highlight of our wedding! Our guests couldn't get enough of it, and the print quality was amazing. Highly recommend!\"",
+        author: "Aisha & Omar",
+        role: "Wedding Couple • Doha, Qatar",
+        image: "/images/reviews/review-1.webp"
+      },
+      {
+        quote: "\"Working with Mirror Mirror for our corporate product launch was seamless. The custom branding on the photo wall and interactive screens exceeded our expectations.\"",
+        author: "Sarah Jenkins",
+        role: "Creative Director • West Bay, Doha",
+        image: "/images/reviews/review-2.webp"
+      },
+      {
+        quote: "\"The retro booth was a massive hit at our private celebration! It looked beautiful in our setup, and the digital shares were instant and high-quality.\"",
+        author: "Layla Al-Thani",
+        role: "Private Gala Host • The Pearl, Qatar",
+        image: "/images/reviews/review-3.webp"
+      },
+      {
+        quote: "\"We booked the 360 booth for our daughter's graduation party. The videos were absolutely stunning, with great lighting and custom music. The team was highly professional!\"",
+        author: "Fatima & Hamad",
+        role: "Graduation Party • Lusail, Qatar",
+        image: "/images/reviews/review-4.webp"
+      }
+    ],
     contact: {
       label: "Contact Us",
       titleLine1: "Let's make your",
@@ -183,56 +229,169 @@ export default {
     list: {
       bookEventSetup: "Book Event Setup",
       mirrorBooth: {
-        name: "MIRROR PHOTO BOOTH",
-        desc: "An interactive full-length touchscreen mirror with DSLR photography, instant prints, and digital sharing. Complete with props, backdrops, and on-site assistance for a fun experience.",
-        price: "3,500 QAR",
-        duration: "3 Hours Session",
-        specs: ["Full length interactive mirror", "DSLR studio-grade camera", "Instant sharing (SMS/QR/Email)", "Friendly on-site hosts", "Fun props & premium templates"]
+        name: "MIRROR PHOTOBOOTH",
+        desc: "Our interactive Mirror Photo Booth combines a sleek full-length mirror with a touchscreen photo experience. Guests can take fun photos, add digital signatures or messages, and receive instant prints or digital copies—perfect for weddings, parties, and corporate events.",
+        price: "Starting at QAR 1,700",
+        duration: "2 - 4 Hours Session",
+        specs: [
+          "2 Hours – QAR 1,700",
+          "3 Hours – QAR 1,900",
+          "4 Hours – QAR 2,300",
+          "Corporate Package – QAR 2,900 (2 Hours)",
+          "Unlimited high-quality photo prints & personalized layout",
+          "FREE personalized photo envelopes",
+          "Professional studio lighting, red carpet & backdrop (Customized 3x3 backdrop for Corporate)",
+          "Fun photo props & lady operator"
+        ]
       },
-      audioVideoBooth: {
-        name: "AUDIO & VIDEO TELEPHONE BOOTH",
-        desc: "Vintage-style booths where guests record heartfelt audio and video messages. Delivered as a personalized album to relive forever.",
-        price: "2,500 QAR",
-        duration: "Full Event",
-        specs: ["Vintage rotary & video hardware", "Studio-quality microphone", "Custom host greeting setup", "Raw audio/video file exports", "Bespoke digital album"]
+      retroBooth: {
+        name: "RETRO PHOTOBOOTH",
+        desc: "Bring timeless charm to your event with our Retro Photo Booth. Featuring a stylish vintage-inspired design, it captures high-quality photos with instant prints, creating fun and memorable keepsakes for weddings, parties, corporate events, and special celebrations.",
+        price: "Starting at QAR 800",
+        duration: "2 - 4 Hours Session",
+        specs: [
+          "2 Hours – QAR 800",
+          "3 Hours – QAR 1,000",
+          "4 Hours – QAR 1,200",
+          "Unlimited photo strip prints",
+          "Personalized photo strip design",
+          "FREE personalized photo envelopes",
+          "Backdrop & lady operator"
+        ]
       },
-      polaroidGuestbook: {
-        name: "POLAROID GUEST LIST PHOTO BOOK",
-        desc: "Guests snap instant Polaroid photos and leave personal notes. A unique keepsake filled with love and memories.",
-        price: "1,800 QAR",
-        duration: "Full Event",
-        specs: ["Premium Polaroid cameras", "High-quality film packs", "Leather-bound guestbook", "Metallic pens and adhesives", "Attendant to guide guests"]
+      booth360: {
+        name: "360 BOOTH",
+        desc: "Take your event to the next level with our 360 Video Booth! Guests stand on a platform while a rotating camera captures stunning slow-motion, 360° videos with fun effects, music, and instant social media sharing—perfect for weddings, birthdays, corporate events, and special celebrations.",
+        price: "QAR 400 per Hour",
+        duration: "Hourly Session",
+        specs: [
+          "QAR 400 per Hour",
+          "Unlimited 360° videos",
+          "Professional lighting setup & fun props",
+          "Lady operator",
+          "Instant digital sharing via QR code or AirDrop (where available)",
+          "Customized video overlay with your event name or logo"
+        ]
       },
-      brandingCollaterals: {
-        name: "BRANDING COLLATERALS",
-        desc: "Custom tote bags, t-shirts, caps, and giveaways. Stylish branded souvenirs that reflect your theme or identity.",
-        price: "Custom Quote",
-        duration: "Pre-Event Delivery",
-        specs: ["High-quality materials", "Full-color custom printing", "Tote bags, shirts, and caps", "Design consultation included", "Bulk order discounts"]
+      telephoneBooth: {
+        name: "TELEPHONE BOOTH",
+        desc: "Capture unforgettable messages and memories with our Telephone Audio / Video Booth. Guests can leave heartfelt voice recordings or video messages using our stylish vintage telephone setup—creating a timeless keepsake for your special event.",
+        price: "Starting at QAR 800",
+        duration: "2 Hours + Extra Hours",
+        specs: [
+          "2 Hours – QAR 800",
+          "Extra Hour – QAR 400",
+          "Unlimited audio/video messages",
+          "Digital album of all recordings",
+          "Vintage telephone setup",
+          "Professional event assistance"
+        ]
       },
-      videography: {
-        name: "VIDEOGRAPHY",
-        desc: "Cinematic highlight reels and full-length event coverage. Creative editing brings every celebration to life on film.",
-        price: "6,000 QAR",
-        duration: "Full Event Coverage",
-        specs: ["Multi-camera setup", "Drone footage (optional)", "Cinematic color grading", "1 min highlight reel for socials", "Full-length edited feature"]
+      privateBooth: {
+        name: "PRIVATE PHOTOBOOTH",
+        desc: "Create a premium and engaging experience for your brand activation with our Private Photo Booth. Perfect for product launches, VIP events, and corporate activations, it provides guests with a private space to capture branded photos and create memorable moments that connect with your brand.",
+        price: "QAR 3,500",
+        duration: "8 Hours Session",
+        specs: [
+          "8 Hours – QAR 3,500",
+          "Customized brand booth",
+          "Private photo booth setup",
+          "Unlimited high-quality photos",
+          "Customized branded photo layout",
+          "Professional lighting setup & digital sharing",
+          "Brand activation customization & professional operator"
+        ]
+      },
+      highAngleBooth: {
+        name: "HIGH ANGLE PHOTOBOOTH",
+        desc: "Create stunning and unique memories with our High Angle Photo Booth. Featuring an elevated camera setup, it captures creative top-view photos with a premium look—perfect for weddings, brand activations, corporate events, and special celebrations.",
+        price: "Starting at QAR 1,700",
+        duration: "2 - 4 Hours Session",
+        specs: [
+          "2 Hours – QAR 1,700",
+          "3 Hours – QAR 2,100",
+          "4 Hours – QAR 2,500",
+          "Unlimited high-quality photos",
+          "Personalized photo layout & professional lighting setup",
+          "Stylish backdrop setup & fun props",
+          "Professional operator"
+        ]
       },
       photography: {
         name: "PHOTOGRAPHY",
-        desc: "Professional event photography with candid, posed, and highlight shots. Online galleries and albums keep memories preserved beautifully.",
-        price: "4,500 QAR",
-        duration: "Full Event Coverage",
-        specs: ["Senior lead photographer", "Candid and posed portraits", "High-end retouching", "Secure online gallery", "Next-day sneak peeks"]
+        desc: "Capture every special moment with our professional photography services. Our experienced photographers deliver high-quality images that preserve your event’s emotions, details, and unforgettable memories.",
+        price: "Custom Quote",
+        duration: "Event Coverage",
+        specs: [
+          "Experienced event photographers",
+          "Perfect for weddings & corporate events",
+          "Ideal for brand activations & private celebrations",
+          "Candid, posed, and highlight shots",
+          "High-quality digital delivery"
+        ]
+      },
+      videography: {
+        name: "VIDEOGRAPHY",
+        desc: "Bring your special moments to life with our professional videography services. We capture the emotions, highlights, and unforgettable details of your event through high-quality cinematic videos that you can relive and share for years to come.",
+        price: "Custom Quote",
+        duration: "Event Coverage",
+        specs: [
+          "Cinematic event highlight reels",
+          "Full-length event video coverage",
+          "Perfect for weddings & corporate events",
+          "Ideal for brand activations & private celebrations",
+          "Professional post-production and editing"
+        ]
+      },
+      studioRental: {
+        name: "STUDIO",
+        desc: "Our professional studio rental space is designed for photographers, videographers, content creators, and brands looking for a creative environment to bring their ideas to life. Equipped with a suitable setup for photo shoots, video production, and content creation.",
+        price: "QAR 300 per Hour",
+        duration: "Hourly Rental",
+        specs: [
+          "Studio Rental – QAR 300 per Hour",
+          "Equipped for photo shoots & video production",
+          "Perfect for content creation & brand campaigns",
+          "Photography sessions & product shoots",
+          "Creative space for custom projects"
+        ]
+      },
+      brandingPhotoWall: {
+        name: "BRANDING PHOTOWALL",
+        desc: "Create a professional and impactful backdrop for your event with our Customized Branding Photo Wall. Perfect for brand visibility, photo opportunities, and media coverage, it helps showcase your brand identity in a stylish and memorable way.",
+        price: "QAR 1,500",
+        duration: "Per Backdrop",
+        specs: [
+          "Customized Branding Photo Wall – QAR 1,500",
+          "Size: 3×3 meters",
+          "Fully customized branding design",
+          "High-quality vinyl sticker printing",
+          "Professional event finish",
+          "Perfect for brand activations, corporate events, and product launches"
+        ]
+      },
+      brandingCollaterals: {
+        name: "BRANDING COLLATERAL",
+        desc: "Make your brand memorable with customized promotional items designed for events, corporate gifting, and brand activations. We provide branded merchandise that helps increase brand visibility and creates a lasting impression with your audience.",
+        price: "Custom Quote",
+        duration: "Bespoke Delivery",
+        specs: [
+          "Customized Tote Bags & notebooks",
+          "Personalized Mugs & custom keychains",
+          "Other promotional items upon request",
+          "Perfect for brand activations & corporate events",
+          "Great for business giveaways & promotional campaigns"
+        ]
       }
     },
     addons: {
       label: "Enhancements",
       title: "Premium Add-ons",
       subtitle: "Customize your activations to fit the exact guest count and visual requirements of your event.",
-      extraPrint: { name: "Extra Print Station", price: "500 QAR", desc: "Reduces queue times for larger crowds exceeding 200 guests." },
-      fullScreen: { name: "Full Screen UI/UX Wrap", price: "800 QAR", desc: "Custom branding design of the Mirror's software interfaces." },
-      floralArch: { name: "Professional Floral Arch", price: "1,200 QAR", desc: "Premium silk flowers framing the backdrop of your choice." },
-      liveSlide: { name: "Live Slide Projection", price: "600 QAR", desc: "Project photo captures onto screens across the venue in real-time." }
+      extraHour: { name: "Extra Hour", price: "QAR 400/hour", desc: "Extend the photo booth experience for your guests." },
+      transportation: { name: "Transportation Outside Doha", price: "QAR 200", desc: "Covers transport and logistics outside Doha." },
+      fridgeMagnet: { name: "Fridge Magnet Photo Prints", price: "QAR 500", desc: "Prints finished with custom fridge magnet backing." },
+      extraEnvelopes: { name: "Additional Customized Envelopes", price: "QAR 5 each", desc: "Individually personalized and branded photo envelopes." }
     }
   },
   about: {
@@ -302,11 +461,26 @@ export default {
         weddings: "Weddings"
       },
       projects: {
-        royalGala: { title: "The Royal Gala", desc: "A high-fashion experience for 500+ VIP guests, featuring instant AI-enhanced digital portraits." },
-        techSummit: { title: "Tech Summit '24", desc: "Interactive green-screen technology and instant QR sharing." },
-        desertWedding: { title: "Desert Oasis Wedding", desc: "Soft violet spotlights and bespoke floral digital frame mirror integration." },
-        mallLaunch: { title: "Doha Mall Launch", desc: "A futuristic shopping activation with bright magenta brand styling." },
-        charityBall: { title: "Annual Charity Ball", desc: "Sophisticated light-themed photo wall for prominent social event." }
+        project1: { title: "Elegant Royal Wedding", desc: "An elegant white-themed wedding reception at Katara Cultural Village." },
+        project2: { title: "Doha Tech Summit", desc: "High-tech interactive branding wall and customized photo templates." },
+        project3: { title: "National Day Gala", desc: "Traditional luxury photo setup celebrating Qatar National Day." },
+        project4: { title: "Beachfront Ceremony", desc: "Scenic beachside photobooth with floral designs at The Pearl." },
+        project5: { title: "Luxury Fashion Launch", desc: "Sleek mirror booth experience for a luxury brand launch event." },
+        project6: { title: "Annual Charity Ball", desc: "Exclusive red carpet gala photo activation raising funds for education." },
+        project7: { title: "Grand Ballroom Wedding", desc: "Classic gold-accented wedding setup in the Sheraton Ballroom." },
+        project8: { title: "Automotive Exhibition", desc: "Innovative 360-degree video booth experience at Qatar Motor Show." },
+        project9: { title: "Opera House Banquet", desc: "Sophisticated retro booth installation for theatrical performance afterparty." },
+        project10: { title: "Desert Sunset Nuptials", desc: "Rustic-chic wedding celebration backdrop in the dunes of Mesaieed." },
+        project11: { title: "Financial Summit", desc: "Modern headshot station and digital print setup for global delegates." },
+        project12: { title: "Arts Festival Opening", desc: "Colorful artistic backdrop and immersive video overlays for artists." },
+        project13: { title: "Modern Garden Wedding", desc: "Minimalist botanical photo setup with neon sign accents." },
+        project14: { title: "Corporate Awards Night", desc: "Glamorous backdrop and instant prints celebrating top achievers." },
+        project15: { title: "Cultural Heritage Gala", desc: "Immersive traditional set design showcasing Qatari heritage." },
+        project16: { title: "Traditional Henna Party", desc: "Vibrant and colorful private photo booth setup for a Henna night." },
+        project17: { title: "Shopping Mall Activation", desc: "Interactive brand activation booth driving social media engagement." },
+        project18: { title: "Spring VIP Gala", desc: "High-end floral arrangement and luxury mirror experience for dignitaries." },
+        project19: { title: "Intimate Ring Exchange", desc: "Cozy indoor photobooth for a private family wedding reception." },
+        project20: { title: "Product Launch Event", desc: "Immersive photo wall and dynamic GIF creation booth for tech products." }
       },
       bookSimilar: "Book Similar Setup"
     },
@@ -408,8 +582,16 @@ export default {
       bookNow: "Book Now",
       contact: "Contact Us",
       mirrorBooth: "Mirror Booth",
-      videography: "Videography",
+      retroBooth: "Retro Booth",
+      booth360: "360 Booth",
+      telephoneBooth: "Telephone Booth",
+      privateBooth: "Private Booth",
+      highAngleBooth: "High Angle Booth",
       photography: "Photography",
+      videography: "Videography",
+      studioRental: "Studio Rental",
+      brandingPhotoWall: "Photo Wall",
+      brandingCollaterals: "Collateral",
       addons: "Add-ons",
       spaceReq: "Space Requirements",
       location: "Location",
@@ -418,14 +600,19 @@ export default {
     },
     responses: {
       greeting: "Hello! 👋 Welcome to Mirror Mirror Photowall Qatar.\n\nI'm your virtual assistant and I'd love to help you plan something unforgettable! Whether it's a wedding, corporate event, or private celebration — I'm here to guide you.\n\nWhat would you like to know?",
-      servicesOverview: "We offer 6 premium services to elevate your events ✨\n\n📸 Mirror Photo Booth — Interactive touchscreen mirror\n🎥 Audio & Video Booth — Vintage message recordings\n📷 Polaroid Guest Book — Instant photo keepsake\n🎨 Branding Collaterals — Custom merch & giveaways\n🎬 Videography — Cinematic event coverage\n📷 Photography — Professional event photography\n\nWould you like details on any specific service?",
-      mirrorBooth: "✨ Mirror Photo Booth\n\nOur signature service! A full-length interactive touchscreen mirror with:\n\n• DSLR studio-grade photography\n• Instant prints in under 10 seconds\n• Digital sharing via QR, SMS, or Email\n• Custom animations & overlays\n• Fun props & premium templates\n• Friendly on-site hosts\n\n💰 Starting at 3,500 QAR for a 3-hour session\n\nIt's the ultimate crowd-pleaser for weddings, galas, and corporate events!",
-      audioVideoBooth: "🎤 Audio & Video Telephone Booth\n\nA vintage-style booth where guests record heartfelt audio and video messages — delivered as a personalized digital album.\n\n• Studio-quality microphone\n• Custom greeting setup\n• Raw audio/video exports\n• Bespoke digital album\n\n💰 Starting at 2,500 QAR for the full event\n\nPerfect for weddings and milestone celebrations!",
-      polaroid: "📸 Polaroid Guest List Photo Book\n\nGuests snap instant Polaroid photos and leave personal notes in a beautiful leather-bound guestbook.\n\n• Premium Polaroid cameras\n• High-quality film packs\n• Leather-bound guestbook\n• Metallic pens & adhesives\n• Dedicated attendant\n\n💰 Starting at 1,800 QAR for the full event\n\nA timeless keepsake filled with love and memories!",
-      branding: "🎨 Branding Collaterals\n\nCustom-branded merchandise and event souvenirs:\n\n• Tote bags, t-shirts & caps\n• Full-color custom printing\n• High-quality materials\n• Design consultation included\n• Bulk order discounts available\n\n💰 Custom Quote — tailored to your needs\n\nPerfect for corporate events, product launches, and brand activations!",
-      videography: "🎬 Videography\n\nCinematic event coverage from start to finish:\n\n• Multi-camera professional setup\n• Drone footage (optional)\n• Cinematic color grading\n• 1-minute highlight reel for socials\n• Full-length edited feature film\n\n💰 Starting at 6,000 QAR for full event coverage\n\nWe bring every celebration to life on film!",
-      photography: "📷 Photography\n\nProfessional event photography with a premium touch:\n\n• Senior lead photographer\n• Candid & posed portraits\n• High-end retouching\n• Secure online gallery\n• Next-day sneak peeks\n\n💰 Starting at 4,500 QAR for full event coverage\n\nBeautifully preserved memories you'll treasure forever!",
-      pricing: "💰 Our Pricing Overview:\n\n• Mirror Photo Booth — 3,500 QAR (3 hrs)\n• Audio & Video Booth — 2,500 QAR (full event)\n• Polaroid Guest Book — 1,800 QAR (full event)\n• Branding Collaterals — Custom Quote\n• Videography — 6,000 QAR (full event)\n• Photography — 4,500 QAR (full event)\n\nWe also offer premium add-ons starting from 500 QAR. All prices are customizable based on your event needs!\n\nReady to book? Contact us for a personalized quote.",
+      servicesOverview: "We offer 11 premium services to elevate your events ✨\n\n📸 Mirror Photo Booth\n🎞️ Retro Photo Booth\n🔄 360 Video Booth\n☎️ Telephone Audio/Video Booth\n🔒 Private Photo Booth\n📐 High Angle Photo Booth\n📷 Photography Services\n🎥 Videography Services\n🏛️ Studio Rental\n🖼️ Branding Photo Wall\n🎨 Branding Collaterals\n\nWhich service would you like to know more about?",
+      mirrorBooth: "✨ Mirror Photo Booth\n\nOur interactive Mirror Photo Booth combines a sleek full-length mirror with a touchscreen photo experience. Guests can take fun photos, add digital signatures or messages, and receive instant prints or digital copies.\n\n💰 Packages:\n• 2 Hours – QAR 1,700\n• 3 Hours – QAR 1,900\n• 4 Hours – QAR 2,300\n• Corporate Package – QAR 2,900 (2 Hours)\n\n🎁 Package Inclusions:\n• Unlimited high-quality photo prints\n• Personalized branded photo layout\n• FREE personalized photo envelopes\n• Professional studio lighting & Red carpet\n• Backdrop (Customized 3x3 for corporate)\n• Fun photo props & Lady operator",
+      retroBooth: "✨ Retro Photo Booth\n\nBring timeless charm to your event with our Retro Photo Booth. Featuring a stylish vintage-inspired design, it captures high-quality photos with instant prints, creating fun and memorable keepsakes.\n\n💰 Packages:\n• 2 Hours – QAR 800\n• 3 Hours – QAR 1,000\n• 4 Hours – QAR 1,200\n\n🎁 Inclusions:\n• Unlimited photo strip prints\n• Personalized photo strip design\n• FREE personalized photo envelopes\n• Backdrop\n• Lady operator",
+      booth360: "✨ 360 Video Booth\n\nTake your event to the next level with our 360 Video Booth! Guests stand on a platform while a rotating camera captures stunning slow-motion, 360° videos with fun effects, music, and instant social media sharing.\n\n💰 Pricing: QAR 400 per Hour\n\n🎁 Inclusions:\n• Unlimited 360° videos\n• Professional lighting setup & Fun props\n• Lady operator\n• Instant digital sharing via QR code or AirDrop (where available)\n• Customized video overlay with your event name or logo",
+      telephoneBooth: "✨ Telephone Audio / Video Booth\n\nCapture unforgettable voice recordings or video messages using our stylish vintage telephone setup—creating a timeless keepsake for your event.\n\n💰 Packages:\n• 2 Hours – QAR 800\n• Extra Hour – QAR 400\n\n🎁 Inclusions:\n• Unlimited audio/video messages\n• Digital album of all recordings\n• Vintage telephone setup\n• Professional event assistance",
+      privateBooth: "✨ Private Photo Booth – Brand Activation Package\n\nCreate a premium and engaging experience for your brand activation. Perfect for product launches, VIP events, and corporate activations, providing guests with a private space to capture branded photos.\n\n💰 Pricing: QAR 3,500 (8 Hours)\n\n🎁 Inclusions:\n• Customized brand booth & Private setup\n• Unlimited high-quality photos & branded photo layout\n• Professional lighting setup & brand activation customization\n• Digital photo sharing & Professional operator",
+      highAngleBooth: "✨ High Angle Photo Booth\n\nCreate stunning and unique memories with an elevated camera setup that captures creative top-view photos with a premium look.\n\n💰 Packages:\n• 2 Hours – QAR 1,700\n• 3 Hours – QAR 2,100\n• 4 Hours – QAR 2,500\n\n🎁 Inclusions:\n• Unlimited high-quality photos\n• Personalized photo layout & Professional lighting setup\n• Stylish backdrop setup & Fun props for guests\n• Professional operator",
+      photography: "📷 Photography Services\n\nCapture every special moment with our professional photography services. Our experienced photographers deliver high-quality images that preserve your event’s emotions, details, and memories.\n\n✨ Perfect for: Weddings, Corporate events, Brand activations, Private celebrations, and Special occasions.",
+      videography: "🎥 Videography Services\n\nBring your special moments to life with professional cinematic videos. We capture the emotions, highlights, and details of your event that you can relive and share for years to come.\n\n✨ Perfect for: Weddings, Corporate events, Brand activations, Private celebrations, and Special occasions.",
+      studioRental: "🏛️ Studio Rental\n\nOur professional studio rental space is designed for photographers, videographers, content creators, and brands. Equipped with a suitable setup for photo shoots, video production, and content creation.\n\n💰 Pricing: QAR 300 per Hour\n\n✨ Perfect for: Photography sessions, Video shoots, Product shoots, Content creation, Brand campaigns, Creative projects.",
+      brandingPhotoWall: "🖼️ Branding Photo Wall\n\nCreate a professional and impactful backdrop. Perfect for brand visibility, photo opportunities, and media coverage, showcasing your brand identity in a stylish way.\n\n💰 Pricing: QAR 1,500\n\n📐 Specifications:\n• Size: 3×3 meters\n• Fully customized branding design\n• High-quality vinyl sticker printing\n• Professional event finish\n\n✨ Perfect for: Brand activations, Corporate events, Product launches, Press events, Red carpet photo areas.",
+      brandingCollateral: "🎨 Branding Collateral\n\nMake your brand memorable with customized promotional items designed for events, corporate gifting, and brand activations.\n\n🎁 Available Options:\n• Customized Tote Bags & Branded Notebooks\n• Personalized Mugs & Custom Keychains\n• Other promotional items upon request\n\n✨ Perfect for: Brand activations, Corporate events, Product launches, Business giveaways, Promotional campaigns.",
+      pricing: "💰 Our Pricing Overview:\n\n• Mirror Photo Booth — 2 Hours: QAR 1,700 | 3 Hours: QAR 1,900 | 4 Hours: QAR 2,300 | Corporate: QAR 2,900\n• Retro Photo Booth — 2 Hours: QAR 800 | 3 Hours: QAR 1,000 | 4 Hours: QAR 1,200\n• 360 Video Booth — QAR 400 per Hour\n• Telephone Booth — 2 Hours: QAR 800 | Extra Hour: QAR 400\n• Private Photo Booth — 8 Hours: QAR 3,500\n• High Angle Photo Booth — 2 Hours: QAR 1,700 | 3 Hours: QAR 2,100 | 4 Hours: QAR 2,500\n• Photography / Videography — Contact us for a custom quote\n• Studio Rental — QAR 300 per Hour\n• Branding Photo Wall — QAR 1,500\n• Branding Collateral — Customized promotional merchandise\n\nReady to book? Contact us for a personalized quote.",
       booking: "📅 Ready to book? Here's how:\n\n1️⃣ Visit our Contact page and fill out the inquiry form\n2️⃣ WhatsApp us directly at +974 7156 7348\n3️⃣ Email us at info@mirrormirrorphotowallqatar.com\n\nWe'll get back to you within 4 business hours with a personalized quote and availability confirmation.\n\nFor weekends & peak season (Oct–Mar), we recommend booking 3–6 months in advance!",
       contactInfo: "📞 Here's how to reach us:\n\n📱 Phone: +974 7156 7348\n📧 Email: info@mirrormirrorphotowallqatar.com\n💬 WhatsApp: +974 7156 7348\n📸 Instagram: @mirrormirrorphotowallqatar\n\nOur team typically responds within 4 business hours. Feel free to reach out anytime!",
       location: "📍 Our Location:\n\nBuilding 17, Ishbiliya Street\nAl Hilal District, Doha, Qatar\n\nWe serve events across all of Qatar — from luxury hotels in West Bay to desert venues and private estates. No location is too far for us!",
@@ -434,7 +621,7 @@ export default {
       spaceRequirements: "📐 Setup Requirements:\n\n• Minimum space: 3m × 3m (10ft × 10ft)\n• Power: Standard 220V outlet within 5m of setup\n• Setup time: Approximately 60–90 minutes\n• We handle all setup and teardown!\n\nWe'll do a pre-event site visit to ensure everything is perfect for your venue. Just let us know your location!",
       customBranding: "🎨 Custom Branding Options:\n\nAll our packages include basic digital branding (logo overlay). Our premium options include:\n\n• Full UI/UX screen customization — 800 QAR\n• Custom animated overlays matching your theme\n• Branded print templates with your design\n• Custom AR filters for your event or brand\n• Branded photo frames and digital borders\n\nOur in-house design team will work with you to create a fully branded experience!",
       bookingTimeline: "📅 Booking Timeline:\n\n• Peak Season (Oct – Mar): Book 3–6 months ahead\n• Off-Peak Season (Apr – Sep): Book 1–3 months ahead\n• Last-minute availability: Sometimes possible!\n\nTo secure your preferred date, we recommend reaching out as early as possible. A 50% deposit confirms your booking.\n\n📱 Contact us now: +974 7156 7348",
-      addons: "⭐ Premium Add-ons:\n\n🖨️ Extra Print Station — 500 QAR\n   Reduces wait times for 200+ guests\n\n🖥️ Full Screen UI/UX Wrap — 800 QAR\n   Custom branding on mirror interfaces\n\n💐 Professional Floral Arch — 1,200 QAR\n   Premium silk flowers for your backdrop\n\n📽️ Live Slide Projection — 600 QAR\n   Real-time photo display across venue screens\n\nAll add-ons can be combined with any service package!",
+      addons: "⭐ Premium Add-ons:\n\n⏰ Extra Hour — QAR 400/hour\n   Extend the photo booth experience\n\n🚚 Transportation Outside Doha — QAR 200\n   Covers transport and logistics outside Doha\n\n🧲 Fridge Magnet Photo Prints — QAR 500\n   Get photo prints formatted as high-quality fridge magnets\n\n✉️ Additional Customized Envelopes — QAR 5 each\n   Custom branded protective envelopes for prints\n\nAll add-ons can be combined with any service package!",
       goodbye: "Thank you for chatting with us! 🙏\n\nWe'd love to be part of your next event. If you need anything else, don't hesitate to reach out:\n\n📱 WhatsApp: +974 7156 7348\n📧 Email: info@mirrormirrorphotowallqatar.com\n\nHave a wonderful day! ✨",
       fallback: "I'm not sure I understood that correctly. 🤔\n\nI can help you with:\n• Our services & pricing\n• Booking & availability\n• Contact information\n• Event requirements\n\nTry asking about one of these, or reach our team directly:\n📱 WhatsApp: +974 7156 7348"
     }

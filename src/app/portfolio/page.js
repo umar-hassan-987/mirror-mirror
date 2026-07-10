@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Play, ArrowRight, Loader2, X } from "lucide-react";
+import { Play, ArrowRight, Loader2, X, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Portfolio() {
@@ -17,58 +18,57 @@ export default function Portfolio() {
     { label: t("portfolio.gallery.filters.gala"), id: "gala" },
   ];
 
-  const projects = [
-    {
-      id: "royal-gala",
-      title: t("portfolio.gallery.projects.royalGala.title"),
-      category: "gala",
-      tags: [t("portfolio.gallery.tags.gala"), t("portfolio.gallery.tags.luxury")],
-      desc: t("portfolio.gallery.projects.royalGala.desc"),
-      image: "/images/studio1.webp",
-      gridSpan: "md:col-span-8",
-      aspect: "aspect-[16/10]"
-    },
-    {
-      id: "tech-summit",
-      title: t("portfolio.gallery.projects.techSummit.title"),
-      category: "corporate",
-      tags: [t("portfolio.gallery.tags.corporate")],
-      desc: t("portfolio.gallery.projects.techSummit.desc"),
-      image: "/images/studio2.webp",
-      gridSpan: "md:col-span-4",
-      aspect: "h-full min-h-[400px]"
-    },
-    {
-      id: "desert-wedding",
-      title: t("portfolio.gallery.projects.desertWedding.title"),
-      category: "wedding",
-      tags: [t("portfolio.gallery.tags.weddings")],
-      desc: t("portfolio.gallery.projects.desertWedding.desc"),
-      image: "/images/studio3.webp",
-      gridSpan: "md:col-span-4",
-      aspect: "aspect-square"
-    },
-    {
-      id: "mall-launch",
-      title: t("portfolio.gallery.projects.mallLaunch.title"),
-      category: "corporate",
-      tags: [t("portfolio.gallery.tags.corporate")],
-      desc: t("portfolio.gallery.projects.mallLaunch.desc"),
-      image: "/images/Polaroid.webp",
-      gridSpan: "md:col-span-4",
-      aspect: "aspect-square"
-    },
-    {
-      id: "charity-ball",
-      title: t("portfolio.gallery.projects.charityBall.title"),
-      category: "gala",
-      tags: [t("portfolio.gallery.tags.gala")],
-      desc: t("portfolio.gallery.projects.charityBall.desc"),
-      image: "/images/audio-video-booth.webp",
-      gridSpan: "md:col-span-4",
-      aspect: "aspect-square"
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const testimonials = t("home.testimonials") || [];
+
+  const nextTestimonial = () => {
+    if (testimonials.length > 0) {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }
-  ];
+  };
+
+  const prevTestimonial = () => {
+    if (testimonials.length > 0) {
+      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    }
+  };
+
+  const projects = Array.from({ length: 20 }, (_, idx) => {
+    const id = idx + 1;
+    let category = "wedding";
+    if (id % 3 === 2) category = "corporate";
+    else if (id % 3 === 0) category = "gala";
+
+    let tags = [];
+    if (category === "wedding") {
+      tags = [t("portfolio.gallery.tags.weddings"), t("portfolio.gallery.tags.luxury")];
+    } else if (category === "corporate") {
+      tags = [t("portfolio.gallery.tags.corporate")];
+    } else {
+      tags = [t("portfolio.gallery.tags.gala"), t("portfolio.gallery.tags.luxury")];
+    }
+
+    let gridSpan = "md:col-span-4";
+    let aspect = "aspect-square";
+    if (idx % 5 === 0) {
+      gridSpan = "md:col-span-8";
+      aspect = "aspect-[16/10]";
+    } else if (idx % 5 === 2) {
+      gridSpan = "md:col-span-4";
+      aspect = "h-full min-h-[400px]";
+    }
+
+    return {
+      id: `project-${id}`,
+      title: t(`portfolio.gallery.projects.project${id}.title`),
+      category: category,
+      tags: tags,
+      desc: t(`portfolio.gallery.projects.project${id}.desc`),
+      image: `/images/portfolio/portfolio-${id}.webp`,
+      gridSpan: gridSpan,
+      aspect: aspect
+    };
+  });
 
   const filteredProjects = activeFilter === "all" 
     ? projects 
@@ -193,36 +193,13 @@ export default function Portfolio() {
           {filteredProjects.map((p) => (
             <div
               key={p.id}
-              className={`${p.gridSpan} group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-surface-container-low border border-outline-variant/20`}
+              className={`${p.gridSpan} ${p.aspect} group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-surface-container-low border border-outline-variant/20`}
             >
-              <div className={`${p.aspect} overflow-hidden`}>
-                <img
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  alt={p.title}
-                  src={p.image}
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-85 transition-opacity"></div>
-              <div className="absolute bottom-0 left-0 p-8 w-full text-white">
-                <div className="flex gap-2 mb-3">
-                  {p.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-white/20 backdrop-blur-md border border-white/20 text-white py-1 px-3 rounded-full font-inter font-bold text-[10px] uppercase tracking-wider"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="font-plus-jakarta font-bold text-2xl md:text-3xl mb-2">{p.title}</h3>
-                <p className="font-inter text-sm text-white/80 max-w-lg mb-6 leading-relaxed">{p.desc}</p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 font-inter font-bold text-sm hover:gap-4 transition-all text-white border-b border-white pb-1 w-fit"
-                >
-                  {t("portfolio.gallery.bookSimilar")} <ArrowRight className={`w-4 h-4 ${dir === 'rtl' ? 'rotate-180' : ''}`} />
-                </Link>
-              </div>
+              <img
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                alt={p.title}
+                src={p.image}
+              />
             </div>
           ))}
         </div>
@@ -238,6 +215,60 @@ export default function Portfolio() {
               </div>
               <div className="font-inter font-bold text-xs uppercase tracking-widest text-on-surface-variant mt-2">
                 {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Client Reviews Section */}
+      <section className="py-16 md:py-24 px-margin-mobile md:px-gutter max-w-container-max mx-auto w-full border-t border-outline-variant/20">
+        <div className="max-w-xl mb-16">
+          <h2 className="font-plus-jakarta font-bold text-4xl text-on-surface mb-4">
+            {dir === 'rtl' ? 'ماذا يقول ' : 'What Our Clients '} <span className="gradient-text">{dir === 'rtl' ? 'عملاؤنا' : 'Say'}</span>
+          </h2>
+          <p className="font-inter text-base text-on-surface-variant leading-relaxed">
+            {dir === 'rtl' 
+              ? 'الآراء والتقييمات من بعض عملائنا الكرام الذين شاركناهم نجاح فعالياتهم.' 
+              : 'Read real feedback from event hosts, wedding couples, and corporate partners across Qatar.'}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {testimonials.map((t, idx) => (
+            <div 
+              key={idx}
+              className="flex flex-col sm:flex-row bg-surface-container-low border border-outline-variant/20 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
+            >
+              {/* Review Image Viewport */}
+              <div className="w-full sm:w-[180px] shrink-0 aspect-[4/5] sm:aspect-auto overflow-hidden relative">
+                <img 
+                  src={t.image} 
+                  alt={`Event review by ${t.author}`} 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/20 via-transparent to-transparent"></div>
+              </div>
+
+              {/* Review Content */}
+              <div className="p-8 flex flex-col justify-between flex-1">
+                <div className="space-y-4">
+                  {/* Stars */}
+                  <div className="flex gap-0.5 text-primary">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current text-primary" />
+                    ))}
+                  </div>
+                  {/* Quote */}
+                  <p className="font-inter text-sm text-on-surface-variant leading-relaxed italic">
+                    {t.quote}
+                  </p>
+                </div>
+                {/* Author Info */}
+                <div className="mt-6 pt-4 border-t border-outline-variant/10">
+                  <h4 className="font-plus-jakarta font-bold text-base text-on-surface">{t.author}</h4>
+                  <p className="font-inter text-xs text-on-surface-variant font-medium mt-1">{t.role}</p>
+                </div>
               </div>
             </div>
           ))}

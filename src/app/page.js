@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ArrowRight, Play, Camera, Video, Mic, PenTool, Gift, Star,
   ArrowUpRight, Phone, Mail, Loader2, Check, Sparkles, Heart, Printer,
-  ChevronDown
+  ChevronDown, ChevronLeft, ChevronRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Hero from "@/components/Hero/Hero";
@@ -21,6 +21,52 @@ export default function Home() {
   });
   const [submitStatus, setSubmitStatus] = useState("idle"); // idle, sending, success
   const [activeTab, setActiveTab] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const testimonials = t("home.testimonials") || [];
+
+  const nextTestimonial = () => {
+    if (testimonials.length > 0) {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }
+  };
+
+  const prevTestimonial = () => {
+    if (testimonials.length > 0) {
+      setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    }
+  };
+
+  useEffect(() => {
+    if (testimonials.length === 0) return;
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+
+  const homeProjects = [
+    { title: t("portfolio.gallery.projects.project1.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-1.webp" },
+    { title: t("portfolio.gallery.projects.project2.title"), type: t("portfolio.gallery.filters.corporate"), image: "/images/portfolio/portfolio-2.webp" },
+    { title: t("portfolio.gallery.projects.project3.title"), type: t("portfolio.gallery.filters.gala"), image: "/images/portfolio/portfolio-3.webp" },
+    { title: t("portfolio.gallery.projects.project4.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-4.webp" },
+    { title: t("portfolio.gallery.projects.project5.title"), type: t("portfolio.gallery.filters.corporate"), image: "/images/portfolio/portfolio-5.webp" },
+    { title: t("portfolio.gallery.projects.project6.title"), type: t("portfolio.gallery.filters.gala"), image: "/images/portfolio/portfolio-6.webp" },
+    { title: t("portfolio.gallery.projects.project7.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-7.webp" },
+    { title: t("portfolio.gallery.projects.project8.title"), type: t("portfolio.gallery.filters.corporate"), image: "/images/portfolio/portfolio-8.webp" },
+    { title: t("portfolio.gallery.projects.project9.title"), type: t("portfolio.gallery.filters.gala"), image: "/images/portfolio/portfolio-9.webp" },
+    { title: t("portfolio.gallery.projects.project10.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-10.webp" },
+    { title: t("portfolio.gallery.projects.project11.title"), type: t("portfolio.gallery.filters.corporate"), image: "/images/portfolio/portfolio-11.webp" },
+    { title: t("portfolio.gallery.projects.project12.title"), type: t("portfolio.gallery.filters.gala"), image: "/images/portfolio/portfolio-12.webp" },
+    { title: t("portfolio.gallery.projects.project13.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-13.webp" },
+    { title: t("portfolio.gallery.projects.project14.title"), type: t("portfolio.gallery.filters.corporate"), image: "/images/portfolio/portfolio-14.webp" },
+    { title: t("portfolio.gallery.projects.project15.title"), type: t("portfolio.gallery.filters.gala"), image: "/images/portfolio/portfolio-15.webp" },
+    { title: t("portfolio.gallery.projects.project16.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-16.webp" },
+    { title: t("portfolio.gallery.projects.project17.title"), type: t("portfolio.gallery.filters.corporate"), image: "/images/portfolio/portfolio-17.webp" },
+    { title: t("portfolio.gallery.projects.project18.title"), type: t("portfolio.gallery.filters.gala"), image: "/images/portfolio/portfolio-18.webp" },
+    { title: t("portfolio.gallery.projects.project19.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-19.webp" },
+    { title: t("portfolio.gallery.projects.project20.title"), type: t("portfolio.gallery.filters.corporate"), image: "/images/portfolio/portfolio-20.webp" }
+  ];
 
   const tabs = [
     {
@@ -76,37 +122,67 @@ export default function Home() {
       name: t("home.servicesSection.mirrorBooth.name"),
       icon: <Camera className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.mirrorBooth.desc"),
-      image: "/images/mirror-booth.webp"
+      image: "/images/mirror-default.webp"
     },
     {
-      name: t("home.servicesSection.audioVideoBooth.name"),
-      icon: <Phone className="w-5 h-5 text-secondary" />,
-      desc: t("home.servicesSection.audioVideoBooth.desc"),
-      image: "/images/audio-booth.webp"
+      name: t("home.servicesSection.retroBooth.name"),
+      icon: <Camera className="w-5 h-5 text-secondary" />,
+      desc: t("home.servicesSection.retroBooth.desc"),
+      image: "/images/retro-booth.webp"
     },
     {
-      name: t("home.servicesSection.polaroidGuestBook.name"),
-      icon: <Heart className="w-5 h-5 text-tertiary" />,
-      desc: t("home.servicesSection.polaroidGuestBook.desc"),
-      image: "/images/Polaroid.webp"
+      name: t("home.servicesSection.booth360.name"),
+      icon: <Video className="w-5 h-5 text-tertiary" />,
+      desc: t("home.servicesSection.booth360.desc"),
+      image: "/images/booth-360.webp"
     },
     {
-      name: t("home.servicesSection.brandingCollaterals.name"),
-      icon: <Gift className="w-5 h-5 text-primary" />,
-      desc: t("home.servicesSection.brandingCollaterals.desc"),
-      image: "/images/brand.webp"
+      name: t("home.servicesSection.telephoneBooth.name"),
+      icon: <Phone className="w-5 h-5 text-primary" />,
+      desc: t("home.servicesSection.telephoneBooth.desc"),
+      image: "/images/audio-video-booth.webp"
+    },
+    {
+      name: t("home.servicesSection.privateBooth.name"),
+      icon: <Camera className="w-5 h-5 text-secondary" />,
+      desc: t("home.servicesSection.privateBooth.desc"),
+      image: "/images/private-booth.webp"
+    },
+    {
+      name: t("home.servicesSection.highAngleBooth.name"),
+      icon: <Camera className="w-5 h-5 text-tertiary" />,
+      desc: t("home.servicesSection.highAngleBooth.desc"),
+      image: "/images/high-angle-booth.webp"
+    },
+    {
+      name: t("home.servicesSection.photography.name"),
+      icon: <Camera className="w-5 h-5 text-primary" />,
+      desc: t("home.servicesSection.photography.desc"),
+      image: "/images/photography.webp"
     },
     {
       name: t("home.servicesSection.videography.name"),
       icon: <Video className="w-5 h-5 text-secondary" />,
       desc: t("home.servicesSection.videography.desc"),
-      image: "/images/videography.webp"
+      image: "/images/videography-service.webp"
     },
     {
-      name: t("home.servicesSection.photography.name"),
+      name: t("home.servicesSection.studioRental.name"),
       icon: <Camera className="w-5 h-5 text-tertiary" />,
-      desc: t("home.servicesSection.photography.desc"),
-      image: "/images/photography.webp"
+      desc: t("home.servicesSection.studioRental.desc"),
+      image: "/images/studio1.webp"
+    },
+    {
+      name: t("home.servicesSection.brandingPhotoWall.name"),
+      icon: <PenTool className="w-5 h-5 text-primary" />,
+      desc: t("home.servicesSection.brandingPhotoWall.desc"),
+      image: "/images/branding-photowall.webp"
+    },
+    {
+      name: t("home.servicesSection.brandingCollaterals.name"),
+      icon: <Gift className="w-5 h-5 text-secondary" />,
+      desc: t("home.servicesSection.brandingCollaterals.desc"),
+      image: "/images/brand.webp"
     }
   ];
 
@@ -131,7 +207,7 @@ export default function Home() {
             let spanClass = "col-span-1 row-span-1 aspect-square";
             if (idx === 0) spanClass = "col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-2 aspect-[4/5] lg:aspect-auto"; // Tall
             else if (idx === 3) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 aspect-video lg:aspect-[2/1]"; // Wide
-            else if (idx === 4) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 aspect-video lg:aspect-[2/1]"; // Wide
+            else if (idx === 7) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 aspect-video lg:aspect-[2/1]"; // Wide
 
             return (
               <div key={idx} className={`group relative overflow-hidden bg-black ${spanClass} cursor-pointer`}>
@@ -356,30 +432,17 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-          {[
-            { title: t("home.portfolio.projects.royalGala"), type: t("home.portfolio.projects.wedding"), image: "/images/portfolio-hero.webp" },
-            { title: t("home.portfolio.projects.techSummit"), type: t("home.portfolio.projects.corporate"), image: "/images/tech-summit.jpg" },
-            { title: t("home.portfolio.projects.vipReception"), type: t("home.portfolio.projects.launch"), image: "/images/services-hero.webp" },
-            { title: t("home.portfolio.projects.neonBirthday"), type: t("home.portfolio.projects.privateParty"), image: "/images/neon-birthday.jpg" },
-            { title: t("home.portfolio.projects.behindTheScenes"), type: t("home.portfolio.projects.studioSetup"), image: "/images/behind-scenes.webp" },
-            { title: t("home.portfolio.projects.customPhotoWall"), type: t("home.portfolio.projects.activation"), image: "/images/mirror-booth-service.webp" },
-          ].map((proj, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+          {homeProjects.slice(0, 6).map((proj, idx) => (
             <div
               key={idx}
               className="relative group overflow-hidden bg-black aspect-square"
             >
               <img
-                className="w-full h-full object-cover opacity-90 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700 ease-in-out"
+                className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                 alt={proj.title}
                 src={proj.image}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                <span className="text-secondary text-[10px] uppercase font-inter font-bold tracking-widest mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                  {proj.type}
-                </span>
-                <h3 className="text-white font-plus-jakarta font-bold text-2xl md:text-3xl tracking-tight">{proj.title}</h3>
-              </div>
             </div>
           ))}
         </div>
@@ -397,39 +460,81 @@ export default function Home() {
       {/* Featured Testimonial Banner Section */}
       <section className="py-16 md:py-24 px-margin-mobile max-w-container-max mx-auto w-full">
         <div className="relative overflow-hidden bg-black p-8 md:p-12 lg:p-16 shadow-2xl">
-          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            {/* Testimonial Content */}
-            <div className="flex-1 space-y-8">
-              {/* Rating */}
-              <div className="flex gap-1 text-primary">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 fill-current text-primary" />
-                ))}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[80px] pointer-events-none z-0"></div>
+
+          {testimonials.length > 0 && (
+            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+              {/* Testimonial Content */}
+              <div className="flex-1 space-y-8 w-full">
+                {/* Rating */}
+                <div className="flex gap-1 text-primary">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 fill-current text-primary" />
+                  ))}
+                </div>
+
+                {/* Animated quote container */}
+                <div className="min-h-[160px] flex flex-col justify-center">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentTestimonial}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="space-y-6"
+                    >
+                      <blockquote className="font-plus-jakarta font-bold text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed tracking-tight">
+                        {testimonials[currentTestimonial].quote}
+                      </blockquote>
+
+                      {/* Author info */}
+                      <div>
+                        <p className="font-plus-jakarta font-extrabold text-xl text-white">
+                          {testimonials[currentTestimonial].author}
+                        </p>
+                        <p className="font-inter text-sm text-secondary uppercase tracking-widest font-bold mt-2">
+                          {testimonials[currentTestimonial].role}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Indicators / Dots */}
+                <div className="flex gap-2 pt-4">
+                  {testimonials.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentTestimonial(idx)}
+                      className={`h-2 transition-all duration-300 cursor-pointer rounded-none ${
+                        currentTestimonial === idx ? "w-8 bg-secondary" : "w-2 bg-neutral-800"
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
 
-              {/* Quote */}
-              <blockquote className="font-plus-jakarta font-bold text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed tracking-tight">
-                {t("home.testimonial.quote")}
-              </blockquote>
-
-              {/* Author info */}
-              <div>
-                <p className="font-plus-jakarta font-extrabold text-xl text-white">{t("home.testimonial.author")}</p>
-                <p className="font-inter text-sm text-secondary uppercase tracking-widest font-bold mt-2">{t("home.testimonial.role")}</p>
+              {/* Featured Photo / Review Image */}
+              <div className="w-full lg:w-[400px] shrink-0">
+                <div className="aspect-[4/5] rounded-none overflow-hidden relative group">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentTestimonial}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      src={testimonials[currentTestimonial].image}
+                      alt={`Review by ${testimonials[currentTestimonial].author}`}
+                      className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+                    />
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
-
-            {/* Featured Photo */}
-            <div className="w-full lg:w-[400px] shrink-0">
-              <div className="aspect-[4/5] rounded-none overflow-hidden relative group">
-                <img
-                  src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
-                  alt="Happy wedding couple guests"
-                  className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
-                />
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
