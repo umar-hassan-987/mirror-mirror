@@ -39,7 +39,7 @@ export default function About() {
   ];
 
   const timeline = t("about.timeline.events") || [];
-  
+
   const team = [
     {
       name: t("about.team.members.0.name"),
@@ -73,13 +73,13 @@ export default function About() {
       <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/about-hero.webp" 
-            alt="Luxury social event background" 
+          <Image
+            src="/images/about-hero.webp"
+            alt="Luxury social event background"
             fill
             priority
             sizes="100vw"
-            className="w-full h-full object-cover" 
+            className="w-full h-full object-cover"
           />
           {/* Strong gradient and solid overlay to ensure text readability */}
           <div className="absolute inset-0 bg-black/40 z-10"></div>
@@ -181,7 +181,7 @@ export default function About() {
                 <h3 className="font-plus-jakarta font-bold text-2xl mb-2 text-on-surface">{bentoItems[3].title}</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">{bentoItems[3].desc}</p>
               </div>
-              <div className="w-full md:w-48 h-48 rounded-none overflow-hidden shrink-0 border border-outline-variant/10">
+              <div className="w-full md:w-48 h-48 rounded-none overflow-hidden shrink-0 relative border border-outline-variant/10">
                 <Image className="w-full h-full object-cover" alt={bentoItems[3].alt} src={bentoItems[3].image} fill sizes="(max-width: 768px) 100vw, 192px" />
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 md:py-24 bg-surface-bright border-t border-outline-variant/20 w-full">
+      {/* <section className="py-16 md:py-24 bg-surface-bright border-t border-outline-variant/20 w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-xl">
@@ -247,7 +247,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
