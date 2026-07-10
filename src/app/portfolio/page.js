@@ -282,27 +282,37 @@ export default function Portfolio() {
 
       {/* Call to Action */}
       <section className="py-16 md:py-24 px-margin-mobile md:px-gutter max-w-container-max mx-auto text-center w-full">
-        <div className="glass-card p-12 md:p-24 rounded-[40px] relative overflow-hidden border border-outline-variant/30">
-          <div className="absolute inset-0 -z-10 opacity-5">
-            <div className="w-full h-full gradient-bg animate-pulse"></div>
+        <div className="p-12 md:p-24 rounded-[40px] relative overflow-hidden shadow-2xl border border-white/10 z-0">
+          <div className="absolute inset-0 z-0">
+            <Image 
+              src="/images/portfolio-hero.webp" 
+              alt="CTA Background" 
+              fill 
+              sizes="(max-width: 1024px) 100vw, 80vw"
+              className="w-full h-full object-cover"
+            />
           </div>
-          <h2 className="font-plus-jakarta font-extrabold text-4xl md:text-4xl md:text-5xl mb-8 leading-tight text-on-surface">
-              {t("portfolio.cta.titleLine1")} <br />
-              {t("portfolio.cta.titleLine2")} <span className="gradient-text italic">{t("portfolio.cta.titleHighlight")}</span>
-          </h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link
-              href="/contact"
-              className="gradient-bg text-white font-inter font-bold text-base py-5 px-8 md:px-12 rounded-full hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
-            >
-              {t("portfolio.cta.requestProposal")}
-            </Link>
-            <Link
-              href="/services"
-              className="gradient-border text-on-surface bg-white/20 font-inter font-bold text-base py-5 px-8 md:px-12 rounded-full hover:bg-surface-container-highest transition-all duration-300 active:scale-95"
-            >
-              {t("portfolio.cta.viewPackages")}
-            </Link>
+          <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-[2px]"></div>
+          
+          <div className="relative z-20">
+            <h2 className="font-plus-jakarta font-extrabold text-4xl md:text-4xl md:text-5xl mb-8 leading-tight text-white drop-shadow-lg">
+                {t("portfolio.cta.titleLine1")} <br />
+                {t("portfolio.cta.titleLine2")} <span className="bg-gradient-to-r from-pink-300 via-purple-200 to-[#731be5] text-transparent bg-clip-text italic">{t("portfolio.cta.titleHighlight")}</span>
+            </h2>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Link
+                href="/contact"
+                className="gradient-bg text-white font-inter font-bold text-base py-5 px-8 md:px-12 rounded-full shadow-[0_0_20px_rgba(115,27,229,0.3)] hover:shadow-[0_0_30px_rgba(115,27,229,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
+              >
+                {t("portfolio.cta.requestProposal")}
+              </Link>
+              <Link
+                href="/services"
+                className="border border-white/30 text-white bg-white/10 backdrop-blur-md font-inter font-bold text-base py-5 px-8 md:px-12 rounded-full hover:bg-white/20 hover:border-white/50 transition-all duration-300 active:scale-95"
+              >
+                {t("portfolio.cta.viewPackages")}
+              </Link>
+            </div>
           </div>
         </div>
       </section>

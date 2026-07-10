@@ -61,41 +61,43 @@ export default function Contact() {
     }
   ];
 
-  const contactItems = [
+  const directContactItems = [
     { icon: <Phone className="w-5 h-5" />, label: t("contact.getInTouch.phone"), value: "+974 7156 7348", href: "tel:+97471567348" },
-    { icon: <Mail className="w-5 h-5" />, label: t("contact.getInTouch.email"), value: "info@mirrormirrorphotowallqatar.net", href: "mailto:info@mirrormirrorphotowallqatar.net" },
-    { icon: <MessageSquare className="w-5 h-5" />, label: t("contact.getInTouch.whatsapp"), value: "+974 7156 7348", href: "https://wa.me/97471567348" },
+    { icon: <Mail className="w-5 h-5" />, label: t("contact.getInTouch.email"), value: "info@mirrormirrorphotowallqatar.net", href: "mailto:info@mirrormirrorphotowallqatar.net" }
+  ];
+
+  const socialContactItems = [
     { 
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-        </svg>
+        <Image src="/whatsapp.jfif" alt="WhatsApp" width={48} height={48} className="w-full h-full object-cover" />
+      ), 
+      label: t("contact.getInTouch.whatsapp"), 
+      href: "https://wa.me/97471567348",
+      brandClass: "hover:opacity-90 overflow-hidden"
+    },
+    { 
+      icon: (
+        <Image src="/instagram.jfif" alt="Instagram" width={48} height={48} className="w-full h-full object-cover" />
       ), 
       label: t("contact.getInTouch.instagram"), 
-      value: "@mirrormirrorphotowall.qatar", 
-      href: "https://www.instagram.com/mirrormirrorphotowall.qatar/" 
+      href: "https://www.instagram.com/mirrormirrorphotowall.qatar/",
+      brandClass: "hover:opacity-90 overflow-hidden"
     },
     { 
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-        </svg>
+        <Image src="/facebook.jfif" alt="Facebook" width={48} height={48} className="w-full h-full object-cover" />
       ), 
       label: t("contact.getInTouch.facebook"), 
-      value: "Mirror Mirror Photo Wall Qatar", 
-      href: "https://www.facebook.com/profile.php?id=61581485352697" 
+      href: "https://www.facebook.com/profile.php?id=61581485352697",
+      brandClass: "hover:opacity-90 overflow-hidden"
     },
     { 
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
-        </svg>
+        <Image src="/tiktok.jfif" alt="TikTok" width={48} height={48} className="w-full h-full object-cover" />
       ), 
       label: t("contact.getInTouch.tiktok"), 
-      value: "@mirror_mirror_photobooth", 
-      href: "https://www.tiktok.com/@mirror_mirror_photobooth?_r=1&_t=ZN-97tYy2rH8Ug" 
+      href: "https://www.tiktok.com/@mirror_mirror_photobooth?_r=1&_t=ZN-97tYy2rH8Ug",
+      brandClass: "hover:opacity-90 overflow-hidden"
     }
   ];
 
@@ -145,8 +147,10 @@ export default function Contact() {
           <div className="lg:col-span-5 space-y-12">
             <div className="space-y-8">
               <h2 className="font-plus-jakarta font-bold text-3xl text-on-surface">{t("contact.getInTouch.title")}</h2>
+              
+              {/* Direct Contact (Phone & Email) */}
               <div className="space-y-6">
-                {contactItems.map((item, i) => (
+                {directContactItems.map((item, i) => (
                   <a href={item.href} target="_blank" rel="noopener noreferrer" key={i} className="flex items-center gap-4 group cursor-pointer">
                     <div className="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary transition-transform group-hover:scale-110">
                       {item.icon}
@@ -158,19 +162,43 @@ export default function Contact() {
                   </a>
                 ))}
               </div>
+
+              {/* Social Channels Row */}
+              <div className="pt-6 border-t border-outline-variant/30">
+                <p className="font-inter font-bold text-xs text-on-surface-variant uppercase tracking-widest mb-4">
+                  {t("contact.getInTouch.socialMedia")}
+                </p>
+                <div className="flex gap-4 items-center">
+                  {socialContactItems.map((item, i) => (
+                    <a 
+                      href={item.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      key={i} 
+                      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-md ${item.brandClass}`}
+                      title={item.label}
+                    >
+                      {item.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Map Placeholder */}
             <div className="rounded-[32px] overflow-hidden shadow-sm h-[380px] bg-surface-container-low border border-outline-variant/30 relative group">
               <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
                 <div className="w-full h-full relative overflow-hidden">
-                  <Image 
-                    src="/images/audio-video-booth.webp"
-                    alt="Map placeholder"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover"
-                  />
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115408.06798083861!2d51.43679854406209!3d25.283955681156828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c534ffdce87f%3A0x44d9319f78cfd4b1!2sDoha%2C%20Qatar!5e0!3m2!1sen!2sus!4v1715000000000!5m2!1sen!2sus"
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full object-cover"
+                  ></iframe>
                 </div>
               </div>
               <div className="absolute bottom-6 left-6 right-6 p-6 glass-card rounded-2xl flex justify-between items-center translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white">

@@ -513,6 +513,7 @@ export default {
       instagram: "Instagram",
       facebook: "Facebook",
       tiktok: "TikTok",
+      socialMedia: "Social Media",
       addressTitle: "Al Hilal District",
       addressSubtitle: "Doha, Qatar"
     },
@@ -545,6 +546,7 @@ export default {
       q1: { q: "How much space is required for the Mirror Mirror Photo Wall?", a: "We recommend a minimum footprint of 3m x 3m to allow for the hardware, background, and guest flow. A standard 220V power outlet is also required within 5 meters of the setup." },
       q2: { q: "Do you offer custom digital branding?", a: "Absolutely. All our packages include basic digital branding (logo overlay). Our premium tiers offer full UI/UX customization of the screen interface and animated overlays to match your event theme perfectly." },
       q3: { q: "How far in advance should I book?", a: "For weekends and peak seasons (October–March in Qatar), we recommend booking at least 3-6 months in advance. However, we do occasionally have last-minute availability, so please inquire regardless." },
+      q4: { q: "How do guests receive their photos?", a: "Guests can instantly receive their digital photos via WhatsApp, Email, or QR Code right at the mirror. A full digital gallery is also provided to the host after the event." }
     }
   },
   blog: {
