@@ -185,7 +185,13 @@ export default {
         vipReception: "VIP Reception",
         neonBirthday: "Neon Birthday",
         behindTheScenes: "Behind The Scenes",
-        customPhotoWall: "Custom Photo Wall"
+        customPhotoWall: "Custom Photo Wall",
+        sunlifeOpening: "Sunlife Pharmacy Opening",
+        rnbOpening: "RNB Branch Opening",
+        hamadHospital: "Hamad Hospital",
+        graduation: "Graduation",
+        weddingProject: "Wedding",
+        birthdaysPrivate: "Birthdays / Private Events"
       },
       viewMore: "View More"
     },

@@ -502,12 +502,12 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {[
-            { title: "SUNLIFE PHARMACY OPENING", image: "/images/nadia.webp" },
-            { title: "RNB BRANCH OPENING", image: "/images/rnb-opening.png" },
-            { title: "HAMAD HOSPITAL", image: "/images/hamad-hospital.jpg" },
-            { title: "GRADUATION", image: "/images/home-projects/graduation.png" },
-            { title: "WEDDING", image: "/images/home-projects/wedding.png" },
-            { title: "BIRTHDAYS / PRIVATE EVENTS", image: "/images/birthday.jpg" }
+            { title: t("home.portfolio.projects.sunlifeOpening"), image: "/images/nadia.webp" },
+            { title: t("home.portfolio.projects.rnbOpening"), image: "/images/rnb-opening.png" },
+            { title: t("home.portfolio.projects.hamadHospital"), image: "/images/hamad-hospital.jpg" },
+            { title: t("home.portfolio.projects.graduation"), image: "/images/home-projects/graduation.png" },
+            { title: t("home.portfolio.projects.weddingProject"), image: "/images/home-projects/wedding.png" },
+            { title: t("home.portfolio.projects.birthdaysPrivate"), image: "/images/birthday.jpg" }
           ].map((proj, idx) => (
             <div
               key={idx}
