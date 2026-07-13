@@ -136,13 +136,13 @@ export default function Home() {
       name: t("home.servicesSection.mirrorBooth.name"),
       icon: <Camera className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.mirrorBooth.desc"),
-      image: "/images/mirror-default.webp"
+      image: "/images/mirror-photo-booth.jpg"
     },
     {
       name: t("home.servicesSection.retroBooth.name"),
       icon: <Camera className="w-5 h-5 text-secondary" />,
       desc: t("home.servicesSection.retroBooth.desc"),
-      image: "/images/retro-booth.webp"
+      image: "/images/audio-video-booth.webp"
     },
     {
       name: t("home.servicesSection.booth360.name"),
@@ -154,7 +154,7 @@ export default function Home() {
       name: t("home.servicesSection.telephoneBooth.name"),
       icon: <Phone className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.telephoneBooth.desc"),
-      image: "/images/audio-video-booth.webp"
+      image: "/images/audio-video-telepone booth.jpg"
     },
     {
       name: t("home.servicesSection.privateBooth.name"),
@@ -172,13 +172,13 @@ export default function Home() {
       name: t("home.servicesSection.photography.name"),
       icon: <Camera className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.photography.desc"),
-      image: "/images/photography.webp"
+      image: "/images/photography.jpg"
     },
     {
       name: t("home.servicesSection.videography.name"),
       icon: <Video className="w-5 h-5 text-secondary" />,
       desc: t("home.servicesSection.videography.desc"),
-      image: "/images/videography-service.webp"
+      image: "/images/videography.jpg"
     },
     {
       name: t("home.servicesSection.studioRental.name"),
@@ -196,7 +196,7 @@ export default function Home() {
       name: t("home.servicesSection.brandingCollaterals.name"),
       icon: <Gift className="w-5 h-5 text-secondary" />,
       desc: t("home.servicesSection.brandingCollaterals.desc"),
-      image: "/images/brand.webp"
+      image: "/images/branding-colateral.jpg"
     }
   ];
 
@@ -206,7 +206,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section id="homepage-next-section" className="pt-32 pb-20 px-margin-mobile max-w-container-max mx-auto w-full">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -222,7 +222,7 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -238,8 +238,8 @@ export default function Home() {
             else if (idx === 7) spanClass = "col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 aspect-video lg:aspect-[2/1]"; // Wide
 
             return (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
@@ -304,7 +304,7 @@ export default function Home() {
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -451,7 +451,7 @@ export default function Home() {
           </div>
 
           {/* Stats Bar */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -461,8 +461,8 @@ export default function Home() {
             className="mt-20 pt-8 border-t border-gray-200 grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {stats.map((stat, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
@@ -480,7 +480,7 @@ export default function Home() {
 
       {/* Explore Our Work (Projects) Section */}
       <section className="py-32 px-margin-mobile max-w-container-max mx-auto w-full bg-white relative">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -500,19 +500,33 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-          {homeProjects.slice(0, 6).map((proj, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+          {[
+            { title: "SUNLIFE PHARMACY OPENING", image: "/images/nadia.webp" },
+            { title: "RNB BRANCH OPENING", image: "/images/rnb-opening.png" },
+            { title: "HAMAD HOSPITAL", image: "/images/hamad-hospital.jpg" },
+            { title: "GRADUATION", image: "/images/home-projects/graduation.png" },
+            { title: "WEDDING", image: "/images/home-projects/wedding.png" },
+            { title: "BIRTHDAYS / PRIVATE EVENTS", image: "/images/birthday.jpg" }
+          ].map((proj, idx) => (
             <div
               key={idx}
               className="relative group overflow-hidden bg-black aspect-square"
             >
               <Image
-                className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                 alt={proj.title}
                 src={proj.image}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none group-hover:from-black/60 transition-colors duration-500"></div>
+
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-white font-bold text-xl md:text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                  {proj.title}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -577,9 +591,8 @@ export default function Home() {
                     <button
                       key={idx}
                       onClick={() => setCurrentTestimonial(idx)}
-                      className={`h-2 transition-all duration-300 cursor-pointer rounded-none ${
-                        currentTestimonial === idx ? "w-8 bg-secondary" : "w-2 bg-neutral-800"
-                      }`}
+                      className={`h-2 transition-all duration-300 cursor-pointer rounded-none ${currentTestimonial === idx ? "w-8 bg-secondary" : "w-2 bg-neutral-800"
+                        }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
@@ -628,7 +641,7 @@ export default function Home() {
               {t("home.contact.subtitle")}
             </p>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -636,7 +649,7 @@ export default function Home() {
             className="bg-gray-50 p-8 md:p-6 md:p-12 rounded-none border border-gray-200 relative shadow-sm"
           >
             {submitStatus === "success" ? (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center text-center space-y-6 py-12"
@@ -658,70 +671,70 @@ export default function Home() {
                 </button>
               </motion.div>
             ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.nameLabel")}</label>
-                <input
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 h-12 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
-                  placeholder={t("home.contact.form.namePlaceholder")}
-                  type="text"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.emailLabel")}</label>
-                <input
-                  value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 h-12 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
-                  placeholder={t("home.contact.form.emailPlaceholder")}
-                  type="email"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.phoneLabel")}</label>
-                <input
-                  value={formState.phone}
-                  onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 h-12 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
-                  placeholder={t("home.contact.form.phonePlaceholder")}
-                  type="tel"
-                  dir="ltr"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.messageLabel")}</label>
-                <textarea
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  required
-                  className="w-full px-4 py-3 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
-                  placeholder={t("home.contact.form.messagePlaceholder")}
-                  rows="4"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                disabled={submitStatus !== "idle"}
-                className={`w-full py-4 rounded-none font-inter font-bold text-lg text-white tracking-widest uppercase transition-all ${submitStatus === "success"
-                  ? "gradient-bg text-white"
-                  : "bg-black hover:bg-gray-900"
-                  } flex items-center justify-center gap-2 mt-4`}
-              >
-                {submitStatus === "sending" && (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                )}
-                {submitStatus === "sending" ? (
-                  t("home.contact.form.sending")
-                ) : (
-                  t("home.contact.form.submitBtn")
-                )}
-              </button>
-            </form>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.nameLabel")}</label>
+                  <input
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    required
+                    className="w-full px-4 py-3 h-12 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
+                    placeholder={t("home.contact.form.namePlaceholder")}
+                    type="text"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.emailLabel")}</label>
+                  <input
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    required
+                    className="w-full px-4 py-3 h-12 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
+                    placeholder={t("home.contact.form.emailPlaceholder")}
+                    type="email"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.phoneLabel")}</label>
+                  <input
+                    value={formState.phone}
+                    onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                    required
+                    className="w-full px-4 py-3 h-12 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
+                    placeholder={t("home.contact.form.phonePlaceholder")}
+                    type="tel"
+                    dir="ltr"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className={`font-inter font-bold text-gray-800 uppercase text-xs tracking-widest block ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>{t("home.contact.form.messageLabel")}</label>
+                  <textarea
+                    value={formState.message}
+                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    required
+                    className="w-full px-4 py-3 rounded-none border border-gray-300 bg-white transition-all text-black focus:border-black focus:ring-1 focus:ring-black outline-none"
+                    placeholder={t("home.contact.form.messagePlaceholder")}
+                    rows="4"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  disabled={submitStatus !== "idle"}
+                  className={`w-full py-4 rounded-none font-inter font-bold text-lg text-white tracking-widest uppercase transition-all ${submitStatus === "success"
+                    ? "gradient-bg text-white"
+                    : "bg-black hover:bg-gray-900"
+                    } flex items-center justify-center gap-2 mt-4`}
+                >
+                  {submitStatus === "sending" && (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  )}
+                  {submitStatus === "sending" ? (
+                    t("home.contact.form.sending")
+                  ) : (
+                    t("home.contact.form.submitBtn")
+                  )}
+                </button>
+              </form>
             )}
           </motion.div>
         </div>

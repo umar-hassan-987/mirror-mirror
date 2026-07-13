@@ -18,7 +18,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       setIsScrolled(currentScrollY > 50);
 
       // Hide header when scrolling down past hero section (approx 600px), show when scrolling up
@@ -30,7 +30,7 @@ export default function Header() {
 
       lastScrollY.current = currentScrollY;
     };
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -44,22 +44,17 @@ export default function Header() {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isHidden ? "-translate-y-full" : "translate-y-0"
-    } ${
-      isScrolled 
-        ? "bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm h-16" 
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHidden ? "-translate-y-full" : "translate-y-0"
+      } ${isScrolled
+        ? "bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 shadow-sm h-16"
         : "bg-transparent h-20"
-    }`}>
+      }`}>
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-full">
-        <Link 
-          href="/" 
-          className={`flex items-center gap-3 transition-colors duration-300 ${
-            isScrolled ? "text-on-surface" : "text-white"
-          }`}
+        <Link
+          href="/"
+          className={`flex items-center transition-colors duration-300`}
         >
-          <Image src="/logo.png" alt="Mirror Mirror Logo" width={40} height={40} priority className="h-8 md:h-10 w-auto object-contain" />
-          <span className="font-plus-jakarta text-xl md:text-2xl font-bold tracking-tight">Mirror Mirror</span>
+          <Image src={isScrolled ? "/black-logo.png" : "/white-logo.png"} alt="Mirror Mirror Logo" width={160} height={50} priority className="h-10 md:h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -70,15 +65,14 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-inter font-semibold text-sm tracking-wider uppercase transition-all duration-300 ${
-                  isActive
-                    ? isScrolled 
-                      ? "text-primary border-b-2 border-primary pb-1" 
+                className={`font-inter font-semibold text-sm tracking-wider uppercase transition-all duration-300 ${isActive
+                    ? isScrolled
+                      ? "text-primary border-b-2 border-primary pb-1"
                       : "text-white border-b-2 border-white pb-1"
-                    : isScrolled 
-                      ? "text-on-surface-variant hover:text-primary" 
+                    : isScrolled
+                      ? "text-on-surface-variant hover:text-primary"
                       : "text-white/80 hover:text-white"
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
@@ -89,26 +83,24 @@ export default function Header() {
         {/* Action Button & Language Switcher & Mobile Menu Trigger */}
         <div className="flex items-center gap-4">
           <div className={`hidden sm:flex items-center p-1 rounded-full border transition-colors relative ${isScrolled ? 'bg-surface-container-high border-outline-variant/30' : 'bg-black/20 backdrop-blur-sm border-white/10'}`} dir="ltr">
-            <div 
+            <div
               className={`absolute top-1 bottom-1 w-[calc(50%-4px)] gradient-bg rounded-full shadow-md transition-transform duration-300 ease-in-out ${locale === 'en' ? 'translate-x-0 left-1' : 'translate-x-full left-1'}`}
             ></div>
-            <button 
+            <button
               onClick={() => setLocale('en')}
-              className={`relative z-10 w-12 py-1.5 text-xs font-inter font-bold transition-colors ${
-                locale === 'en' 
-                  ? 'text-white' 
+              className={`relative z-10 w-12 py-1.5 text-xs font-inter font-bold transition-colors ${locale === 'en'
+                  ? 'text-white'
                   : isScrolled ? 'text-on-surface-variant hover:text-primary' : 'text-white/50 hover:text-white/80'
-              }`}
+                }`}
             >
               EN
             </button>
-            <button 
+            <button
               onClick={() => setLocale('ar')}
-              className={`relative z-10 w-12 py-1.5 text-xs font-inter font-bold transition-colors ${
-                locale === 'ar' 
-                  ? 'text-white' 
+              className={`relative z-10 w-12 py-1.5 text-xs font-inter font-bold transition-colors ${locale === 'ar'
+                  ? 'text-white'
                   : isScrolled ? 'text-on-surface-variant hover:text-primary' : 'text-white/50 hover:text-white/80'
-              }`}
+                }`}
             >
               عربي
             </button>
@@ -121,9 +113,8 @@ export default function Header() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors focus:outline-none ${
-              isScrolled ? "text-on-surface" : "text-white"
-            }`}
+            className={`md:hidden w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors focus:outline-none ${isScrolled ? "text-on-surface" : "text-white"
+              }`}
             aria-label="Toggle menu"
           >
             {isOpen ? (
@@ -137,9 +128,8 @@ export default function Header() {
 
       {/* Mobile Drawer Menu */}
       {isOpen && (
-        <div className={`md:hidden fixed inset-0 ${
-          isScrolled ? "top-16" : "top-20"
-        } bg-slate-900/95 backdrop-blur-lg z-40 transition-all duration-300 animate-fade-in`}>
+        <div className={`md:hidden fixed inset-0 ${isScrolled ? "top-16" : "top-20"
+          } bg-slate-900/95 backdrop-blur-lg z-40 transition-all duration-300 animate-fade-in`}>
           <nav className="flex flex-col items-center gap-8 pt-16 h-full">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
@@ -148,9 +138,8 @@ export default function Header() {
                   key={item.href}
                   onClick={() => setIsOpen(false)}
                   href={item.href}
-                  className={`font-inter font-bold text-lg tracking-widest uppercase transition-colors ${
-                    isActive ? "text-primary-fixed-dim" : "text-white/80 hover:text-white"
-                  }`}
+                  className={`font-inter font-bold text-lg tracking-widest uppercase transition-colors ${isActive ? "text-primary-fixed-dim" : "text-white/80 hover:text-white"
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -165,16 +154,16 @@ export default function Header() {
             </Link>
 
             <div className="flex items-center p-1.5 mt-8 bg-black/20 backdrop-blur-sm rounded-full border border-white/10 relative" dir="ltr">
-              <div 
+              <div
                 className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] gradient-bg rounded-full shadow-md transition-transform duration-300 ease-in-out ${locale === 'en' ? 'translate-x-0 left-1.5' : 'translate-x-full left-1.5'}`}
               ></div>
-              <button 
+              <button
                 onClick={() => { setLocale('en'); setIsOpen(false); }}
                 className={`relative z-10 w-24 py-2 text-sm font-inter font-bold transition-colors ${locale === 'en' ? 'text-white' : 'text-white/50 hover:text-white/80'}`}
               >
                 English
               </button>
-              <button 
+              <button
                 onClick={() => { setLocale('ar'); setIsOpen(false); }}
                 className={`relative z-10 w-24 py-2 text-sm font-inter font-bold transition-colors ${locale === 'ar' ? 'text-white' : 'text-white/50 hover:text-white/80'}`}
               >

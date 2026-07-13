@@ -16,15 +16,7 @@ export default function Footer() {
           {/* Brand & Intro */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 group mb-8">
-              <Image src="/logo.png" alt="Mirror Mirror Logo" width={40} height={40} loading="lazy" className="h-10 w-auto object-contain shrink-0" />
-              <div className="flex flex-col items-start leading-none">
-                <span className="font-plus-jakarta font-extrabold text-lg tracking-wider text-white">
-                  MIRROR.MIRROR
-                </span>
-                <span className="bg-primary/20 text-[8px] text-primary px-1.5 py-0.5 mt-0.5 font-inter font-bold tracking-widest uppercase rounded-sm leading-none border border-primary/30">
-                  {t("footer.brandSubtitle")}
-                </span>
-              </div>
+              <Image src="/white-logo.png" alt="Mirror Mirror Logo" width={160} height={50} loading="lazy" className="h-12 w-auto object-contain shrink-0" />
             </Link>
             <p className="font-inter text-sm text-white/60 leading-relaxed max-w-sm">
               {t("footer.description")}

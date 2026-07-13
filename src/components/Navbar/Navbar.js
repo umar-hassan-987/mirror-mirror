@@ -66,17 +66,7 @@ export default function Navbar() {
     }`}>
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto h-full">
         <Link href="/" className="flex items-center gap-3 group">
-          <Image src="/logo.png" alt="Mirror Mirror Logo" width={40} height={40} priority className="h-8 md:h-10 w-auto object-contain shrink-0" />
-          <div className="flex flex-col items-start leading-none">
-            <span className={`font-plus-jakarta font-extrabold text-base md:text-lg tracking-wider transition-colors duration-300 ${
-              (isScrolled || isOpen) ? "text-on-surface" : "text-white"
-            }`}>
-              MIRROR.MIRROR
-            </span>
-            <span className="bg-purple-600 text-[8px] text-white px-1.5 py-0.5 mt-0.5 font-inter font-bold tracking-widest uppercase rounded-sm leading-none">
-              {t("nav.brandSubtitle")}
-            </span>
-          </div>
+          <Image src={(isScrolled || isOpen) ? "/black-logo.png" : "/white-logo.png"} alt="Mirror Mirror Logo" width={160} height={50} priority className="h-10 md:h-12 w-auto object-contain shrink-0" />
         </Link>
 
         {/* Desktop Navigation */}
