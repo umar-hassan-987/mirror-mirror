@@ -440,7 +440,7 @@ export default {
   portfolio: {
     hero: {
       label: "Visual Experience",
-      titleLine1: "Our 2024",
+      titleLine1: "Our 2026",
       titleHighlight: "Showreel",
       subtitle: "Step inside the magic. Watch how Mirror Mirror transforms standard events into immersive digital experiences that captivate guests."
     },

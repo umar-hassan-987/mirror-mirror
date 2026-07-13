@@ -308,7 +308,7 @@ export default {
     hero: {
       label: "تجربة بصرية",
       titleLine1: "أعمالنا لعام",
-      titleHighlight: "٢٠٢٤",
+      titleHighlight: "٢٠٢٦",
       subtitle: "خطوة داخل السحر. شاهد كيف تحول ميرور ميرور الفعاليات العادية إلى تجارب رقمية غامرة تأسر الضيوف."
     },
     gallery: {

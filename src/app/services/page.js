@@ -14,7 +14,7 @@ export default function Services() {
       name: t("services.list.mirrorBooth.name"),
       icon: <Camera className="w-8 h-8 text-primary" />,
       desc: t("services.list.mirrorBooth.desc"),
-      image: "/images/mirror-default.webp",
+      image: "/images/mirror-photo-booth.jpg",
       price: t("services.list.mirrorBooth.price"),
       duration: t("services.list.mirrorBooth.duration"),
       specs: t("services.list.mirrorBooth.specs") || []
@@ -24,7 +24,7 @@ export default function Services() {
       name: t("services.list.retroBooth.name"),
       icon: <Camera className="w-8 h-8 text-secondary" />,
       desc: t("services.list.retroBooth.desc"),
-      image: "/images/retro-booth.webp",
+      image: "/images/audio-video-booth.webp",
       price: t("services.list.retroBooth.price"),
       duration: t("services.list.retroBooth.duration"),
       specs: t("services.list.retroBooth.specs") || []
@@ -44,7 +44,7 @@ export default function Services() {
       name: t("services.list.telephoneBooth.name"),
       icon: <Mic className="w-8 h-8 text-primary" />,
       desc: t("services.list.telephoneBooth.desc"),
-      image: "/images/audio-video-booth.webp",
+      image: "/images/audio-video-telepone booth.jpg",
       price: t("services.list.telephoneBooth.price"),
       duration: t("services.list.telephoneBooth.duration"),
       specs: t("services.list.telephoneBooth.specs") || []
@@ -74,7 +74,7 @@ export default function Services() {
       name: t("services.list.photography.name"),
       icon: <Camera className="w-8 h-8 text-primary" />,
       desc: t("services.list.photography.desc"),
-      image: "/images/photography.webp",
+      image: "/images/photography.jpg",
       price: t("services.list.photography.price"),
       duration: t("services.list.photography.duration"),
       specs: t("services.list.photography.specs") || []
@@ -84,7 +84,7 @@ export default function Services() {
       name: t("services.list.videography.name"),
       icon: <Video className="w-8 h-8 text-secondary" />,
       desc: t("services.list.videography.desc"),
-      image: "/images/videography-service.webp",
+      image: "/images/videography.jpg",
       price: t("services.list.videography.price"),
       duration: t("services.list.videography.duration"),
       specs: t("services.list.videography.specs") || []
@@ -114,7 +114,7 @@ export default function Services() {
       name: t("services.list.brandingCollaterals.name"),
       icon: <Gift className="w-8 h-8 text-secondary" />,
       desc: t("services.list.brandingCollaterals.desc"),
-      image: "/images/brand.webp",
+      image: "/images/branding-colateral.jpg",
       price: t("services.list.brandingCollaterals.price"),
       duration: t("services.list.brandingCollaterals.duration"),
       specs: t("services.list.brandingCollaterals.specs") || []
