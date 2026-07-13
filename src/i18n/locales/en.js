@@ -7,7 +7,29 @@ export default {
     blog: "Blog",
     contact: "Contact",
     bookNow: "Book Now",
-    brandSubtitle: "PHOTOWALL QATAR"
+    brandSubtitle: "PHOTOWALL QATAR",
+    destination: "Destination",
+    team: "Team",
+    destinations: {
+      qatar: "Qatar",
+      saudi: "Saudi",
+      dubai: "Dubai",
+      lebanon: "Lebanon",
+      philippines: "Philippines"
+    },
+    serviceItems: {
+      mirrorBooth: "Mirror Photobooth",
+      retroBooth: "Retro Photobooth",
+      privateBooth: "Private Photobooth",
+      highAngleBooth: "High Angle Booth",
+      booth360: "360 Booth",
+      telephoneBooth: "Audio/ Video Telephone Booth",
+      photowall: "Photowall",
+      videography: "Videography",
+      photography: "Photography",
+      brandingPhotowall: "Branding Photowall",
+      brandingCollaterals: "Branding Collaterals"
+    }
   },
   footer: {
     brandSubtitle: "PHOTOWALL QATAR",
@@ -23,7 +45,7 @@ export default {
     terms: "Terms of Service"
   },
   hero: {
-    label: "WELCOME TO MIRROR MIRROR",
+    label: "WELCOME TO MIRROR, MIRROR PHOTOWALL",
     headlineLine1: "We Capture Your",
     headlineLine2: "Best",
     headlineHighlight: "Memories",

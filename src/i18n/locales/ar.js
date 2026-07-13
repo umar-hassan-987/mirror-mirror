@@ -7,7 +7,29 @@ export default {
     blog: "المدونة",
     contact: "اتصل بنا",
     bookNow: "احجز الآن",
-    brandSubtitle: "فوتووال قطر"
+    brandSubtitle: "فوتووال قطر",
+    destination: "الوجهات",
+    team: "فريقنا",
+    destinations: {
+      qatar: "قطر",
+      saudi: "السعودية",
+      dubai: "دبي",
+      lebanon: "لبنان",
+      philippines: "الفلبين"
+    },
+    serviceItems: {
+      mirrorBooth: "كابينة تصوير المرآة",
+      retroBooth: "كابينة التصوير الكلاسيكية",
+      privateBooth: "كابينة التصوير الخاصة",
+      highAngleBooth: "كابينة الزاوية العالية",
+      booth360: "كابينة ٣٦٠",
+      telephoneBooth: "كابينة الهاتف الصوتي والمرئي",
+      photowall: "جدار الصور",
+      videography: "تصوير الفيديو",
+      photography: "التصوير الفوتوغرافي",
+      brandingPhotowall: "جدار صور العلامة التجارية",
+      brandingCollaterals: "مواد العلامة التجارية"
+    }
   },
   footer: {
     brandSubtitle: "فوتوول قطر",
@@ -23,7 +45,7 @@ export default {
     terms: "شروط الخدمة"
   },
   hero: {
-    label: "مرحباً بكم في ميرور ميرور",
+    label: "مرحباً بكم في ميرور، ميرور فوتو وول",
     headlineLine1: "نحن نلتقط",
     headlineLine2: "أجمل",
     headlineHighlight: "ذكرياتك",

@@ -47,8 +47,12 @@ export default function Footer() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div>
                 <p className="font-inter text-xs text-white/50 uppercase tracking-widest mb-2">{t("footer.studioAddress")}</p>
-                <p className="font-inter text-sm text-white/90 leading-relaxed">
+                <p className="font-inter text-sm text-white/90 leading-relaxed mb-4">
                   {t("footer.addressLine1")}<br />{t("footer.addressLine2")}
+                </p>
+                <p className="font-inter text-xs text-white/50 uppercase tracking-widest mb-2">{t("nav.destination") || "DESTINATION"}</p>
+                <p className="font-inter text-sm text-white/90 leading-relaxed">
+                  {t("nav.destinations.qatar") || "Qatar"}, {t("nav.destinations.saudi") || "Saudi"}, {t("nav.destinations.dubai") || "Dubai"}, {t("nav.destinations.lebanon") || "Lebanon"}, {t("nav.destinations.philippines") || "Philippines"}
                 </p>
               </div>
               <div>
