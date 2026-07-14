@@ -76,7 +76,7 @@ export default function Portfolio() {
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/portHero.webp"
+            src="/images/services-hero.webp"
             alt="Vibrant event background"
             fill
             priority
