@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroVideoCarousel({ 
@@ -10,7 +10,9 @@ export default function HeroVideoCarousel({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const videoRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef(null);
+  const loadedVideos = useRef(new Set());
 
   // Monitor user accessibility settings for reduced motion
   useEffect(() => {
@@ -21,16 +23,41 @@ export default function HeroVideoCarousel({
     return () => mediaQuery.removeEventListener("change", listener);
   }, []);
 
-  // Set up the interval timer to increment video indexes
+  // Intersection Observer — only load/play videos when hero is visible
   useEffect(() => {
-    if (videos.length <= 1) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    const el = containerRef.current;
+    if (el) observer.observe(el);
+    return () => { if (el) observer.unobserve(el); };
+  }, []);
+
+  // Mark first video as loaded immediately
+  useEffect(() => {
+    if (videos.length > 0) {
+      loadedVideos.current.add(0);
+    }
+  }, [videos]);
+
+  // Set up the interval timer to increment video indexes (only when visible)
+  useEffect(() => {
+    if (videos.length <= 1 || !isVisible) return;
 
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % videos.length);
+      setCurrentIndex((prev) => {
+        const next = (prev + 1) % videos.length;
+        // Pre-mark the video after next as loaded so it starts buffering
+        const preloadIdx = (next + 1) % videos.length;
+        loadedVideos.current.add(next);
+        loadedVideos.current.add(preloadIdx);
+        return next;
+      });
     }, interval);
 
     return () => clearInterval(timer);
-  }, [videos.length, interval]);
+  }, [videos.length, interval, isVisible]);
 
   // Framer Motion variants representing outgoing / incoming states
   const variants = {
@@ -61,10 +88,8 @@ export default function HeroVideoCarousel({
 
   if (!videos || videos.length === 0) return null;
 
-  const nextIndex = (currentIndex + 1) % videos.length;
-
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden bg-black z-0">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full overflow-hidden bg-black z-0">
       <AnimatePresence mode="popLayout">
         <motion.div
           key={currentIndex}
@@ -74,30 +99,19 @@ export default function HeroVideoCarousel({
           variants={variants}
           className="absolute inset-0 w-full h-full overflow-hidden"
         >
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            playsInline
-            loop
-            preload="auto"
-            className="w-full h-full object-cover scale-[1.01]"
-            src={videos[currentIndex]}
-          />
+          {isVisible && (
+            <video
+              autoPlay
+              muted
+              playsInline
+              loop
+              preload="metadata"
+              className="w-full h-full object-cover scale-[1.01]"
+              src={videos[currentIndex]}
+            />
+          )}
         </motion.div>
       </AnimatePresence>
-
-      {/* Preload ONLY the next video (hidden), not all 6 */}
-      {videos.length > 1 && (
-        <video
-          key={`preload-${nextIndex}`}
-          src={videos[nextIndex]}
-          preload="metadata"
-          muted
-          className="hidden"
-          aria-hidden="true"
-        />
-      )}
     </div>
   );
 }

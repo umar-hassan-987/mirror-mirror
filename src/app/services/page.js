@@ -14,7 +14,7 @@ export default function Services() {
       name: t("services.list.mirrorBooth.name"),
       icon: <Camera className="w-8 h-8 text-primary" />,
       desc: t("services.list.mirrorBooth.desc"),
-      image: "/images/mirror-photo-booth.jpg",
+      image: "/images/mirror-photo-booth.webp",
       price: t("services.list.mirrorBooth.price"),
       duration: t("services.list.mirrorBooth.duration"),
       specs: t("services.list.mirrorBooth.specs") || []

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   ArrowRight, Play, Camera, Video, Mic, PenTool, Gift, Star,
   ArrowUpRight, Phone, Mail, Loader2, Check, Sparkles, Heart, Printer,
@@ -23,6 +23,10 @@ export default function Home() {
   const [submitStatus, setSubmitStatus] = useState("idle"); // idle, sending, success
   const [activeTab, setActiveTab] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [whoWeAreVisible, setWhoWeAreVisible] = useState(false);
+  const [tabSectionVisible, setTabSectionVisible] = useState(false);
+  const whoWeAreRef = useRef(null);
+  const tabSectionRef = useRef(null);
 
   const testimonials = t("home.testimonials") || [];
 
@@ -45,6 +49,27 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(timer);
   }, [testimonials.length]);
+
+  // Intersection Observer for lazy video loading
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === whoWeAreRef.current && entry.isIntersecting) {
+          setWhoWeAreVisible(true);
+        }
+        if (entry.target === tabSectionRef.current && entry.isIntersecting) {
+          setTabSectionVisible(true);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: "200px", // Start loading 200px before section is visible
+      threshold: 0,
+    });
+    if (whoWeAreRef.current) observer.observe(whoWeAreRef.current);
+    if (tabSectionRef.current) observer.observe(tabSectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const homeProjects = [
     { title: t("portfolio.gallery.projects.project1.title"), type: t("portfolio.gallery.filters.wedding"), image: "/images/portfolio/portfolio-1.webp" },
@@ -136,7 +161,7 @@ export default function Home() {
       name: t("home.servicesSection.mirrorBooth.name"),
       icon: <Camera className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.mirrorBooth.desc"),
-      image: "/images/mirror-photo-booth.jpg"
+      image: "/images/mirror-photo-booth.webp"
     },
     {
       name: t("home.servicesSection.retroBooth.name"),
@@ -286,18 +311,20 @@ export default function Home() {
       </section>
 
       {/* Narrative Section 1: Who We Are (Brand Manifesto) */}
-      <section className="py-32 md:py-48 bg-black w-full border-t border-gray-900 relative overflow-hidden flex items-center justify-center min-h-[70vh]">
-        {/* Background Video with Dark Overlay */}
+      <section ref={whoWeAreRef} className="py-32 md:py-48 bg-black w-full border-t border-gray-900 relative overflow-hidden flex items-center justify-center min-h-[70vh]">
+        {/* Background Video with Dark Overlay — lazy loaded */}
         <div className="absolute inset-0 z-0">
-          <video
-            src="/vid/whoweare.webm"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            className="w-full h-full object-cover opacity-60"
-          />
+          {whoWeAreVisible && (
+            <video
+              src="/vid/whoweare.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              className="w-full h-full object-cover opacity-60"
+            />
+          )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 z-0"></div>
         <div className="absolute inset-0 bg-black/20 z-0 backdrop-blur-[2px]"></div>
@@ -324,7 +351,7 @@ export default function Home() {
       </section>
 
       {/* Narrative Section 2: Interactive Services Overview */}
-      <section className="py-16 md:py-24 bg-gray-50 w-full border-t border-b border-gray-200 relative overflow-hidden">
+      <section ref={tabSectionRef} className="py-16 md:py-24 bg-gray-50 w-full border-t border-b border-gray-200 relative overflow-hidden">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10">
 
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -415,15 +442,17 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full"
                 >
                   {tabs[activeTab].mediaType === "video" ? (
-                    <video
-                      src={tabs[activeTab].mediaSrc}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="none"
-                      className="w-full h-full object-cover"
-                    />
+                    tabSectionVisible && (
+                      <video
+                        src={tabs[activeTab].mediaSrc}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="none"
+                        className="w-full h-full object-cover"
+                      />
+                    )
                   ) : (
                     <Image
                       src={tabs[activeTab].mediaSrc}
@@ -504,10 +533,10 @@ export default function Home() {
           {[
             { title: t("home.portfolio.projects.sunlifeOpening"), image: "/images/nadia.webp" },
             { title: t("home.portfolio.projects.rnbOpening"), image: "/images/rnb-opening.png" },
-            { title: t("home.portfolio.projects.hamadHospital"), image: "/images/hamad-hospital.jpg" },
-            { title: t("home.portfolio.projects.graduation"), image: "/images/home-projects/graduation.png" },
-            { title: t("home.portfolio.projects.weddingProject"), image: "/images/home-projects/wedding.png" },
-            { title: t("home.portfolio.projects.birthdaysPrivate"), image: "/images/birthday.jpg" }
+            { title: t("home.portfolio.projects.hamadHospital"), image: "/images/hamad-hospital.webp" },
+            { title: t("home.portfolio.projects.graduation"), image: "/images/home-projects/graduation.webp" },
+            { title: t("home.portfolio.projects.weddingProject"), image: "/images/home-projects/wedding.webp" },
+            { title: t("home.portfolio.projects.birthdaysPrivate"), image: "/images/birthday.webp" }
           ].map((proj, idx) => (
             <div
               key={idx}
