@@ -187,7 +187,7 @@ export default {
         behindTheScenes: "Behind The Scenes",
         customPhotoWall: "Custom Photo Wall",
         sunlifeOpening: "Sunlife Pharmacy Opening",
-        rnbOpening: "RNB Branch Opening",
+        rnbOpening: "Brand Activation",
         hamadHospital: "Hamad Hospital",
         graduation: "Graduation",
         weddingProject: "Wedding",

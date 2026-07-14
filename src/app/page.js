@@ -167,7 +167,7 @@ export default function Home() {
       name: t("home.servicesSection.retroBooth.name"),
       icon: <Camera className="w-5 h-5 text-secondary" />,
       desc: t("home.servicesSection.retroBooth.desc"),
-      image: "/images/audio-video-booth.webp"
+      image: "/images/telephonebooth.webp"
     },
     {
       name: t("home.servicesSection.booth360.name"),
@@ -531,12 +531,12 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {[
-            { title: t("home.portfolio.projects.sunlifeOpening"), image: "/images/nadia.webp" },
-            { title: t("home.portfolio.projects.rnbOpening"), image: "/images/rnb-opening.png" },
-            { title: t("home.portfolio.projects.hamadHospital"), image: "/images/hamad-hospital.webp" },
-            { title: t("home.portfolio.projects.graduation"), image: "/images/home-projects/graduation.webp" },
-            { title: t("home.portfolio.projects.weddingProject"), image: "/images/home-projects/wedding.webp" },
-            { title: t("home.portfolio.projects.birthdaysPrivate"), image: "/images/birthday.webp" }
+            { title: t("home.portfolio.projects.sunlifeOpening"), image: "/images/sunlife-pharmacy-2.webp" },
+            { title: t("home.portfolio.projects.rnbOpening"), image: "/images/brand-activation.webp" },
+            { title: t("home.portfolio.projects.hamadHospital"), image: "/images/hamadhospital-2.webp" },
+            { title: t("home.portfolio.projects.graduation"), image: "/images/graduation.webp" },
+            { title: t("home.portfolio.projects.weddingProject"), image: "/images/wedding-2.webp" },
+            { title: t("home.portfolio.projects.birthdaysPrivate"), image: "/images/birthday-2.webp" }
           ].map((proj, idx) => (
             <div
               key={idx}

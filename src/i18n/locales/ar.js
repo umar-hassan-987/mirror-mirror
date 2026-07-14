@@ -195,7 +195,7 @@ export default {
         behindTheScenes: "خلف الكواليس",
         customPhotoWall: "جدار صور مخصص",
         sunlifeOpening: "افتتاح صيدلية صنلايف",
-        rnbOpening: "افتتاح فرع آر إن بي",
+        rnbOpening: "تفعيل العلامة التجارية",
         hamadHospital: "مستشفى حمد",
         graduation: "تخرج",
         weddingProject: "زفاف",

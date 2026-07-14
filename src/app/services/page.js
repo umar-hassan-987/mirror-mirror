@@ -24,7 +24,7 @@ export default function Services() {
       name: t("services.list.retroBooth.name"),
       icon: <Camera className="w-8 h-8 text-secondary" />,
       desc: t("services.list.retroBooth.desc"),
-      image: "/images/audio-video-booth.webp",
+      image: "/images/telephonebooth.webp",
       price: t("services.list.retroBooth.price"),
       duration: t("services.list.retroBooth.duration"),
       specs: t("services.list.retroBooth.specs") || []
@@ -134,13 +134,13 @@ export default function Services() {
       <section className="relative min-h-screen flex items-center justify-start overflow-hidden px-margin-mobile md:px-gutter w-full">
         {/* Background Image with Premium Overlay */}
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/services-hero.webp" 
-            alt="Mirror mirror photo booth backdrop" 
+          <Image
+            src="/images/services-hero.webp"
+            alt="Mirror mirror photo booth backdrop"
             fill
             priority
             sizes="100vw"
-            className="w-full h-full object-cover" 
+            className="w-full h-full object-cover"
           />
           {/* Strong gradient and solid overlay to ensure text readability */}
           <div className="absolute inset-0 bg-black/40 z-10"></div>
@@ -148,7 +148,7 @@ export default function Services() {
         </div>
 
         <div className="relative z-30 max-w-container-max mx-auto w-full">
-          <motion.div 
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={{
@@ -156,7 +156,7 @@ export default function Services() {
             }}
             className="max-w-3xl"
           >
-            <motion.span 
+            <motion.span
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
@@ -165,7 +165,7 @@ export default function Services() {
             >
               {t("services.hero.label")}
             </motion.span>
-            <motion.h1 
+            <motion.h1
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
@@ -174,7 +174,7 @@ export default function Services() {
             >
               {t("services.hero.titleLine1")} <span className="text-pink-100">{t("services.hero.titleHighlight")}</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
@@ -193,20 +193,19 @@ export default function Services() {
           {services.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <motion.div 
+              <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={{
                   visible: { transition: { staggerChildren: 0.1 } }
                 }}
-                key={item.id} 
-                className={`flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between ${
-                  isEven ? "" : "lg:flex-row-reverse"
-                }`}
+                key={item.id}
+                className={`flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between ${isEven ? "" : "lg:flex-row-reverse"
+                  }`}
               >
                 {/* Image Showcase */}
-                <motion.div 
+                <motion.div
                   variants={{
                     hidden: { opacity: 0, x: isEven ? -30 : 30 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
@@ -215,8 +214,8 @@ export default function Services() {
                 >
                   <div className="rounded-none overflow-hidden shadow-xl border border-outline-variant/20 relative group">
                     <Image
-                      className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" 
-                      alt={item.name} 
+                      className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+                      alt={item.name}
                       src={item.image}
                       width={800}
                       height={600}
@@ -230,7 +229,7 @@ export default function Services() {
                 </motion.div>
 
                 {/* Details Section */}
-                <motion.div 
+                <motion.div
                   variants={{
                     hidden: { opacity: 0, x: isEven ? 30 : -30 },
                     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
@@ -246,21 +245,21 @@ export default function Services() {
                   <p className="font-inter text-base md:text-lg text-on-surface-variant leading-relaxed">
                     {item.desc}
                   </p>
-                  
+
                   {/* Specs / Features Checklist */}
-                  <motion.div 
+                  <motion.div
                     variants={{
                       visible: { transition: { staggerChildren: 0.05 } }
                     }}
                     className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-outline-variant/30"
                   >
                     {item.specs.map((spec, sIdx) => (
-                      <motion.div 
+                      <motion.div
                         variants={{
                           hidden: { opacity: 0, y: 10 },
                           visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
                         }}
-                        key={sIdx} 
+                        key={sIdx}
                         className="flex items-center gap-3"
                       >
                         <CheckCircle className="w-5 h-5 text-[#008287] shrink-0" />
@@ -270,8 +269,8 @@ export default function Services() {
                   </motion.div>
 
                   <div className="pt-6">
-                    <Link 
-                      href="/contact" 
+                    <Link
+                      href="/contact"
                       className="inline-flex items-center gap-2 gradient-bg text-white font-inter font-semibold py-4 px-8 rounded-none shadow-md hover:shadow-xl active:scale-95 transition-all w-fit"
                     >
                       {t("services.list.bookEventSetup")} <ArrowRight className={`w-4 h-4 ${dir === 'rtl' ? 'rotate-180' : ''}`} />
@@ -287,7 +286,7 @@ export default function Services() {
       {/* Add-ons & Customization Section */}
       <section className="py-16 md:py-24 bg-surface-container-low border-t border-outline-variant/20 w-full">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -299,7 +298,7 @@ export default function Services() {
             <p className="font-inter text-sm md:text-base text-on-surface-variant mt-2 max-w-xl mx-auto">{t("services.addons.subtitle")}</p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -309,12 +308,12 @@ export default function Services() {
             className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
           >
             {addOns.map((add, idx) => (
-              <motion.div 
+              <motion.div
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
                 }}
-                key={idx} 
+                key={idx}
                 className="bg-surface p-8 rounded-none border border-outline-variant/30 hover:border-primary/40 transition-colors flex justify-between gap-6 shadow-sm group"
               >
                 <div className="space-y-2">
