@@ -197,7 +197,7 @@ export default function Home() {
       name: t("home.servicesSection.photography.name"),
       icon: <Camera className="w-5 h-5 text-primary" />,
       desc: t("home.servicesSection.photography.desc"),
-      image: "/images/photography.jpg"
+      image: "/images/photography.webp"
     },
     {
       name: t("home.servicesSection.videography.name"),

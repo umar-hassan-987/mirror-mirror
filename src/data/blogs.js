@@ -2,7 +2,7 @@ export const blogs = [
   {
     slug: "elevating-corporate-events-qatar",
     date: "2024-10-15",
-    coverImage: "/images/wedding-guide.webp",
+    coverImage: "/images/blog-0.webp",
     author: "Mirror Mirror Team",
     en: {
       title: "Elevating Corporate Events in Qatar with Interactive Photo Walls",
@@ -66,7 +66,7 @@ Investing in an interactive photowall guarantees that your event will be remembe
   {
     slug: "ultimate-wedding-photo-booth-guide",
     date: "2024-11-02",
-    coverImage: "/images/portfolio-hero.webp",
+    coverImage: "/images/blog-1.webp",
     author: "Mirror Mirror Team",
     en: {
       title: "The Ultimate Guide to Choosing a Wedding Photo Booth in Doha",
@@ -208,7 +208,7 @@ The good news? At Mirror Mirror Photowall Qatar, we offer both. Many of our clie
   {
     slug: "top-event-trends-qatar-2024",
     date: "2025-01-18",
-    coverImage: "/images/audio-video-booth.webp",
+    coverImage: "/images/blog-3.webp",
     author: "Mirror Mirror Team",
     en: {
       title: "Top 5 Event Entertainment Trends Dominating Qatar in 2024–2025",

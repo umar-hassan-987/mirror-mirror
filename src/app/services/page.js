@@ -74,7 +74,7 @@ export default function Services() {
       name: t("services.list.photography.name"),
       icon: <Camera className="w-8 h-8 text-primary" />,
       desc: t("services.list.photography.desc"),
-      image: "/images/photography.jpg",
+      image: "/images/photography.webp",
       price: t("services.list.photography.price"),
       duration: t("services.list.photography.duration"),
       specs: t("services.list.photography.specs") || []
